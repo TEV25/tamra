@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>نخلة وتمرة - الوجبات الشعبية</title>
+    <title>نخلة وتمرة - السخانات</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -19,8 +19,8 @@
                 <button class="dropbtn">☰ القائمة</button>
                 <div class="dropdown-content">
                     <a href="index.html">🏠 الرئيسية</a>
-                    <a href="food.html" class="active">🍽️ الوجبات الشعبية</a>
-                    <a href="sweets.html">🍰 الحلويات</a>
+                    <a href="sakhanat.html" class="active">🔥 السخانات</a>
+                    <a href="sohon.html">🍽️ الصحون</a>
                     <a href="services.html">✨ الخدمات</a>
                 </div>
             </div>
@@ -30,14 +30,13 @@
         </div>
     </nav>
 
-    <div class="page-banner food-banner">
-        <h1>🍽️ الوجبات الشعبية</h1>
-        <p>12 وجبة سعودية أصيلة | اشهى المأكولات التقليدية</p>
+    <div class="page-banner sakhanat-banner">
+        <h1>🔥 السخانات</h1>
+        <p>36 صنف من أشهى الأكلات الشعبية الساخنة</p>
     </div>
 
     <div class="products-grid" id="productsGrid"></div>
 
-    <!-- نافذة التفاصيل -->
     <div id="detailsModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -45,7 +44,6 @@
         </div>
     </div>
 
-    <!-- السلة الجانبية -->
     <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
@@ -59,7 +57,7 @@
 
     <script src="script.js"></script>
     <script>
-        displayProductsByType('food');
+        displayProductsByType('sakhanat');
     </script>
 </body>
 </html>
