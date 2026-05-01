@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>نخلة وتمرة - السخانات</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="location.href='index.html'">
+                <span class="logo-icon">🌴</span>
+                <span class="logo-text">نخلة وتمرة</span>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">☰ القائمة</button>
+                <div class="dropdown-content">
+                    <a href="index.html">🏠 الرئيسية</a>
+                    <a href="sakhanat.html" class="active">🔥 السخانات</a>
+                    <a href="sohon.html">🍽️ الصحون</a>
+                    <a href="services.html">✨ الخدمات</a>
+                </div>
+            </div>
+            <div class="nav-cart" onclick="toggleCart()">
+                🛒 <span id="cartCountNav">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-banner sakhanat-banner">
+        <h1>🔥 السخانات</h1>
+        <p>36 صنف من أشهى الأكلات الشعبية الساخنة</p>
+    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalDetails"></div>
+        </div>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>🛒 سلة مشترياتي</h3>
+            <span class="close-cart" onclick="toggleCart()">✖</span>
+        </div>
+        <div id="cartItemsList" class="cart-items"></div>
+        <div class="cart-total" id="cartTotal"></div>
+        <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب عبر واتساب</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        displayProductsByType('sakhanat');
+    </script>
+</body>
+</html>
