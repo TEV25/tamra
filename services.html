@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نخلة وتمرة - الخدمات</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -22,42 +22,27 @@
                     <a href="food.html">🍽️ الوجبات الشعبية</a>
                     <a href="sweets.html">🍰 الحلويات</a>
                     <a href="services.html" class="active">✨ الخدمات</a>
-                    <a href="#" onclick="toggleCart()">🛒 السلة</a>
+                    <a href="#" onclick="sendOrder()">📲 طلب جديد</a>
                 </div>
             </div>
-            <div class="nav-cart" onclick="toggleCart()">
-                🛒 <span id="cartCountNav">0</span>
+            <div class="nav-cart" onclick="sendOrder()">
+                🛒 السلة <span id="cartCountNav">0</span>
             </div>
         </div>
     </nav>
 
     <div class="page-banner services-banner">
         <h1>✨ خدماتنا</h1>
-        <p>خدمات فاخرة للمناسبات والولائم حسب طلبك</p>
+        <p>6 خدمات فاخرة للمناسبات والولائم حسب طلبك</p>
     </div>
 
     <div class="products-grid" id="productsGrid"></div>
-
-    <div class="order-section">
-        <button onclick="sendOrder()" class="btn-order">📲 إرسال الطلب عبر واتساب</button>
-    </div>
 
     <div id="detailsModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <div id="modalDetails"></div>
         </div>
-    </div>
-
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3>🛒 سلة مشترياتي</h3>
-            <span class="close-cart" onclick="toggleCart()">✖</span>
-        </div>
-        <div id="cartItemsList" class="cart-items"></div>
-        <div id="cartTotal" class="cart-total"></div>
-        <button onclick="sendOrder(); toggleCart();" class="btn-checkout">📲 تأكيد الطلب</button>
     </div>
 
     <script src="script.js"></script>
