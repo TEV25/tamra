@@ -2,60 +2,94 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نخلة وتمرة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>نخلة وتمرة | أكلات شعبية سعودية</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <nav class="navbar">
     <div class="nav-container">
-        <div class="logo" onclick="location.href='index.html'">🌴 نخلة وتمرة</div>
+        <div class="logo" onclick="location.href='index.html'">
+            <span class="logo-icon">🌴</span>
+            <span class="logo-text">نخلة وتمرة</span>
+        </div>
         <div class="dropdown">
             <button class="dropbtn">☰ القائمة</button>
             <div class="dropdown-content">
-                <a href="index.html">🏠 الرئيسية</a>
+                <a href="index.html" class="active">🏠 الرئيسية</a>
                 <a href="sakhanat.html">🔥 السخانات</a>
                 <a href="sohon.html">🍽️ الصحون</a>
                 <a href="services.html">✨ الخدمات</a>
             </div>
         </div>
-        <div class="nav-cart" onclick="toggleCart()">🛒 <span id="cartCountNav">0</span></div>
+        <div class="nav-cart" onclick="toggleCart()">
+            🛒 <span id="cartCountNav">0</span>
+        </div>
     </div>
 </nav>
 
 <section class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1>🌴 نخلة وتمرة</h1>
-        <p>مطبخ وخدمات سعودية أصيلة</p>
+        <h1 class="hero-title">🌴 نخلة وتمرة</h1>
+        <p class="hero-subtitle">مطبخ وخدمات سعودية أصيلة</p>
+        <p class="hero-desc">أشهى المأكولات التقليدية وألذ الحلويات الشرقية، بالإضافة إلى خدمات الولائم والمناسبات حسب طلبكم</p>
         <div class="hero-buttons">
-            <a href="sakhanat.html" class="hero-btn">🔥 السخانات</a>
-            <a href="sohon.html" class="hero-btn">🍽️ الصحون</a>
-            <a href="services.html" class="hero-btn">✨ الخدمات</a>
+            <a href="sakhanat.html" class="hero-btn primary">🔥 السخانات</a>
+            <a href="sohon.html" class="hero-btn primary">🍽️ الصحون</a>
+            <a href="services.html" class="hero-btn primary">✨ الخدمات</a>
         </div>
     </div>
 </section>
 
 <div class="stats">
-    <div class="stat-card"><span>36</span><label>سخان</label></div>
+    <div class="stat-card"><span>36</span><label>صنف ساخن</label></div>
     <div class="stat-card"><span>17</span><label>صحن</label></div>
-    <div class="stat-card"><span>6</span><label>خدمة</label></div>
+    <div class="stat-card"><span>6</span><label>خدمة مميزة</label></div>
 </div>
 
 <div class="sections">
-    <div class="section" onclick="location.href='sakhanat.html'">🔥<h3>السخانات</h3><p>36 صنف</p></div>
-    <div class="section" onclick="location.href='sohon.html'">🍽️<h3>الصحون</h3><p>17 صنف</p></div>
-    <div class="section" onclick="location.href='services.html'">✨<h3>الخدمات</h3><p>6 خدمات</p></div>
+    <div class="section" onclick="location.href='sakhanat.html'">
+        <div class="section-icon">🔥</div>
+        <h3>السخانات</h3>
+        <p>عريكة، عصيدة، جريش، مرقوق، كبسة، مندي، مكرونة، كبة، يخنات، أم علي، لقيمات</p>
+        <span class="section-link">استكشف →</span>
+    </div>
+    <div class="section" onclick="location.href='sohon.html'">
+        <div class="section-icon">🍽️</div>
+        <h3>الصحون</h3>
+        <p>مله خبز، بنت الصحن، فطائر، خلية نحل، بسبوسة، معمول، قطايف، غريبة، كيكة الدخن</p>
+        <span class="section-link">استكشف →</span>
+    </div>
+    <div class="section" onclick="location.href='services.html'">
+        <div class="section-icon">✨</div>
+        <h3>الخدمات</h3>
+        <p>خيمة فضية، ضيافة ملكية، بوفيه مفتوح، تنظيم مناسبات، وايت طعام، مأدبة عشاء</p>
+        <span class="section-link">استكشف →</span>
+    </div>
+</div>
+
+<div class="features">
+    <h2>🌟 لماذا نخلة وتمرة؟</h2>
+    <div class="features-grid">
+        <div class="feature"><span>🔥</span><h4>36+ صنف</h4><p>تشكيلة واسعة من السخانات</p></div>
+        <div class="feature"><span>🍽️</span><h4>17+ صحن</h4><p>ألذ الصحون والحلويات</p></div>
+        <div class="feature"><span>✨</span><h4>6 خدمات</h4><p>خدمات ولائم ومناسبات</p></div>
+        <div class="feature"><span>📱</span><h4>طلب عبر واتساب</h4><p>تواصل مباشر وسهل</p></div>
+    </div>
 </div>
 
 <div id="cartSidebar" class="cart-sidebar">
-    <div class="cart-header"><h3>🛒 السلة</h3><span onclick="toggleCart()">✖</span></div>
-    <div id="cartItemsList"></div>
-    <div id="cartTotal"></div>
-    <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button>
+    <div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div>
+    <div id="cartItemsList" class="cart-items"></div>
+    <div id="cartTotal" class="cart-total"></div>
+    <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب عبر واتساب</button>
 </div>
 <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
 
 <script src="script.js"></script>
+<script>updateCartDisplay();</script>
 </body>
 </html>
