@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نخلة وتمرة | المطبخ والخدمات السعودية</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -17,18 +17,17 @@
             </div>
             
             <div class="dropdown">
-                <button class="dropbtn">☰ القائمة الرئيسية</button>
+                <button class="dropbtn">☰ القائمة</button>
                 <div class="dropdown-content">
                     <a href="index.html" class="active">🏠 الرئيسية</a>
                     <a href="food.html">🍽️ الوجبات الشعبية</a>
                     <a href="sweets.html">🍰 الحلويات</a>
                     <a href="services.html">✨ الخدمات</a>
-                    <a href="#" onclick="sendOrder()">📲 طلب جديد</a>
                 </div>
             </div>
             
-            <div class="nav-cart" onclick="sendOrder()">
-                🛒 السلة <span id="cartCountNav">0</span>
+            <div class="nav-cart" onclick="toggleCart()">
+                🛒 <span id="cartCountNav">0</span>
             </div>
         </div>
     </nav>
@@ -38,11 +37,11 @@
         <div class="hero-content">
             <h1 class="hero-title">🌴 نخلة وتمرة</h1>
             <p class="hero-subtitle">مطبخ وخدمات سعودية أصيلة</p>
-            <p class="hero-desc">نقدم لكم أشهى المأكولات التقليدية وألذ الحلويات الشرقية، بالإضافة إلى خدمات الولائم والمناسبات حسب طلبكم</p>
+            <p class="hero-desc">نقدم لكم أشهى المأكولات التقليدية وألذ الحلويات الشرقية، بالإضافة إلى خدمات الولائم والمناسبات</p>
             <div class="hero-buttons">
                 <a href="food.html" class="hero-btn primary">🍽️ الوجبات الشعبية</a>
-                <a href="sweets.html" class="hero-btn secondary">🍰 الحلويات</a>
-                <a href="services.html" class="hero-btn secondary">✨ الخدمات</a>
+                <a href="sweets.html" class="hero-btn primary">🍰 الحلويات</a>
+                <a href="services.html" class="hero-btn primary">✨ الخدمات</a>
             </div>
         </div>
     </section>
@@ -66,33 +65,33 @@
         <div class="section-card food-section" onclick="location.href='food.html'">
             <div class="section-icon">🍽️</div>
             <h2>الوجبات الشعبية</h2>
-            <p>كبسة - جريش - مندي - مضغوط - عصيدة - مرقوق - قرصان - ثريد - حنيذ - صيادية - كبسة عروق - منسف</p>
-            <span class="section-link">استكشف الوجبات →</span>
+            <p>اكتشف أشهى المأكولات السعودية التقليدية</p>
+            <span class="section-link">استكشف →</span>
         </div>
         
         <div class="section-card sweets-section" onclick="location.href='sweets.html'">
             <div class="section-icon">🍰</div>
             <h2>الحلويات</h2>
-            <p>كنافة - لقيمات - أم علي - معمول - بلح الشام - زلابية - مهلبية - حلاوة الجبن</p>
-            <span class="section-link">استكشف الحلويات →</span>
+            <p>ألذ الحلويات الشرقية والغربية</p>
+            <span class="section-link">استكشف →</span>
         </div>
         
         <div class="section-card services-section" onclick="location.href='services.html'">
             <div class="section-icon">✨</div>
             <h2>الخدمات</h2>
-            <p>خيمة فضية - ضيافة ملكية - بوفيه مفتوح - تنظيم مناسبات - وايت طعام - مأدبة عشاء</p>
-            <span class="section-link">استكشف الخدمات →</span>
+            <p>خدمات ولائم ومناسبات حسب الطلب</p>
+            <span class="section-link">استكشف →</span>
         </div>
     </div>
 
     <div class="about-section">
         <div class="about-content">
-            <h2>🌟 لماذا نخلة وتمرة؟</h2>
+            <h2>🌟 مميزات نخلة وتمرة</h2>
             <div class="about-features">
                 <div class="feature">
                     <span>🍳</span>
                     <h4>12+ وجبة</h4>
-                    <p>تشكيلة واسعة من المأكولات السعودية الأصيلة</p>
+                    <p>تشكيلة واسعة من المأكولات السعودية</p>
                 </div>
                 <div class="feature">
                     <span>🍰</span>
@@ -102,24 +101,32 @@
                 <div class="feature">
                     <span>✨</span>
                     <h4>6 خدمات</h4>
-                    <p>خدمات ولائم ومناسبات حسب الطلب</p>
+                    <p>خدمات ولائم ومناسبات</p>
                 </div>
                 <div class="feature">
                     <span>📱</span>
                     <h4>طلب عبر واتساب</h4>
-                    <p>اطلب بضغطة زر وتواصل مباشر</p>
+                    <p>تواصل مباشر وسهل</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <a href="#" onclick="sendOrder()" class="whatsapp-float">
-        📲
-    </a>
+    <!-- السلة الجانبية -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>🛒 سلة مشترياتي</h3>
+            <span class="close-cart" onclick="toggleCart()">✖</span>
+        </div>
+        <div id="cartItemsList" class="cart-items"></div>
+        <div class="cart-total" id="cartTotal"></div>
+        <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب عبر واتساب</button>
+    </div>
 
     <script src="script.js"></script>
     <script>
-        updateCartSummary();
+        updateCartDisplay();
     </script>
 </body>
 </html>
