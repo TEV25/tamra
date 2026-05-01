@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نخلة وتمرة - الخدمات</title>
+    <title>نخلة وتمرة - الحلويات</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -20,8 +20,8 @@
                 <div class="dropdown-content">
                     <a href="index.html">🏠 الرئيسية</a>
                     <a href="food.html">🍽️ الوجبات الشعبية</a>
-                    <a href="sweets.html">🍰 الحلويات</a>
-                    <a href="services.html" class="active">✨ الخدمات</a>
+                    <a href="sweets.html" class="active">🍰 الحلويات</a>
+                    <a href="services.html">✨ الخدمات</a>
                     <a href="#" onclick="sendOrder()">📲 طلب جديد</a>
                 </div>
             </div>
@@ -31,9 +31,9 @@
         </div>
     </nav>
 
-    <div class="page-banner services-banner">
-        <h1>✨ خدماتنا</h1>
-        <p>6 خدمات فاخرة للمناسبات والولائم حسب طلبك</p>
+    <div class="page-banner sweets-banner">
+        <h1>🍰 الحلويات</h1>
+        <p>8 حلويات شهية | ألذ الحلويات الشرقية والغربية</p>
     </div>
 
     <div class="products-grid" id="productsGrid"></div>
@@ -47,7 +47,7 @@
 
     <script src="script.js"></script>
     <script>
-        displayProductsByType('service');
+        displayProductsByType('sweets');
     </script>
 </body>
 </html>
