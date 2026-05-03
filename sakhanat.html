@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>خيمة وتمرة - السخانات التراثية</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo" onclick="location.href='index.html'">
+            <img src="images/logo.png" alt="شعار خيمة وتمرة" class="logo-img" onerror="this.src='https://via.placeholder.com/45x45?text=شعار'">
+            <span class="logo-text">خيمة وتمرة</span>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">☰ القائمة</button>
+            <div class="dropdown-content">
+                <a href="index.html">🏠 الرئيسية</a>
+                <a href="sakhanat.html" class="active">🔥 السخانات</a>
+                <a href="sweets.html">🍰 الحلويات</a>
+                <a href="packages.html">✨ الباقات</a>
+            </div>
+        </div>
+        <div class="nav-cart" onclick="toggleCart()">🛒 <span id="cartCountNav">0</span></div>
+    </div>
+</nav>
+
+<div class="page-banner sakhanat-banner">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+        <h1>🔥 السخانات التراثية</h1>
+        <p>أشهى الأكلات الشعبية الساخنة على أصولها</p>
+        <a href="https://wa.me/966539836477" class="banner-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> اطلب الآن عبر واتساب</a>
+    </div>
+</div>
+
+<div class="products-grid" id="productsGrid"></div>
+
+<div class="contact-cards">
+    <div class="contact-card">
+        <i class="fab fa-whatsapp"></i>
+        <h3>اطلب الآن</h3>
+        <p>تواصل معنا مباشرة عبر واتساب</p>
+        <a href="https://wa.me/966539836477" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> 0539836477</a>
+    </div>
+    <div class="contact-card">
+        <i class="fab fa-tiktok"></i>
+        <h3>تابعنا</h3>
+        <p>شاهد أحدث الوصفات والأطباق</p>
+        <a href="https://www.tiktok.com/@khaymah_w_tamrah" class="btn-tiktok" target="_blank"><i class="fab fa-tiktok"></i> @khaymah_w_tamrah</a>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <img src="images/logo.png" alt="خيمة وتمرة" class="footer-logo" onerror="this.src='https://via.placeholder.com/70x70?text=شعار'">
+        <h3>خيمة وتمرة</h3>
+        <p>أكلات شعبية بطابع تراثي أصيل</p>
+        <div class="footer-social">
+            <a href="https://wa.me/966539836477" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.tiktok.com/@khaymah_w_tamrah" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="https://wa.me/966539836477" target="_blank">📞 0539836477</a>
+            <a href="https://www.tiktok.com/@khaymah_w_tamrah" target="_blank">📱 @khaymah_w_tamrah</a>
+        </div>
+        <p class="copyright">© 2025 خيمة وتمرة. جميع الحقوق محفوظة.</p>
+    </div>
+</footer>
+
+<div id="detailsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal()">&times;</span><div id="modalDetails"></div></div></div>
+<div id="cartSidebar" class="cart-sidebar"><div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div><div id="cartItemsList" class="cart-items"></div><div id="cartTotal" class="cart-total"></div><button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button></div>
+<div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+<script src="script.js"></script>
+<script>displayProductsByType('sakhanat');</script>
+</body>
+</html>
