@@ -9,7 +9,8 @@ body {
     background: #f4ecd8;
     direction: rtl;
     min-height: 100vh;
-    background-image: radial-gradient(circle at 10% 20%, rgba(210, 180, 140, 0.08) 0%, rgba(160, 120, 80, 0.05) 90%);
+    background-image: url('https://www.transparenttextures.com/contents/paper-fibers.png');
+    background-repeat: repeat;
 }
 
 /* ========================================
@@ -24,6 +25,7 @@ body {
     --gold: #c9a84c;
     --gold-dark: #b8860b;
     --cream: #fff8f0;
+    --white: #ffffff;
 }
 
 /* ========================================
@@ -35,14 +37,14 @@ body {
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    border-bottom: 2px solid var(--gold);
+    border-bottom: 3px solid var(--gold);
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 25px;
+    padding: 10px 25px;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -50,16 +52,19 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.1);
-    padding: 8px 20px;
+    padding: 6px 18px;
     border-radius: 50px;
     border: 1px solid var(--gold);
 }
 
-.logo-icon {
-    font-size: 1.6em;
+.logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .logo-text {
@@ -67,7 +72,6 @@ body {
     font-weight: 800;
     color: var(--gold);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 1px;
 }
 
 .dropbtn {
@@ -85,7 +89,6 @@ body {
 .dropbtn:hover {
     background: var(--gold);
     color: #3e2723;
-    border-color: #3e2723;
 }
 
 .dropdown-content {
@@ -109,13 +112,11 @@ body {
     display: block;
     font-weight: 600;
     border-bottom: 1px solid #e8d5b7;
-    font-family: inherit;
 }
 
 .dropdown-content a:hover {
     background: linear-gradient(135deg, #c9a84c, #b8860b);
     color: white;
-    padding-right: 28px;
 }
 
 .dropdown-content a.active {
@@ -141,7 +142,6 @@ body {
 .nav-cart:hover {
     transform: scale(1.05);
     background: #ffd700;
-    color: #3e2723;
 }
 
 #cartCountNav {
@@ -153,12 +153,12 @@ body {
 }
 
 /* ========================================
-   القسم الترحيبي بخلفية تراثية
+   القسم الترحيبي
    ======================================== */
 .hero {
     position: relative;
     background: linear-gradient(135deg, #3e2723, #5d4037);
-    min-height: 420px;
+    min-height: 480px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,7 +174,7 @@ body {
     height: 100%;
     background-image: url('https://www.transparenttextures.com/contents/arabesque.png');
     background-repeat: repeat;
-    opacity: 0.15;
+    opacity: 0.12;
 }
 
 .hero::before {
@@ -186,23 +186,31 @@ body {
     height: 100%;
     background-image: url('https://www.transparenttextures.com/contents/old-map.png');
     background-size: cover;
-    opacity: 0.1;
+    opacity: 0.08;
 }
 
 .hero-content {
     position: relative;
     color: var(--cream);
-    padding: 50px;
-    max-width: 800px;
+    padding: 40px;
+    max-width: 850px;
     z-index: 1;
-    background: rgba(62, 39, 35, 0.6);
-    backdrop-filter: blur(5px);
-    border-radius: 60px;
-    border: 1px solid var(--gold);
+    background: rgba(62, 39, 35, 0.65);
+    backdrop-filter: blur(8px);
+    border-radius: 70px;
+    border: 2px solid var(--gold);
+}
+
+.hero-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid var(--gold);
 }
 
 .hero-title {
-    font-size: 3.5em;
+    font-size: 3em;
     margin-bottom: 15px;
     font-weight: 800;
     color: var(--gold);
@@ -210,31 +218,30 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.4em;
-    margin-bottom: 15px;
-    color: #faf0e6;
+    font-size: 1.3em;
+    margin-bottom: 12px;
 }
 
 .hero-desc {
     font-size: 1em;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     line-height: 1.7;
 }
 
 .hero-buttons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .hero-btn {
-    padding: 12px 32px;
+    padding: 12px 28px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 700;
     transition: all 0.3s;
-    font-size: 1em;
 }
 
 .hero-btn.primary {
@@ -243,25 +250,43 @@ body {
     border: 1px solid #3e2723;
 }
 
-.hero-btn.primary:hover {
+.hero-btn.whatsapp-btn {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: 1px solid white;
+}
+
+.hero-btn:hover {
     transform: translateY(-3px);
-    background: #ffd700;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.social-links {
+    margin-top: 15px;
+}
+
+.social-link {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.9em;
+    background: rgba(0,0,0,0.3);
+    padding: 5px 15px;
+    border-radius: 30px;
 }
 
 /* ========================================
-   إحصائيات تراثية
+   الإحصائيات
    ======================================== */
 .stats {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    padding: 35px 20px;
-    background: rgba(62, 39, 35, 0.9);
+    gap: 25px;
+    padding: 30px 20px;
+    background: rgba(62, 39, 35, 0.95);
     flex-wrap: wrap;
     margin: -30px 25px 0;
-    border-radius: 50px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 60px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     position: relative;
     z-index: 2;
     border: 1px solid var(--gold);
@@ -269,29 +294,29 @@ body {
 
 .stat-card {
     text-align: center;
-    padding: 15px 35px;
+    padding: 12px 25px;
     background: rgba(250, 240, 230, 0.95);
     border-radius: 40px;
-    min-width: 130px;
+    min-width: 120px;
     transition: all 0.3s;
     border: 1px solid var(--gold);
 }
 
 .stat-card span {
-    font-size: 2.2em;
+    font-size: 2em;
     font-weight: 800;
     color: #b8860b;
     display: block;
 }
 
 .stat-card label {
-    font-size: 0.9em;
+    font-size: 0.85em;
     color: #3e2723;
     font-weight: 600;
 }
 
 /* ========================================
-   أقسام الموقع التراثية
+   أقسام الموقع
    ======================================== */
 .sections {
     display: flex;
@@ -308,18 +333,18 @@ body {
     width: 100%;
     max-width: 320px;
     padding: 35px 25px;
-    border-radius: 30px;
+    border-radius: 35px;
     text-align: center;
     cursor: pointer;
     transition: all 0.4s;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--gold);
+    border: 2px solid var(--gold);
 }
 
 .section:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    border-color: #b8860b;
+    border-color: #ffd700;
 }
 
 .section-icon {
@@ -331,7 +356,6 @@ body {
     color: #3e2723;
     font-size: 1.6em;
     margin-bottom: 12px;
-    font-weight: 700;
 }
 
 .section p {
@@ -344,11 +368,10 @@ body {
 .section-link {
     color: #b8860b;
     font-weight: 800;
-    font-size: 0.9em;
 }
 
 /* ========================================
-   قسم المميزات تراثي
+   المميزات
    ======================================== */
 .features {
     background: linear-gradient(135deg, #e8d5b7, #f4ecd8);
@@ -409,23 +432,16 @@ body {
 .feature h4 {
     color: #3e2723;
     margin-bottom: 8px;
-    font-size: 1.2em;
-}
-
-.feature p {
-    color: #5d4037;
-    font-size: 0.8em;
 }
 
 /* ========================================
-   بانر الصفحات الداخلية تراثي
+   بانر الصفحات
    ======================================== */
 .page-banner {
     text-align: center;
     padding: 50px 20px;
     color: white;
     position: relative;
-    overflow: hidden;
 }
 
 .page-banner::before {
@@ -437,37 +453,16 @@ body {
     height: 100%;
     background-image: url('https://www.transparenttextures.com/contents/arabesque.png');
     opacity: 0.1;
-    pointer-events: none;
 }
 
-.sakhanat-banner {
-    background: linear-gradient(135deg, #3e2723, #5d4037);
-    border-bottom: 3px solid var(--gold);
-}
+.sakhanat-banner { background: linear-gradient(135deg, #3e2723, #5d4037); border-bottom: 3px solid var(--gold); }
+.sohon-banner { background: linear-gradient(135deg, #4e342e, #6d4c41); border-bottom: 3px solid var(--gold); }
+.services-banner { background: linear-gradient(135deg, #2c1a12, #4e342e); border-bottom: 3px solid var(--gold); }
 
-.sohon-banner {
-    background: linear-gradient(135deg, #4e342e, #6d4c41);
-    border-bottom: 3px solid var(--gold);
-}
-
-.services-banner {
-    background: linear-gradient(135deg, #2c1a12, #4e342e);
-    border-bottom: 3px solid var(--gold);
-}
-
-.page-banner h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.page-banner p {
-    font-size: 1em;
-    opacity: 0.95;
-}
+.page-banner h1 { font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 
 /* ========================================
-   بطاقات المنتجات التراثية
+   شبكة المنتجات
    ======================================== */
 .products-grid {
     display: flex;
@@ -494,7 +489,6 @@ body {
 .product-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    border-color: #b8860b;
 }
 
 .product-image {
@@ -504,12 +498,6 @@ body {
     border-radius: 20px;
     cursor: pointer;
     border: 2px solid var(--gold);
-    transition: all 0.3s;
-}
-
-.product-image:hover {
-    transform: scale(1.02);
-    border-color: #b8860b;
 }
 
 .product-name {
@@ -522,7 +510,6 @@ body {
 .product-category {
     color: #8d6e63;
     font-size: 0.8em;
-    margin-bottom: 10px;
 }
 
 .btn-details {
@@ -535,13 +522,6 @@ body {
     margin: 10px 0;
     cursor: pointer;
     font-weight: 700;
-    transition: all 0.3s;
-}
-
-.btn-details:hover {
-    background: linear-gradient(135deg, #c9a84c, #b8860b);
-    color: #3e2723;
-    transform: scale(0.98);
 }
 
 .quantity-selector {
@@ -559,15 +539,8 @@ body {
     background: linear-gradient(135deg, #c9a84c, #b8860b);
     color: #3e2723;
     font-size: 1.3em;
-    font-weight: bold;
     border: none;
     cursor: pointer;
-    transition: all 0.2s;
-}
-
-.quantity-btn:hover {
-    transform: scale(1.05);
-    background: #ffd700;
 }
 
 .quantity-value {
@@ -575,7 +548,6 @@ body {
     font-weight: 800;
     min-width: 40px;
     text-align: center;
-    color: #3e2723;
 }
 
 .btn-add {
@@ -587,16 +559,10 @@ body {
     border-radius: 30px;
     cursor: pointer;
     font-weight: 800;
-    transition: all 0.3s;
-}
-
-.btn-add:hover {
-    background: #ffd700;
-    transform: scale(0.98);
 }
 
 /* ========================================
-   نافذة التفاصيل (مودال) تراثي
+   المودال
    ======================================== */
 .modal {
     display: none;
@@ -606,7 +572,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(30, 20, 15, 0.9);
+    background: rgba(30, 20, 15, 0.95);
     overflow-y: auto;
 }
 
@@ -618,20 +584,7 @@ body {
     max-width: 650px;
     border-radius: 35px;
     position: relative;
-    animation: slideDown 0.3s;
     border: 2px solid var(--gold);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .close-modal {
@@ -641,12 +594,6 @@ body {
     font-size: 1.8em;
     cursor: pointer;
     color: #8d6e63;
-    transition: all 0.2s;
-}
-
-.close-modal:hover {
-    color: #f44336;
-    transform: scale(1.1);
 }
 
 .main-image {
@@ -673,12 +620,6 @@ body {
     border-radius: 12px;
     cursor: pointer;
     border: 2px solid var(--gold);
-    transition: all 0.2s;
-}
-
-.gallery-img:hover {
-    transform: scale(1.05);
-    border-color: #b8860b;
 }
 
 .details-description {
@@ -688,11 +629,10 @@ body {
     line-height: 1.8;
     background: rgba(250, 240, 230, 0.9);
     border-right: 4px solid var(--gold);
-    font-size: 0.95em;
 }
 
 /* ========================================
-   السلة الجانبية تراثي
+   السلة الجانبية
    ======================================== */
 .cart-sidebar {
     position: fixed;
@@ -710,9 +650,7 @@ body {
     border-left: 3px solid var(--gold);
 }
 
-.cart-sidebar.open {
-    left: 0;
-}
+.cart-sidebar.open { left: 0; }
 
 .cart-overlay {
     position: fixed;
@@ -725,9 +663,7 @@ body {
     z-index: 1000;
 }
 
-.cart-overlay.show {
-    display: block;
-}
+.cart-overlay.show { display: block; }
 
 .cart-header {
     display: flex;
@@ -738,16 +674,7 @@ body {
     border-bottom: 2px solid var(--gold);
 }
 
-.cart-header h3 {
-    color: #3e2723;
-    font-size: 1.3em;
-}
-
-.close-cart {
-    cursor: pointer;
-    font-size: 1.8em;
-    color: #8d6e63;
-}
+.close-cart { cursor: pointer; font-size: 1.8em; color: #8d6e63; }
 
 .cart-item {
     display: flex;
@@ -757,16 +684,8 @@ body {
     border-bottom: 1px solid #e8d5b7;
 }
 
-.cart-item-name {
-    font-weight: 800;
-    color: #3e2723;
-}
-
-.cart-item-qty {
-    color: #8d6e63;
-    font-size: 0.8em;
-    margin-top: 5px;
-}
+.cart-item-name { font-weight: 800; color: #3e2723; }
+.cart-item-qty { color: #8d6e63; font-size: 0.8em; margin-top: 5px; }
 
 .btn-remove {
     background: linear-gradient(135deg, #8d6e63, #6d4c41);
@@ -775,7 +694,6 @@ body {
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    font-size: 0.8em;
 }
 
 .cart-total {
@@ -797,13 +715,6 @@ body {
     border-radius: 40px;
     cursor: pointer;
     font-weight: 800;
-    font-size: 1em;
-    transition: all 0.3s;
-}
-
-.btn-checkout:hover {
-    background: #ffd700;
-    transform: scale(0.98);
 }
 
 .empty-cart {
@@ -818,12 +729,11 @@ body {
 @media (max-width: 768px) {
     .hero-title { font-size: 1.8em; }
     .hero-subtitle { font-size: 1em; }
-    .stats { gap: 15px; margin: -20px 15px 0; }
-    .stat-card { padding: 10px 18px; min-width: 80px; }
-    .stat-card span { font-size: 1.5em; }
-    .section { max-width: 280px; }
+    .stats { gap: 12px; margin: -20px 15px 0; }
+    .stat-card { padding: 8px 15px; min-width: 80px; }
+    .stat-card span { font-size: 1.3em; }
     .product-card { max-width: 280px; }
-    .modal-content { margin: 30px auto; padding: 18px; }
+    .modal-content { margin: 30px auto; }
     .main-image { height: 180px; }
 }
 
