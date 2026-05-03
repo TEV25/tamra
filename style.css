@@ -9,8 +9,11 @@ body {
     background: #f4ecd8;
     direction: rtl;
     min-height: 100vh;
-    background-image: url('https://www.transparenttextures.com/contents/paper-fibers.png');
-    background-repeat: repeat;
+    /* خلفية تراثية بنقوش */
+    background-image: url('https://www.transparenttextures.com/contents/arabesque.png'), 
+                      url('https://www.transparenttextures.com/contents/old-map.png');
+    background-repeat: repeat, repeat;
+    background-color: #f4ecd8;
 }
 
 :root {
@@ -52,14 +55,15 @@ body {
 }
 
 .logo-img {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid var(--gold);
 }
 
 .logo-text {
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: 800;
     color: var(--gold);
 }
@@ -120,9 +124,12 @@ body {
     margin-right: 5px;
 }
 
-/* ========== القسم الترحيبي ========== */
+/* ========== القسم الترحيبي بخلفية خيمة ========== */
 .hero {
-    background: linear-gradient(135deg, #3e2723, #5d4037);
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1200&h=500&fit=crop');
+    background-size: cover;
+    background-position: center;
     min-height: 500px;
     display: flex;
     align-items: center;
@@ -153,11 +160,12 @@ body {
 }
 
 .hero-logo {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     margin-bottom: 15px;
     border: 3px solid var(--gold);
+    object-fit: cover;
 }
 
 .hero-title {
@@ -325,10 +333,11 @@ body {
 }
 
 .footer-logo {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     margin-bottom: 15px;
+    border: 2px solid var(--gold);
 }
 
 .footer-content h3 {
@@ -350,13 +359,33 @@ body {
 /* ========== البانر ========== */
 .page-banner {
     text-align: center;
-    padding: 40px 20px;
+    padding: 50px 20px;
     color: white;
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
-.sakhanat-banner { background: linear-gradient(135deg, #3e2723, #5d4037); border-bottom: 3px solid var(--gold); }
-.sweets-banner { background: linear-gradient(135deg, #4e342e, #6d4c41); border-bottom: 3px solid var(--gold); }
-.packages-banner { background: linear-gradient(135deg, #2c1a12, #4e342e); border-bottom: 3px solid var(--gold); }
+.sakhanat-banner {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=1200&h=300&fit=crop');
+    background-size: cover;
+    border-bottom: 3px solid var(--gold);
+}
+
+.sweets-banner {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1551024506-0bccd828d307?w=1200&h=300&fit=crop');
+    background-size: cover;
+    border-bottom: 3px solid var(--gold);
+}
+
+.packages-banner {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1519167758481-8cb5505c6e48?w=1200&h=300&fit=crop');
+    background-size: cover;
+    border-bottom: 3px solid var(--gold);
+}
 
 /* ========== منتجات ========== */
 .products-grid {
@@ -383,7 +412,7 @@ body {
 
 .product-image {
     width: 100%;
-    height: 170px;
+    height: 180px;
     object-fit: cover;
     border-radius: 20px;
     border: 2px solid var(--gold);
@@ -455,7 +484,7 @@ body {
 }
 
 .package-card.gold {
-    background: linear-gradient(145deg, #f5e6c8, #ecd9a8);
+    background: linear-gradient(145deg, #faf0e6, #f5e6d3);
     border: 2px solid #d4af37;
 }
 
@@ -476,15 +505,6 @@ body {
     text-align: right;
     margin: 20px 0;
     line-height: 2;
-}
-
-.package-price {
-    background: var(--gold);
-    display: inline-block;
-    padding: 8px 20px;
-    border-radius: 30px;
-    margin: 15px 0;
-    font-weight: 800;
 }
 
 /* ========== المودال ========== */
@@ -646,4 +666,5 @@ body {
     .feature { width: 150px; }
     .package-card { width: 300px; }
     .product-card { width: 260px; }
+    .hero-logo { width: 60px; height: 60px; }
 }
