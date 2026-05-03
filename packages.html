@@ -12,7 +12,7 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo" onclick="location.href='index.html'">
-            <img src="1000030008.png" alt="شعار خيمة وتمرة" class="logo-img" onerror="this.style.display='none'">
+            <img src="1000030008.png" alt="شعار خيمة وتمرة" class="logo-img">
             <span class="logo-text">خيمة وتمرة</span>
         </div>
         <div class="dropdown">
@@ -34,7 +34,7 @@
 </div>
 
 <div class="packages-container">
-    <div class="package-card" onclick="addPackageToCart('✨ باقة فضية ✨')">
+    <div class="package-card">
         <div class="package-icon">🥈</div>
         <h2>الباقة الفضية</h2>
         <div class="package-details">
@@ -43,11 +43,10 @@
             <p>⭐ قهوة عربية وتمور</p>
             <p>⭐ مناسبة لـ 10-15 شخص</p>
         </div>
-        <div class="package-price">💰 حسب الطلب</div>
         <button class="btn-add" onclick="addPackageToCart('✨ باقة فضية ✨')">➕ أضف إلى السلة</button>
     </div>
 
-    <div class="package-card gold" onclick="addPackageToCart('✨ باقة ذهبية ✨')">
+    <div class="package-card gold">
         <div class="package-icon">🥇</div>
         <h2>الباقة الذهبية</h2>
         <div class="package-details">
@@ -57,15 +56,7 @@
             <p>⭐ حلويات شرقية متنوعة</p>
             <p>⭐ مناسبة لـ 25-30 شخص</p>
         </div>
-        <div class="package-price">💰 حسب الطلب</div>
         <button class="btn-add" onclick="addPackageToCart('✨ باقة ذهبية ✨')">➕ أضف إلى السلة</button>
-    </div>
-</div>
-
-<div id="detailsModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <div id="modalDetails"></div>
     </div>
 </div>
 
@@ -78,6 +69,5 @@
 <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
 
 <script src="script.js"></script>
-<script>updateCartDisplay();</script>
 </body>
 </html>
