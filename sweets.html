@@ -53,39 +53,7 @@
 <script src="script.js"></script>
 <script>
     // عرض الحلويات فقط
-    const sweetsProducts = [
-        { id: 101, name: "معمول", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "المعمول بالتمر والفستق - حلى تراثي أصيل" },
-        { id: 102, name: "لقيمات", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "اللقيمات الذهبية بالعسل والسمسم" },
-        { id: 103, name: "قطايف محشية", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "القطايف المحشية بالجبنة أو القشطة والفستق" },
-        { id: 104, name: "خلية نحل", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "خلية النحل بالجبنة والعسل" },
-        { id: 105, name: "خبز ملة", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "خبز الملة التراثي على الطريقة البدوية" },
-        { id: 106, name: "مراصيع (مصابيب)", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "المراصيع أو المصابيب بالعسل أو بالخضار" }
-    ];
-    
-    function displaySweets() {
-        const grid = document.getElementById("productsGrid");
-        if (!grid) return;
-        grid.innerHTML = "";
-        sweetsProducts.forEach(product => {
-            grid.innerHTML += `
-                <div class="product-card">
-                    <img class="product-image" src="${product.mainImage}" onclick="showDetails(${product.id})">
-                    <h3 class="product-name">${product.name}</h3>
-                    <div class="product-category">${product.category}</div>
-                    <button class="btn-details" onclick="showDetails(${product.id})">📖 تفاصيل</button>
-                    <div class="quantity-selector">
-                        <button class="quantity-btn" onclick="changeQuantity(${product.id},-1)">−</button>
-                        <span class="quantity-value" id="qty_${product.id}">1</span>
-                        <button class="quantity-btn" onclick="changeQuantity(${product.id},1)">+</button>
-                    </div>
-                    <button class="btn-add" onclick="addToCart(${product.id})">➕ أضف للسلة</button>
-                </div>
-            `;
-        });
-        updateCartDisplay();
-    }
-    
-    displaySweets();
+    displayProductsByType('sweets');
 </script>
 </body>
 </html>
