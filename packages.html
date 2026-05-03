@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>خيمة وتمرة - الباقات</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo" onclick="location.href='index.html'">
+            <img src="1000030008.png" alt="شعار خيمة وتمرة" class="logo-img" onerror="this.style.display='none'">
+            <span class="logo-text">خيمة وتمرة</span>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">☰ القائمة</button>
+            <div class="dropdown-content">
+                <a href="index.html">🏠 الرئيسية</a>
+                <a href="sakhanat.html">🔥 السخانات</a>
+                <a href="sweets.html">🍰 الحلويات</a>
+                <a href="packages.html" class="active">✨ الباقات</a>
+            </div>
+        </div>
+        <div class="nav-cart" onclick="toggleCart()">🛒 <span id="cartCountNav">0</span></div>
+    </div>
+</nav>
+
+<div class="page-banner packages-banner">
+    <h1>✨ باقات خيمة وتمرة</h1>
+    <p>باقات مميزة للمناسبات والولائم</p>
+</div>
+
+<div class="packages-container">
+    <div class="package-card" onclick="addPackageToCart('✨ باقة فضية ✨')">
+        <div class="package-icon">🥈</div>
+        <h2>الباقة الفضية</h2>
+        <div class="package-details">
+            <p>⭐ تشكيلة مميزة من السخانات والحلويات</p>
+            <p>⭐ خدمة ضيافة فاخرة</p>
+            <p>⭐ قهوة عربية وتمور</p>
+            <p>⭐ مناسبة لـ 10-15 شخص</p>
+        </div>
+        <div class="package-price">💰 حسب الطلب</div>
+        <button class="btn-add" onclick="addPackageToCart('✨ باقة فضية ✨')">➕ أضف إلى السلة</button>
+    </div>
+
+    <div class="package-card gold" onclick="addPackageToCart('✨ باقة ذهبية ✨')">
+        <div class="package-icon">🥇</div>
+        <h2>الباقة الذهبية</h2>
+        <div class="package-details">
+            <p>⭐ تشكيلة فاخرة من جميع الأطباق</p>
+            <p>⭐ خدمة ضيافة ملكية</p>
+            <p>⭐ قهوة عربية فاخرة مع هيل وزعفران</p>
+            <p>⭐ حلويات شرقية متنوعة</p>
+            <p>⭐ مناسبة لـ 25-30 شخص</p>
+        </div>
+        <div class="package-price">💰 حسب الطلب</div>
+        <button class="btn-add" onclick="addPackageToCart('✨ باقة ذهبية ✨')">➕ أضف إلى السلة</button>
+    </div>
+</div>
+
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div id="modalDetails"></div>
+    </div>
+</div>
+
+<div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div>
+    <div id="cartItemsList" class="cart-items"></div>
+    <div id="cartTotal" class="cart-total"></div>
+    <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button>
+</div>
+<div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+<script src="script.js"></script>
+<script>updateCartDisplay();</script>
+</body>
+</html>
