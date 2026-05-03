@@ -1,38 +1,30 @@
 const WHATSAPP_NUMBER = "0539836477";
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// ========== السخانات (الأكلات الساخنة) ==========
+// ========== السخانات (9 أطباق) ==========
 const sakhanatProducts = [
-    { id: 1, name: "جريش أبيض", type: "sakhanat", category: "السخانات التراثية", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "جريش أبيض باللبن واللحم على الطريقة النجدية الأصيلة" },
-    { id: 2, name: "جريش أحمر", type: "sakhanat", category: "السخانات التراثية", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "الجريش الأحمر بالصلصة واللحم والبهارات" },
-    { id: 3, name: "عاصيدة حساوية", type: "sakhanat", category: "السخانات التراثية", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "عاصيدة حساوية بالتمر والسمن البلدي" },
-    { id: 4, name: "عريكة جنوبية", type: "sakhanat", category: "السخانات التراثية", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "عريكة جنوبية أصيلة بالتمر والسمن والعسل" },
-    { id: 5, name: "عصيدة", type: "sakhanat", category: "السخانات التراثية", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "العصيدة بالعسل والسمن البلدي" },
-    { id: 6, name: "حنيني", type: "sakhanat", category: "السخانات التراثية", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "الحنيني بالتمر والهيل أكلة تراثية" }
+    { id: 1, name: "جريش أبيض", type: "sakhanat", category: "السخانات", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "جريش أبيض باللبن واللحم على الطريقة النجدية الأصيلة" },
+    { id: 2, name: "جريش أحمر", type: "sakhanat", category: "السخانات", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "الجريش الأحمر بالصلصة واللحم والبهارات" },
+    { id: 3, name: "عاصيدة حساوية", type: "sakhanat", category: "السخانات", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "عاصيدة حساوية بالتمر والسمن البلدي" },
+    { id: 4, name: "عريكة جنوبية", type: "sakhanat", category: "السخانات", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "عريكة جنوبية أصيلة بالتمر والسمن والعسل" },
+    { id: 5, name: "عصيدة", type: "sakhanat", category: "السخانات", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "العصيدة بالعسل والسمن البلدي" },
+    { id: 6, name: "مشغوثة (عيش جنوبي)", type: "sakhanat", category: "السخانات", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "المشغوطة أو العيش الجنوبي بالتمر والسمن" },
+    { id: 7, name: "حنيني", type: "sakhanat", category: "السخانات", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "الحنيني بالتمر والهيل أكلة تراثية" },
+    { id: 8, name: "صحن مشكل مراصيع مع ميني ملة", type: "sakhanat", category: "السخانات", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "صحن متنوع يجمع المراصيع والميني ملة" },
+    { id: 9, name: "صحن مشكل ملة ومراصيع", type: "sakhanat", category: "السخانات", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "صحن تراثي يجمع خبز الملة والمراصيع" }
 ];
 
-// ========== الصحون (الأطباق والحلويات) ==========
-const sohonProducts = [
-    { id: 101, name: "معمول", type: "sohon", category: "الصحون التراثية", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "المعمول بالتمر والفستق - حلى تراثي أصيل" },
-    { id: 102, name: "لقيمات", type: "sohon", category: "الصحون التراثية", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "اللقيمات الذهبية بالعسل والسمسم" },
-    { id: 103, name: "قطايف محشية", type: "sohon", category: "الصحون التراثية", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "القطايف المحشية بالجبنة أو القشطة والفستق" },
-    { id: 104, name: "خلية نحل", type: "sohon", category: "الصحون التراثية", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "خلية النحل بالجبنة والعسل" },
-    { id: 105, name: "مشغوثة (عيش جنوبي)", type: "sohon", category: "الصحون التراثية", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "المشغوطة أو العيش الجنوبي بالتمر والسمن" },
-    { id: 106, name: "صحن مشكل مراصيع مع ميني ملة", type: "sohon", category: "الصحون التراثية", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "صحن متنوع يجمع المراصيع والميني ملة" },
-    { id: 107, name: "خبز ملة", type: "sohon", category: "الصحون التراثية", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "خبز الملة التراثي على الطريقة البدوية" },
-    { id: 108, name: "صحن مشكل ملة ومراصيع", type: "sohon", category: "الصحون التراثية", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "صحن تراثي يجمع خبز الملة والمراصيع" },
-    { id: 109, name: "مراصيع (مصابيب)", type: "sohon", category: "الصحون التراثية", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "المراصيع أو المصابيب بالعسل أو بالخضار" }
+// ========== الحلويات (6 أطباق) ==========
+const sweetsProducts = [
+    { id: 101, name: "معمول", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "المعمول بالتمر والفستق - حلى تراثي أصيل" },
+    { id: 102, name: "لقيمات", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "اللقيمات الذهبية بالعسل والسمسم" },
+    { id: 103, name: "قطايف محشية", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "القطايف المحشية بالجبنة أو القشطة والفستق" },
+    { id: 104, name: "خلية نحل", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=400&h=300&fit=crop"], description: "خلية النحل بالجبنة والعسل" },
+    { id: 105, name: "خبز ملة", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"], description: "خبز الملة التراثي على الطريقة البدوية" },
+    { id: 106, name: "مراصيع (مصابيب)", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "المراصيع أو المصابيب بالعسل أو بالخضار" }
 ];
 
-// ========== الخدمات ==========
-const servicesProducts = [
-    { id: 201, name: "✨ الخيمة التراثية ✨", type: "service", category: "خدمات الولائم", mainImage: "https://images.unsplash.com/photo-1519167758481-8cb5505c6e48?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1519167758481-8cb5505c6e48?w=400&h=300&fit=crop"], description: "خيمة تراثية للمناسبات الكبرى مع ديكورات تراثية" },
-    { id: 202, name: "خدمة الضيافة التراثية", type: "service", category: "خدمات الضيافة", mainImage: "https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=400&h=300&fit=crop"], description: "قهوة عربية وتمور وحلويات شرقية" },
-    { id: 203, name: "بوفيه تراثي مفتوح", type: "service", category: "خدمات الولائم", mainImage: "https://images.unsplash.com/photo-1464366400600-7168b4af5105?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1464366400600-7168b4af5105?w=400&h=300&fit=crop"], description: "بوفيه مفتوح بالأكلات التراثية" },
-    { id: 204, name: "تنظيم مناسبات تراثية", type: "service", category: "خدمات المناسبات", mainImage: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop"], description: "تنظيم مناسبات بطابع تراثي أصيل" }
-];
-
-const products = [...sakhanatProducts, ...sohonProducts, ...servicesProducts];
+const products = [...sakhanatProducts, ...sweetsProducts];
 
 // ========== دوال العرض ==========
 function displayProductsByType(type) {
@@ -61,7 +53,6 @@ function displayProductsByType(type) {
 
 function changeQuantity(id, delta) {
     const span = document.getElementById(`qty_${id}`);
-    if (!span) return;
     let val = parseInt(span.innerText) + delta;
     if (val < 1) val = 1;
     if (val > 50) val = 50;
@@ -71,14 +62,23 @@ function changeQuantity(id, delta) {
 function addToCart(id) {
     const product = products.find(p => p.id === id);
     const qtySpan = document.getElementById(`qty_${id}`);
-    const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
+    const qty = parseInt(qtySpan.innerText);
     const existing = cart.find(i => i.id === id);
     if (existing) existing.qty += qty;
     else cart.push({ id: product.id, name: product.name, qty: qty });
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartDisplay();
     alert(`✅ تمت إضافة ${product.name} × ${qty}`);
-    if (qtySpan) qtySpan.innerText = "1";
+    qtySpan.innerText = "1";
+}
+
+function addPackageToCart(packageName) {
+    const existing = cart.find(i => i.name === packageName);
+    if (existing) existing.qty += 1;
+    else cart.push({ id: Date.now(), name: packageName, qty: 1 });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartDisplay();
+    alert(`✅ تمت إضافة ${packageName}`);
 }
 
 function updateCartDisplay() {
@@ -90,14 +90,14 @@ function updateCartDisplay() {
     if (!container) return;
     
     if (cart.length === 0) {
-        container.innerHTML = '<div class="empty-cart">🛒 السلة فارغة<br>📦 أضف بعض المنتجات</div>';
+        container.innerHTML = '<div class="empty-cart">🛒 السلة فارغة</div>';
         document.getElementById("cartTotal").innerHTML = "";
         return;
     }
     
     let html = "";
     cart.forEach(i => {
-        html += `<div class="cart-item"><div><div class="cart-item-name">${i.name}</div><div class="cart-item-qty">الكمية: ${i.qty}</div></div><button class="btn-remove" onclick="removeFromCart(${i.id})">حذف</button></div>`;
+        html += `<div class="cart-item"><div><div class="cart-item-name">${i.name}</div><div>الكمية: ${i.qty}</div></div><button class="btn-remove" onclick="removeFromCart(${i.id})">حذف</button></div>`;
     });
     container.innerHTML = html;
     document.getElementById("cartTotal").innerHTML = `🏕️ إجمالي القطع: ${total}`;
@@ -111,10 +111,10 @@ function removeFromCart(id) {
 
 function sendOrder() {
     if (cart.length === 0) {
-        alert("⚠️ السلة فارغة! أضف بعض المنتجات أولاً");
+        alert("⚠️ السلة فارغة!");
         return;
     }
-    let msg = "🏕️ *مرحباً! أريد طلب من مطعم خيمة وتمرة* 🏕️\n━━━━━━━━━━━━━━━━━━\n*📋 طلبي:*\n\n";
+    let msg = "🏕️ *مرحباً! أريد طلب من خيمة وتمرة* 🏕️\n━━━━━━━━━━━━━━━━━━\n*📋 طلبي:*\n\n";
     cart.forEach(i => msg += `• ${i.name} × ${i.qty}\n`);
     msg += "\n━━━━━━━━━━━━━━━━━━\n👤 معلومات التوصيل:\nالاسم: \nالعنوان: \nرقم الجوال: \n\n※ ※ ※ ※ ※ ※ ※ ※ ※ ※\nتم الطلب عبر مطعم خيمة وتمرة\n📱 تيك توك: @khaymah_w_tamrah";
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
@@ -122,13 +122,12 @@ function sendOrder() {
 
 function showDetails(id) {
     const p = products.find(p => p.id === id);
-    if (!p) return;
     const modal = document.getElementById("detailsModal");
     const details = document.getElementById("modalDetails");
     let gallery = `<img class="main-image" id="mainModalImage" src="${p.mainImage}"><div class="image-gallery">`;
     p.images.forEach(img => gallery += `<img class="gallery-img" src="${img}" onclick="changeModalImage('${img}')">`);
     gallery += `</div>`;
-    details.innerHTML = `${gallery}<h2 style="color:#3e2723">${p.name}</h2><div class="details-description"><strong>📝 الوصف:</strong><br>${p.description}</div><div class="quantity-selector"><button class="quantity-btn" onclick="changeModalQty(-1)">−</button><span class="quantity-value" id="modalQty">1</span><button class="quantity-btn" onclick="changeModalQty(1)">+</button><button class="btn-add" onclick="addFromModal(${p.id})">➕ أضف للسلة</button></div>`;
+    details.innerHTML = `${gallery}<h2>${p.name}</h2><div class="details-description"><strong>📝 الوصف:</strong><br>${p.description}</div><div class="quantity-selector"><button class="quantity-btn" onclick="changeModalQty(-1)">−</button><span class="quantity-value" id="modalQty">1</span><button class="quantity-btn" onclick="changeModalQty(1)">+</button><button class="btn-add" onclick="addFromModal(${p.id})">➕ أضف للسلة</button></div>`;
     modal.style.display = "block";
 }
 
@@ -152,21 +151,17 @@ function addFromModal(id) {
 }
 
 function changeModalImage(src) {
-    const main = document.getElementById("mainModalImage");
-    if (main) main.src = src;
+    document.getElementById("mainModalImage").src = src;
 }
 
 function toggleCart() {
-    const sidebar = document.getElementById("cartSidebar");
-    const overlay = document.getElementById("cartOverlay");
-    if (sidebar) sidebar.classList.toggle("open");
-    if (overlay) overlay.classList.toggle("show");
+    document.getElementById("cartSidebar").classList.toggle("open");
+    document.getElementById("cartOverlay").classList.toggle("show");
     updateCartDisplay();
 }
 
 function closeModal() {
-    const modal = document.getElementById("detailsModal");
-    if (modal) modal.style.display = "none";
+    document.getElementById("detailsModal").style.display = "none";
 }
 
 window.onclick = function(e) {
