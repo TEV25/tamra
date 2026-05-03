@@ -24,13 +24,13 @@ const sweetsProducts = [
     { id: 106, name: "مراصيع (مصابيب)", type: "sweets", category: "الحلويات", mainImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", images: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop"], description: "المراصيع أو المصابيب بالعسل أو بالخضار" }
 ];
 
-const products = [...sakhanatProducts, ...sweetsProducts];
+const allProducts = [...sakhanatProducts, ...sweetsProducts];
 
 // ========== دوال العرض ==========
 function displayProductsByType(type) {
     const grid = document.getElementById("productsGrid");
     if (!grid) return;
-    const filtered = products.filter(p => p.type === type);
+    const filtered = allProducts.filter(p => p.type === type);
     grid.innerHTML = "";
     filtered.forEach(product => {
         grid.innerHTML += `
@@ -53,6 +53,7 @@ function displayProductsByType(type) {
 
 function changeQuantity(id, delta) {
     const span = document.getElementById(`qty_${id}`);
+    if (!span) return;
     let val = parseInt(span.innerText) + delta;
     if (val < 1) val = 1;
     if (val > 50) val = 50;
@@ -60,22 +61,27 @@ function changeQuantity(id, delta) {
 }
 
 function addToCart(id) {
-    const product = products.find(p => p.id === id);
+    const product = allProducts.find(p => p.id === id);
+    if (!product) return;
     const qtySpan = document.getElementById(`qty_${id}`);
-    const qty = parseInt(qtySpan.innerText);
+    const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
     const existing = cart.find(i => i.id === id);
     if (existing) existing.qty += qty;
     else cart.push({ id: product.id, name: product.name, qty: qty });
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartDisplay();
     alert(`✅ تمت إضافة ${product.name} × ${qty}`);
-    qtySpan.innerText = "1";
+    if (qtySpan) qtySpan.innerText = "1";
 }
 
+// دالة إضافة الباقة إلى السلة
 function addPackageToCart(packageName) {
     const existing = cart.find(i => i.name === packageName);
-    if (existing) existing.qty += 1;
-    else cart.push({ id: Date.now(), name: packageName, qty: 1 });
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({ id: Date.now(), name: packageName, qty: 1 });
+    }
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartDisplay();
     alert(`✅ تمت إضافة ${packageName}`);
@@ -121,7 +127,8 @@ function sendOrder() {
 }
 
 function showDetails(id) {
-    const p = products.find(p => p.id === id);
+    const p = allProducts.find(p => p.id === id);
+    if (!p) return;
     const modal = document.getElementById("detailsModal");
     const details = document.getElementById("modalDetails");
     let gallery = `<img class="main-image" id="mainModalImage" src="${p.mainImage}"><div class="image-gallery">`;
@@ -139,7 +146,7 @@ function changeModalQty(delta) {
 }
 
 function addFromModal(id) {
-    const p = products.find(p => p.id === id);
+    const p = allProducts.find(p => p.id === id);
     const qty = parseInt(document.getElementById("modalQty").innerText);
     const existing = cart.find(i => i.id === id);
     if (existing) existing.qty += qty;
@@ -151,17 +158,21 @@ function addFromModal(id) {
 }
 
 function changeModalImage(src) {
-    document.getElementById("mainModalImage").src = src;
+    const main = document.getElementById("mainModalImage");
+    if (main) main.src = src;
 }
 
 function toggleCart() {
-    document.getElementById("cartSidebar").classList.toggle("open");
-    document.getElementById("cartOverlay").classList.toggle("show");
+    const sidebar = document.getElementById("cartSidebar");
+    const overlay = document.getElementById("cartOverlay");
+    if (sidebar) sidebar.classList.toggle("open");
+    if (overlay) overlay.classList.toggle("show");
     updateCartDisplay();
 }
 
 function closeModal() {
-    document.getElementById("detailsModal").style.display = "none";
+    const modal = document.getElementById("detailsModal");
+    if (modal) modal.style.display = "none";
 }
 
 window.onclick = function(e) {
