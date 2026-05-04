@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>خيمة وتمرة | أكلات تراثية أصيلة</title>
+    <title>خيمة وتمرة - الباقات</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preload" href="images/خلفية الباقات.jpg" as="image">
+    <link rel="preload" href="images/coffee.jpg" as="image">
 </head>
 <body>
 
-<!-- سحابات عائمة -->
-<div class="cloud cloud-1"></div>
-<div class="cloud cloud-2"></div>
-<div class="cloud cloud-3"></div>
-
-<!-- أيقونة واتساب طافية -->
 <a href="https://wa.me/966539836477" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
@@ -23,101 +19,76 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo" onclick="location.href='index.html'">
-            <img src="images/logo.png" alt="شعار خيمة وتمرة" class="logo-img" onerror="this.src='https://via.placeholder.com/50x50?text=شعار'">
+            <img src="images/logo.png" alt="شعار خيمة وتمرة" class="logo-img" loading="eager" width="45" height="45">
             <span class="logo-text">خيمة وتمرة</span>
         </div>
         <div class="dropdown">
             <button class="dropbtn">☰ القائمة</button>
             <div class="dropdown-content">
-                <a href="index.html" class="active">🏠 الرئيسية</a>
+                <a href="index.html">🏠 الرئيسية</a>
                 <a href="sakhanat.html">🔥 السخانات</a>
                 <a href="sweets.html">🍰 الحلويات</a>
-                <a href="packages.html">✨ الباقات</a>
+                <a href="packages.html" class="active">✨ الباقات</a>
             </div>
         </div>
-        <div class="nav-cart" onclick="toggleCart()">
-            🛒 <span id="cartCountNav">0</span>
-        </div>
+        <div class="nav-cart" onclick="toggleCart()">🛒 <span id="cartCountNav">0</span></div>
     </div>
 </nav>
 
-<section class="hero">
-    <div class="hero-pattern"></div>
-    <div class="hero-content">
-        <img src="images/logo.png" alt="خيمة وتمرة" class="hero-logo" onerror="this.src='https://via.placeholder.com/100x100?text=شعار'">
-        <h1 class="hero-title">خيمة وتمرة</h1>
-        <p class="hero-subtitle">أكلات شعبية بطابع تراثي أصيل</p>
-        <p class="hero-desc">نقدم لكم أشهى المأكولات والحلويات المحضرة بعناية على الأصول التراثية</p>
-        <div class="hero-buttons">
-            <a href="https://wa.me/966539836477" class="hero-btn whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
-            <a href="sakhanat.html" class="hero-btn primary">🔥 السخانات</a>
-            <a href="sweets.html" class="hero-btn primary">🍰 الحلويات</a>
-            <a href="packages.html" class="hero-btn primary">✨ الباقات</a>
-        </div>
-        <div class="contact-info">
-            <a href="https://wa.me/966539836477" class="contact-link" target="_blank"><i class="fab fa-whatsapp"></i> 0539836477</a>
-            <a href="https://www.tiktok.com/@khaymah_w_tamrah" class="contact-link" target="_blank"><i class="fab fa-tiktok"></i> @khaymah_w_tamrah</a>
-        </div>
-    </div>
-</section>
-
-<div class="stats">
-    <div class="stat-card"><span>9</span><label>سخانات</label></div>
-    <div class="stat-card"><span>6</span><label>حلويات</label></div>
-    <div class="stat-card"><span>2</span><label>باقات</label></div>
-    <div class="stat-card"><span>📞</span><label>0539836477</label></div>
-</div>
-
-<div class="sections">
-    <div class="section" onclick="location.href='sakhanat.html'">
-        <div class="section-icon">🔥</div>
-        <h3>السخانات</h3>
-        <p>جريش أبيض - جريش أحمر - عاصيدة - عريكة - عصيدة - مشغوثة - حنيني - مراصيع</p>
-        <span class="section-link">استكشف ←</span>
-    </div>
-    <div class="section" onclick="location.href='sweets.html'">
-        <div class="section-icon">🍰</div>
-        <h3>الحلويات</h3>
-        <p>معمول - لقيمات - قطايف - خلية نحل - خبز ملة - مراصيع</p>
-        <span class="section-link">استكشف ←</span>
-    </div>
-    <div class="section" onclick="location.href='packages.html'">
-        <div class="section-icon">✨</div>
-        <h3>الباقات</h3>
-        <p>باقة فضية - باقة ذهبية</p>
-        <span class="section-link">استكشف ←</span>
+<div class="page-banner packages-banner">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+        <h1>✨ باقات خيمة وتمرة</h1>
+        <p>باقات مميزة للمناسبات والولائم</p>
     </div>
 </div>
 
-<div class="features">
-    <h2> نتميز بـ</h2>
-    <div class="features-grid">
-        <div class="feature">
-            <i class="fas fa-fire"></i>
-            <h4>9 سخانات</h4>
-            <p>تشكيلة واسعة من أشهى المأكولات</p>
+<div class="packages-container">
+    <div class="package-card">
+        <div class="package-icon">🥈</div>
+        <h2>الباقة الفضية</h2>
+        <div class="package-details">
+            <p><i class="fas fa-star"></i> تشكيلة مميزة من السخانات والحلويات</p>
+            <p><i class="fas fa-concierge-bell"></i> خدمة ضيافة فاخرة</p>
+            <p><i class="fas fa-mug-hot"></i> قهوة عربية وتمور</p>
+            <p><i class="fas fa-users"></i> مناسبة لـ 10-15 شخص</p>
         </div>
-        <div class="feature">
-            <i class="fas fa-cake-candles"></i>
-            <h4>6 حلويات</h4>
-            <p>ألذ الحلويات الشرقية</p>
+        <button class="btn-add" onclick="addPackageToCart('✨ باقة فضية ✨')"><i class="fas fa-cart-plus"></i> أضف إلى السلة</button>
+    </div>
+
+    <div class="package-card gold">
+        <div class="package-icon">🥇</div>
+        <h2>الباقة الذهبية</h2>
+        <div class="package-details">
+            <p><i class="fas fa-crown"></i> تشكيلة فاخرة من جميع الأطباق</p>
+            <p><i class="fas fa-star-of-life"></i> خدمة ضيافة ملكية</p>
+            <p><i class="fas fa-mug-hot"></i> قهوة عربية فاخرة مع هيل وزعفران</p>
+            <p><i class="fas fa-cake-candles"></i> حلويات شرقية متنوعة</p>
+            <p><i class="fas fa-users"></i> مناسبة لـ 25-30 شخص</p>
         </div>
-        <div class="feature">
-            <i class="fas fa-gem"></i>
-            <h4>باقات مميزة</h4>
-            <p>مناسبات وحفلات لا تُنسى</p>
-        </div>
-        <div class="feature">
-            <i class="fab fa-whatsapp"></i>
-            <h4>طلب سريع</h4>
-            <p>تواصل مباشر عبر واتساب</p>
-        </div>
+        <button class="btn-add" onclick="addPackageToCart('✨ باقة ذهبية ✨')"><i class="fas fa-cart-plus"></i> أضف إلى السلة</button>
+    </div>
+</div>
+
+<!-- قسم التواصل أسفل الصفحة -->
+<div class="contact-section">
+    <div class="contact-card">
+        <i class="fab fa-whatsapp"></i>
+        <h3>احجز الآن</h3>
+        <p>تواصل معنا مباشرة لحجز الباقة المناسبة</p>
+        <a href="https://wa.me/966539836477" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> 0539836477</a>
+    </div>
+    <div class="contact-card">
+        <i class="fab fa-tiktok"></i>
+        <h3>تابعنا</h3>
+        <p>شاهد أحدث العروض والباقات</p>
+        <a href="https://www.tiktok.com/@khaymah_w_tamrah" class="btn-tiktok" target="_blank"><i class="fab fa-tiktok"></i> @khaymah_w_tamrah</a>
     </div>
 </div>
 
 <footer class="footer">
     <div class="footer-content">
-        <img src="images/logo.png" alt="خيمة وتمرة" class="footer-logo" onerror="this.src='https://via.placeholder.com/70x70?text=شعار'">
+        <img src="images/logo.png" alt="خيمة وتمرة" class="footer-logo" loading="lazy" width="70" height="70">
         <h3>خيمة وتمرة</h3>
         <p>أكلات شعبية بطابع تراثي أصيل</p>
         <div class="footer-social">
@@ -132,15 +103,9 @@
     </div>
 </footer>
 
-<div id="cartSidebar" class="cart-sidebar">
-    <div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div>
-    <div id="cartItemsList" class="cart-items"></div>
-    <div id="cartTotal" class="cart-total"></div>
-    <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب عبر واتساب</button>
-</div>
+<div id="cartSidebar" class="cart-sidebar"><div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div><div id="cartItemsList" class="cart-items"></div><div id="cartTotal" class="cart-total"></div><button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button></div>
 <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
 
 <script src="script.js"></script>
-<script>if(typeof updateCartDisplay === 'function') updateCartDisplay();</script>
 </body>
 </html>
