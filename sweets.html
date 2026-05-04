@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preload" href="images/خلفية الحلويات.jpg" as="image">
+    <link rel="preload" href="images/coffee.jpg" as="image">
 </head>
 <body>
 
@@ -17,7 +19,7 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo" onclick="location.href='index.html'">
-            <img src="images/logo.png" alt="شعار خيمة وتمرة" class="logo-img" onerror="this.src='https://via.placeholder.com/45x45?text=شعار'">
+            <img src="images/logo.png" alt="شعار خيمة وتمرة" class="logo-img" loading="eager" width="45" height="45">
             <span class="logo-text">خيمة وتمرة</span>
         </div>
         <div class="dropdown">
@@ -38,13 +40,13 @@
     <div class="banner-content">
         <h1>🍰 الحلويات التراثية</h1>
         <p>ألذ الحلويات الشرقية الأصيلة</p>
-        <a href="https://wa.me/966539836477" class="banner-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> اطلب الآن عبر واتساب</a>
     </div>
 </div>
 
 <div class="products-grid" id="productsGrid"></div>
 
-<div class="contact-cards">
+<!-- قسم التواصل أسفل الصفحة -->
+<div class="contact-section">
     <div class="contact-card">
         <i class="fab fa-whatsapp"></i>
         <h3>اطلب الآن</h3>
@@ -61,7 +63,7 @@
 
 <footer class="footer">
     <div class="footer-content">
-        <img src="images/logo.png" alt="خيمة وتمرة" class="footer-logo" onerror="this.src='https://via.placeholder.com/70x70?text=شعار'">
+        <img src="images/logo.png" alt="خيمة وتمرة" class="footer-logo" loading="lazy" width="70" height="70">
         <h3>خيمة وتمرة</h3>
         <p>أكلات شعبية بطابع تراثي أصيل</p>
         <div class="footer-social">
