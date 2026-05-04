@@ -11,7 +11,6 @@ body {
     min-height: 100vh;
     background-image: url('https://www.transparenttextures.com/contents/paper-fibers.png');
     background-repeat: repeat;
-    transition: opacity 0.5s ease;
     overflow-x: hidden;
 }
 
@@ -43,7 +42,7 @@ html {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
     animation: floatWa 2s ease-in-out infinite;
 }
@@ -56,96 +55,12 @@ html {
 .whatsapp-float:hover {
     transform: scale(1.1);
     background: #075e54;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
 @keyframes floatWa {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }
-}
-
-/* ========== صورة القهوة كخلفية لقسم الأقسام مع تأثير تموج ========== */
-.sections {
-    position: relative;
-    background-image: url('images/coffee.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    animation: coffeeRipple 8s ease-in-out infinite;
-}
-
-@keyframes coffeeRipple {
-    0% { background-size: 100%; opacity: 0.95; }
-    50% { background-size: 105%; opacity: 1; }
-    100% { background-size: 100%; opacity: 0.95; }
-}
-
-.sections::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(244, 236, 216, 0.88);
-    z-index: 0;
-}
-
-.sections > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* صورة القهوة في الصفحات الداخلية */
-.products-grid {
-    position: relative;
-    background-image: url('images/coffee.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    animation: coffeeRipple 10s ease-in-out infinite;
-}
-
-.products-grid::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(244, 236, 216, 0.92);
-    z-index: 0;
-}
-
-.products-grid > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* الباقات أيضاً */
-.packages-container {
-    position: relative;
-    background-image: url('images/coffee.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-.packages-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(244, 236, 216, 0.92);
-    z-index: 0;
-}
-
-.packages-container > * {
-    position: relative;
-    z-index: 1;
 }
 
 /* ========== سحابات عائمة ========== */
@@ -265,7 +180,7 @@ html {
     background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/background.jpg');
     background-size: cover;
     background-position: center;
-    min-height: 520px;
+    min-height: 550px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -283,8 +198,8 @@ html {
 }
 .hero-content {
     position: relative;
-    padding: 45px;
-    max-width: 850px;
+    padding: 40px;
+    max-width: 900px;
     z-index: 2;
     background: rgba(62,39,35,0.75);
     backdrop-filter: blur(12px);
@@ -294,31 +209,52 @@ html {
 }
 @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-.hero-logo { width: 110px; height: 110px; border-radius: 50%; margin-bottom: 18px; border: 3px solid var(--gold); object-fit: cover; transition: transform 0.3s; }
+.hero-logo { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px; border: 3px solid var(--gold); object-fit: cover; transition: transform 0.3s; }
 .hero-logo:hover { transform: scale(1.05); }
-.hero-title { font-size: 2.8em; color: var(--gold); margin-bottom: 15px; font-weight: 800; position: relative; display: inline-block; }
-.hero-title::before {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #c9a84c, transparent);
-    animation: underlineMove 2s infinite;
+.hero-title { font-size: 2.5em; color: var(--gold); margin-bottom: 10px; font-weight: 800; }
+.hero-subtitle { font-size: 1.1em; color: #fff8f0; margin-bottom: 20px; }
+
+/* إحصائيات تفاعلية في الهيدر */
+.stats-hero {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
 }
-@keyframes underlineMove {
-    0% { width: 0%; opacity: 0; }
-    50% { width: 80%; opacity: 1; }
-    100% { width: 0%; opacity: 0; }
+.stat-hero {
+    background: rgba(0,0,0,0.4);
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    min-width: 100px;
 }
-.hero-subtitle { font-size: 1.3em; color: #fff8f0; margin-bottom: 12px; }
-.hero-desc { color: #faf0e6; margin-bottom: 25px; line-height: 1.7; }
+.stat-hero:hover {
+    background: var(--gold);
+    transform: translateY(-3px);
+}
+.stat-hero .stat-number {
+    font-size: 1.5em;
+    font-weight: 800;
+    color: var(--gold);
+    display: block;
+}
+.stat-hero:hover .stat-number {
+    color: #3e2723;
+}
+.stat-hero .stat-text {
+    font-size: 0.85em;
+    color: #faf0e6;
+}
+.stat-hero:hover .stat-text {
+    color: #3e2723;
+}
 
 .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
 .hero-btn {
-    padding: 12px 28px;
+    padding: 10px 25px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 700;
@@ -326,17 +262,11 @@ html {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    position: relative;
-    overflow: hidden;
 }
 .hero-btn.primary { background: var(--gold); color: #3e2723; border: 1px solid #3e2723; }
 .hero-btn.primary:hover { background: #ffd700; transform: translateY(-3px); }
-.hero-btn.whatsapp-btn { background: #25D366; color: white; border: 1px solid white; }
-.hero-btn.whatsapp-btn i { font-size: 1.3em; }
-.hero-btn.whatsapp-btn:hover { background: #128C7E; transform: translateY(-3px); }
-.hero-btn:active { transform: scale(0.95); }
 
-.contact-info { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+.contact-info { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 5px; }
 .contact-link {
     color: var(--gold);
     text-decoration: none;
@@ -351,33 +281,47 @@ html {
 }
 .contact-link:hover { color: #ffd700; background: rgba(0,0,0,0.5); transform: scale(1.05); }
 
-/* ========== الإحصائيات ========== */
-.stats {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    padding: 30px 25px;
-    background: rgba(62,39,35,0.95);
-    flex-wrap: wrap;
-    margin: -35px 25px 0;
-    border-radius: 70px;
-    border: 1px solid var(--gold);
+/* ========== صورة القهوة كخلفية (ملء الشاشة مع تموج) ========== */
+.sections {
     position: relative;
-    z-index: 2;
+    background-image: url('images/coffee.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 70px 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+    animation: coffeeRipple 8s ease-in-out infinite;
 }
-.stat-card {
-    text-align: center;
-    padding: 12px 30px;
-    background: #faf0e6;
-    border-radius: 50px;
-    transition: all 0.3s;
-}
-.stat-card:hover { transform: translateY(-5px) scale(1.05); background: var(--gold); }
-.stat-card span { font-size: 2em; font-weight: 800; color: #b8860b; display: block; }
-.stat-card label { font-size: 0.9em; color: #3e2723; font-weight: 600; }
 
-/* ========== الأقسام ========== */
-.sections { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 70px 20px; max-width: 1300px; margin: 0 auto; }
+@keyframes coffeeRipple {
+    0% { background-size: 100%; opacity: 0.95; }
+    50% { background-size: 105%; opacity: 1; }
+    100% { background-size: 100%; opacity: 0.95; }
+}
+
+.sections::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(244, 236, 216, 0.88);
+    z-index: 0;
+}
+
+.sections > * {
+    position: relative;
+    z-index: 1;
+}
+
 .section {
     background: linear-gradient(145deg, #faf0e6, #f5e6d3);
     width: 300px;
@@ -395,90 +339,69 @@ html {
 .section p { color: #5d4037; font-size: 0.85em; margin-bottom: 18px; }
 .section-link { color: #b8860b; font-weight: 800; }
 
-/* ========== المميزات ========== */
-.features { background: linear-gradient(135deg, #e8d5b7, #f4ecd8); padding: 65px 20px; text-align: center; border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); }
-.features h2 { color: #3e2723; font-size: 2.2em; margin-bottom: 50px; position: relative; display: inline-block; }
-.features h2::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); color: var(--gold); font-size: 1.5em; }
-.features-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1100px; margin: 0 auto; }
-.feature {
-    background: #faf0e6;
-    padding: 25px 20px;
-    border-radius: 35px;
-    width: 200px;
-    border: 1px solid var(--gold);
-    transition: all 0.3s;
-}
-.feature:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: #ffd700; }
-.feature i { font-size: 2.5em; display: block; margin-bottom: 12px; color: var(--gold-dark); }
-.feature h4 { color: #3e2723; margin-bottom: 8px; font-size: 1.2em; }
-.feature p { color: #5d4037; font-size: 0.8em; }
-
-/* ========== الفوتر ========== */
-.footer {
-    background: #3e2723;
-    padding: 50px 20px;
-    text-align: center;
-    border-top: 3px solid var(--gold);
-}
-.footer-logo { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 18px; border: 2px solid var(--gold); transition: transform 0.3s; }
-.footer-logo:hover { transform: scale(1.05); }
-.footer-content h3 { color: var(--gold); margin-bottom: 10px; font-size: 1.5em; }
-.footer-content p { color: #faf0e6; margin-bottom: 25px; }
-.footer-social { margin: 20px 0; }
-.footer-social a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 50%;
-    margin: 0 8px;
-    transition: all 0.3s;
-    color: var(--gold);
-    font-size: 1.5em;
-    text-decoration: none;
-}
-.footer-social a:hover { background: var(--gold); color: #3e2723; transform: translateY(-3px) rotate(360deg); }
-.footer-links a { color: var(--gold); text-decoration: none; margin: 0 12px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.3s; }
-.footer-links a:hover { color: #ffd700; transform: scale(1.05); }
-.copyright { margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(201,168,76,0.3); font-size: 0.8em; color: #b8860b; }
-
-/* ========== البانر ========== */
-.page-banner { text-align: center; padding: 55px 20px; color: white; background-size: cover; background-position: center; position: relative; overflow: hidden; }
-.page-banner::before { content: ''; position: absolute; inset: 0; background-image: url('https://www.transparenttextures.com/contents/arabesque.png'); opacity: 0.1; }
-.sakhanat-banner { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/خلفية السخانات.jpg'); border-bottom: 3px solid var(--gold); }
-.sweets-banner { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/خلفية الحلويات.jpg'); border-bottom: 3px solid var(--gold); }
-.packages-banner { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/خلفية الباقات.jpg'); border-bottom: 3px solid var(--gold); }
-.banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 1; }
-.banner-content { position: relative; z-index: 2; }
-.page-banner h1 { font-size: 2.5em; margin-bottom: 12px; }
-.page-banner p { font-size: 1.1em; margin-bottom: 20px; }
-.banner-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #25D366;
-    color: white;
-    padding: 10px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s;
-}
-.banner-whatsapp i { font-size: 1.3em; }
-.banner-whatsapp:hover { background: #128C7E; transform: scale(1.05); }
-
-/* ========== المنتجات ========== */
+/* خلفية القهوة في المنتجات */
 .products-grid {
+    position: relative;
+    background-image: url('images/coffee.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 25px;
     padding: 55px 25px;
     max-width: 1200px;
     margin: 0 auto;
+    animation: coffeeRipple 10s ease-in-out infinite;
 }
 
+.products-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(244, 236, 216, 0.92);
+    z-index: 0;
+}
+
+.products-grid > * {
+    position: relative;
+    z-index: 1;
+}
+
+.packages-container {
+    position: relative;
+    background-image: url('images/coffee.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    padding: 65px 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.packages-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(244, 236, 216, 0.92);
+    z-index: 0;
+}
+
+.packages-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ========== المنتجات ========== */
 .product-card {
     background: linear-gradient(145deg, #faf0e6, #f5e6d3);
     border-radius: 25px;
@@ -488,7 +411,7 @@ html {
     transition: all 0.35s;
     opacity: 0;
     transform: translateY(30px);
-    animation: cardAppear 0.5s ease forwards;
+    animation: cardAppear 0.4s ease forwards;
 }
 @keyframes cardAppear {
     to { opacity: 1; transform: translateY(0); }
@@ -530,14 +453,6 @@ html {
 .quantity-value { font-size: 1.2em; font-weight: 700; min-width: 40px; text-align: center; color: #3e2723; }
 
 /* ========== الباقات ========== */
-.packages-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-    padding: 65px 25px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
 .package-card {
     background: linear-gradient(145deg, #faf0e6, #f5e6d3);
     border-radius: 40px;
@@ -554,8 +469,36 @@ html {
 .package-details i { width: 25px; color: var(--gold); margin-left: 8px; }
 .package-card .btn-add { width: 80%; padding: 12px; margin-top: 15px; }
 
-/* ========== بطاقات التواصل ========== */
-.contact-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 50px 20px; background: #e8d5b7; margin: 20px 0; }
+/* ========== المميزات ========== */
+.features { background: linear-gradient(135deg, #e8d5b7, #f4ecd8); padding: 65px 20px; text-align: center; border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); }
+.features h2 { color: #3e2723; font-size: 2em; margin-bottom: 50px; position: relative; display: inline-block; font-weight: 700; letter-spacing: 1px; }
+.features-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1100px; margin: 0 auto; }
+.feature {
+    background: #faf0e6;
+    padding: 25px 20px;
+    border-radius: 35px;
+    width: 200px;
+    border: 1px solid var(--gold);
+    transition: all 0.3s;
+}
+.feature:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: #ffd700; }
+.feature i { font-size: 2.5em; display: block; margin-bottom: 12px; color: var(--gold-dark); }
+.feature h4 { color: #3e2723; margin-bottom: 8px; font-size: 1.2em; }
+.feature p { color: #5d4037; font-size: 0.8em; }
+
+/* ========== قسم التواصل (أسفل الصفحة) ========== */
+.contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #e8d5b7, #d4c4a8);
+    margin: 20px 0;
+    position: relative;
+    background-image: url('https://www.transparenttextures.com/contents/arabesque.png');
+    background-repeat: repeat;
+}
 .contact-card {
     background: #faf0e6;
     padding: 30px 25px;
@@ -566,7 +509,11 @@ html {
     transition: all 0.3s;
 }
 .contact-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-.contact-card i { font-size: 3.5em; color: var(--gold); margin-bottom: 15px; }
+.contact-card i { font-size: 3.5em; color: var(--gold); margin-bottom: 15px; animation: iconBounce 2s infinite; }
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
 .contact-card h3 { color: #3e2723; margin-bottom: 10px; font-size: 1.3em; }
 .contact-card p { color: #5d4037; margin-bottom: 20px; }
 .btn-whatsapp, .btn-tiktok {
@@ -584,6 +531,62 @@ html {
 .btn-tiktok { background: #000; border: 1px solid var(--gold); }
 .btn-whatsapp:hover { background: #128C7E; transform: scale(1.02); }
 .btn-tiktok:hover { background: #1a1a1a; transform: scale(1.02); }
+
+/* ========== البانر ========== */
+.page-banner {
+    text-align: center;
+    padding: 55px 20px;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+.page-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://www.transparenttextures.com/contents/arabesque.png');
+    opacity: 0.1;
+}
+.sakhanat-banner { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/خلفية السخانات.jpg'); border-bottom: 3px solid var(--gold); }
+.sweets-banner { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/خلفية الحلويات.jpg'); border-bottom: 3px solid var(--gold); }
+.packages-banner { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/خلفية الباقات.jpg'); border-bottom: 3px solid var(--gold); }
+.banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 1; }
+.banner-content { position: relative; z-index: 2; }
+.page-banner h1 { font-size: 2.5em; margin-bottom: 12px; }
+.page-banner p { font-size: 1.1em; margin-bottom: 20px; }
+
+/* ========== الفوتر ========== */
+.footer {
+    background: #3e2723;
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 3px solid var(--gold);
+}
+.footer-logo { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 18px; border: 2px solid var(--gold); transition: transform 0.3s; }
+.footer-logo:hover { transform: scale(1.05); }
+.footer-content h3 { color: var(--gold); margin-bottom: 10px; font-size: 1.5em; }
+.footer-content p { color: #faf0e6; margin-bottom: 25px; }
+.footer-social { margin: 20px 0; }
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    margin: 0 8px;
+    transition: all 0.3s;
+    color: var(--gold);
+    font-size: 1.5em;
+    text-decoration: none;
+}
+.footer-social a:hover { background: var(--gold); color: #3e2723; transform: translateY(-3px) rotate(360deg); }
+.footer-links a { color: var(--gold); text-decoration: none; margin: 0 12px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.3s; }
+.footer-links a:hover { color: #ffd700; transform: scale(1.05); }
+.copyright { margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(201,168,76,0.3); font-size: 0.8em; color: #b8860b; }
 
 /* ========== المودال ========== */
 .modal {
@@ -736,26 +739,24 @@ html {
     .btn-details, .btn-add { padding: 6px; font-size: 0.7em; }
     .quantity-btn { width: 26px; height: 26px; font-size: 1em; }
     .quantity-value { font-size: 0.9em; min-width: 30px; }
-    .contact-card { width: 100%; max-width: 280px; padding: 20px; }
-    .contact-card i { font-size: 2.5em; }
     .hero-title { font-size: 1.6em; }
-    .hero-subtitle { font-size: 0.9em; }
     .hero-logo { width: 60px; height: 60px; }
     .hero-content { padding: 20px; margin: 0 15px; }
     .hero-btn { padding: 6px 12px; font-size: 0.75em; }
-    .stat-card { padding: 6px 12px; }
-    .stat-card span { font-size: 1.2em; }
-    .stat-card label { font-size: 0.7em; }
+    .stat-hero { padding: 5px 12px; min-width: 70px; }
+    .stat-hero .stat-number { font-size: 1.1em; }
+    .stat-hero .stat-text { font-size: 0.7em; }
     .section { width: 100%; max-width: 280px; padding: 20px; }
     .section-icon { font-size: 2.5em; }
     .section h3 { font-size: 1.1em; }
     .feature { width: 160px; padding: 15px; }
     .feature i { font-size: 2em; }
+    .contact-card { width: 100%; max-width: 280px; padding: 20px; }
+    .contact-card i { font-size: 2.5em; }
     .footer-social a { width: 35px; height: 35px; font-size: 1.2em; }
     .footer-links a { display: inline-block; margin: 5px; font-size: 0.8em; }
     .page-banner h1 { font-size: 1.6em; }
     .page-banner p { font-size: 0.8em; }
-    .banner-whatsapp { padding: 6px 15px; font-size: 0.8em; }
     .modal-content { margin: 30px auto; padding: 15px; }
     .main-image { height: 160px; }
     .gallery-img { width: 60px; height: 50px; }
@@ -776,6 +777,9 @@ html {
     .nav-cart { padding: 5px 12px; font-size: 0.8em; }
     .whatsapp-float { width: 40px; height: 40px; }
     .whatsapp-float i { font-size: 1.3em; }
+    .stats-hero { gap: 10px; }
+    .stat-hero { padding: 4px 8px; min-width: 60px; }
+    .stat-hero .stat-number { font-size: 1em; }
 }
 
 /* تأثيرات إضافية */
