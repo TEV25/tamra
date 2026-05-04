@@ -1,12 +1,23 @@
 const WHATSAPP_NUMBER = "0539836477";
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// إغلاق السلة عند تحميل الصفحة
+// ========== تسريع تحميل الصور ==========
 document.addEventListener("DOMContentLoaded", function() {
+    // إضافة lazy loading لجميع الصور
+    document.querySelectorAll('img').forEach(img => {
+        if (!img.hasAttribute('loading')) {
+            img.loading = 'lazy';
+        }
+        img.decode = 'async';
+    });
+    
+    // إغلاق السلة عند تحميل الصفحة
     const sidebar = document.getElementById("cartSidebar");
     const overlay = document.getElementById("cartOverlay");
     if (sidebar) sidebar.classList.remove("open");
     if (overlay) overlay.classList.remove("show");
+    
+    // تأثير ظهور سلس
     document.body.style.opacity = "0";
     setTimeout(() => {
         document.body.style.transition = "opacity 0.5s ease";
@@ -33,7 +44,6 @@ function showToast(message, type = "success") {
 function gentleShake(element) {
     if (!element) return;
     element.style.transform = "translateX(0)";
-    element.style.transition = "transform 0.1s ease";
     element.style.transform = "translateX(-3px)";
     setTimeout(() => element.style.transform = "translateX(3px)", 50);
     setTimeout(() => element.style.transform = "translateX(-2px)", 100);
@@ -41,7 +51,7 @@ function gentleShake(element) {
     setTimeout(() => element.style.transform = "translateX(0)", 200);
 }
 
-// المنتجات
+// المنتجات (تم تحسين الصور لتحميل أسرع)
 const sakhanatProducts = [
     { id: 1, name: "جريش أبيض", type: "sakhanat", category: "السخانات", mainImage: "images/جريش ابيض.png", images: ["images/جريش ابيض.png"], description: "جريش أبيض باللبن واللحم على الطريقة النجدية الأصيلة" },
     { id: 2, name: "جريش أحمر", type: "sakhanat", category: "السخانات", mainImage: "images/جريش احمر.png", images: ["images/جريش احمر.png"], description: "الجريش الأحمر بالصلصة واللحم والبهارات" },
@@ -65,27 +75,36 @@ const sweetsProducts = [
 
 const allProducts = [...sakhanatProducts, ...sweetsProducts];
 
+// عرض المنتجات مع تحسين الأداء
 function displayProductsByType(type) {
     const grid = document.getElementById("productsGrid");
     if (!grid) return;
     const filtered = allProducts.filter(p => p.type === type);
     grid.innerHTML = "";
+    
+    // استخدام DocumentFragment لتحسين الأداء
+    const fragment = document.createDocumentFragment();
+    
     filtered.forEach((product, index) => {
-        grid.innerHTML += `
-            <div class="product-card" style="animation-delay: ${index * 0.03}s">
-                <img class="product-image" src="${product.mainImage}" onclick="showDetails(${product.id})">
-                <h3 class="product-name">${product.name}</h3>
-                <div class="product-category">${product.category}</div>
-                <button class="btn-details" onclick="showDetails(${product.id})">📖 تفاصيل</button>
-                <div class="quantity-selector">
-                    <button class="quantity-btn" onclick="changeQuantity(${product.id},-1)">−</button>
-                    <span class="quantity-value" id="qty_${product.id}">1</span>
-                    <button class="quantity-btn" onclick="changeQuantity(${product.id},1)">+</button>
-                </div>
-                <button class="btn-add" onclick="addToCart(${product.id})">➕ أضف للسلة</button>
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.style.animationDelay = `${index * 0.03}s`;
+        card.innerHTML = `
+            <img class="product-image" src="${product.mainImage}" onclick="showDetails(${product.id})" loading="lazy" decoding="async" width="280" height="180">
+            <h3 class="product-name">${product.name}</h3>
+            <div class="product-category">${product.category}</div>
+            <button class="btn-details" onclick="showDetails(${product.id})">📖 تفاصيل</button>
+            <div class="quantity-selector">
+                <button class="quantity-btn" onclick="changeQuantity(${product.id},-1)">−</button>
+                <span class="quantity-value" id="qty_${product.id}">1</span>
+                <button class="quantity-btn" onclick="changeQuantity(${product.id},1)">+</button>
             </div>
+            <button class="btn-add" onclick="addToCart(${product.id})">➕ أضف للسلة</button>
         `;
+        fragment.appendChild(card);
     });
+    
+    grid.appendChild(fragment);
     updateCartDisplay();
 }
 
@@ -167,8 +186,8 @@ function showDetails(id) {
     if (!p) return;
     const modal = document.getElementById("detailsModal");
     const details = document.getElementById("modalDetails");
-    let gallery = `<img class="main-image" id="mainModalImage" src="${p.mainImage}"><div class="image-gallery">`;
-    p.images.forEach(img => gallery += `<img class="gallery-img" src="${img}" onclick="changeModalImage('${img}')">`);
+    let gallery = `<img class="main-image" id="mainModalImage" src="${p.mainImage}" loading="lazy" decoding="async"><div class="image-gallery">`;
+    p.images.forEach(img => gallery += `<img class="gallery-img" src="${img}" onclick="changeModalImage('${img}')" loading="lazy">`);
     gallery += `</div>`;
     details.innerHTML = `${gallery}<h2 style="color:#3e2723">${p.name}</h2><div class="details-description"><strong>📝 الوصف:</strong><br>${p.description}</div><div class="quantity-selector"><button class="quantity-btn" onclick="changeModalQty(-1)">−</button><span class="quantity-value" id="modalQty">1</span><button class="quantity-btn" onclick="changeModalQty(1)">+</button><button class="btn-add" onclick="addFromModal(${p.id})">➕ أضف للسلة</button></div>`;
     modal.style.display = "block";
@@ -221,23 +240,34 @@ window.onclick = function(e) {
     if (e.target === document.getElementById("cartOverlay")) toggleCart();
 };
 
-// تأثير ظهور العناصر عند التمرير
+// تأثير ظهور العناصر عند التمرير مع تحسين الأداء
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = "1";
             entry.target.style.transform = "translateY(0)";
+            observer.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1 });
+}, { threshold: 0.1, rootMargin: "50px" });
 
-document.querySelectorAll('.feature, .stat-card, .product-card, .package-card, .contact-card, .section').forEach(el => {
+document.querySelectorAll('.feature, .stat-card, .product-card, .package-card, .section, .contact-card').forEach(el => {
     if (el) {
         el.style.opacity = "0";
         el.style.transform = "translateY(30px)";
-        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
         observer.observe(el);
     }
 });
+
+// تحميل الصور بشكل أفضل
+if ('loading' in HTMLImageElement.prototype) {
+    console.log('Lazy loading is supported');
+} else {
+    // لمتصفحات أقدم
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
+}
 
 updateCartDisplay();
