@@ -1,32 +1,47 @@
-// ========================================
-// خيمة وتمرة - الملف الرئيسي
-// ========================================
-
-// رقم الواتساب
 const WHATSAPP_NUMBER = "0539836477";
-
-// السلة
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// ========================================
-// إشعار غير تفاعلي (يختفي تلقائياً)
-// ========================================
+// إغلاق السلة عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", function() {
+    const sidebar = document.getElementById("cartSidebar");
+    const overlay = document.getElementById("cartOverlay");
+    if (sidebar) sidebar.classList.remove("open");
+    if (overlay) overlay.classList.remove("show");
+    document.body.style.opacity = "0";
+    setTimeout(() => {
+        document.body.style.transition = "opacity 0.5s ease";
+        document.body.style.opacity = "1";
+    }, 50);
+});
+
+// إشعار غير تفاعلي
 function showToast(message, type = "success") {
+    const oldToast = document.querySelector('.toast-notification');
+    if (oldToast) oldToast.remove();
+    
     const toast = document.createElement("div");
     toast.className = `toast-notification ${type}`;
-    toast.innerHTML = `<div class="toast-content"><span class="toast-icon">${type === "success" ? "✅" : "⚠️"}</span><span class="toast-message">${message}</span></div>`;
+    toast.innerHTML = `<div class="toast-content"><span class="toast-icon">${type === "success" ? "✅" : "⚠️"}</span><span class="toast-message">${message}</span><div class="toast-progress"></div></div>`;
     document.body.appendChild(toast);
     setTimeout(() => toast.classList.add("show"), 10);
     setTimeout(() => {
         toast.classList.remove("show");
         setTimeout(() => toast.remove(), 300);
-    }, 2000);
+    }, 2500);
 }
 
-// ========================================
-// المنتجات
-// ========================================
+function gentleShake(element) {
+    if (!element) return;
+    element.style.transform = "translateX(0)";
+    element.style.transition = "transform 0.1s ease";
+    element.style.transform = "translateX(-3px)";
+    setTimeout(() => element.style.transform = "translateX(3px)", 50);
+    setTimeout(() => element.style.transform = "translateX(-2px)", 100);
+    setTimeout(() => element.style.transform = "translateX(2px)", 150);
+    setTimeout(() => element.style.transform = "translateX(0)", 200);
+}
 
+// المنتجات
 const sakhanatProducts = [
     { id: 1, name: "جريش أبيض", type: "sakhanat", category: "السخانات", mainImage: "images/جريش ابيض.png", images: ["images/جريش ابيض.png"], description: "جريش أبيض باللبن واللحم على الطريقة النجدية الأصيلة" },
     { id: 2, name: "جريش أحمر", type: "sakhanat", category: "السخانات", mainImage: "images/جريش احمر.png", images: ["images/جريش احمر.png"], description: "الجريش الأحمر بالصلصة واللحم والبهارات" },
@@ -50,9 +65,6 @@ const sweetsProducts = [
 
 const allProducts = [...sakhanatProducts, ...sweetsProducts];
 
-// ========================================
-// عرض المنتجات حسب النوع
-// ========================================
 function displayProductsByType(type) {
     const grid = document.getElementById("productsGrid");
     if (!grid) return;
@@ -60,7 +72,7 @@ function displayProductsByType(type) {
     grid.innerHTML = "";
     filtered.forEach((product, index) => {
         grid.innerHTML += `
-            <div class="product-card" style="animation-delay: ${index * 0.05}s">
+            <div class="product-card" style="animation-delay: ${index * 0.03}s">
                 <img class="product-image" src="${product.mainImage}" onclick="showDetails(${product.id})">
                 <h3 class="product-name">${product.name}</h3>
                 <div class="product-category">${product.category}</div>
@@ -84,6 +96,7 @@ function changeQuantity(id, delta) {
     if (val < 1) val = 1;
     if (val > 50) val = 50;
     span.innerText = val;
+    gentleShake(span.parentElement);
 }
 
 function addToCart(id) {
@@ -98,8 +111,7 @@ function addToCart(id) {
     updateCartDisplay();
     showToast(`✅ تمت إضافة ${product.name} × ${qty}`, "success");
     if (qtySpan) qtySpan.innerText = "1";
-    document.querySelector('.nav-cart').style.animation = 'shake 0.3s ease';
-    setTimeout(() => document.querySelector('.nav-cart').style.animation = '', 300);
+    gentleShake(document.querySelector('.nav-cart'));
 }
 
 function addPackageToCart(packageName) {
@@ -109,8 +121,7 @@ function addPackageToCart(packageName) {
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartDisplay();
     showToast(`✅ تمت إضافة ${packageName}`, "success");
-    document.querySelector('.nav-cart').style.animation = 'shake 0.3s ease';
-    setTimeout(() => document.querySelector('.nav-cart').style.animation = '', 300);
+    gentleShake(document.querySelector('.nav-cart'));
 }
 
 function updateCartDisplay() {
@@ -120,22 +131,24 @@ function updateCartDisplay() {
     const container = document.getElementById("cartItemsList");
     if (!container) return;
     if (cart.length === 0) {
-        container.innerHTML = '<div class="empty-cart">🛒 السلة فارغة</div>';
+        container.innerHTML = '<div class="empty-cart">🛒 السلة فارغة<br>✨ أضف بعض المنتجات</div>';
         document.getElementById("cartTotal").innerHTML = "";
         return;
     }
     let html = "";
     cart.forEach(i => {
-        html += `<div class="cart-item"><div><div class="cart-item-name">${i.name}</div><div class="cart-item-qty">الكمية: ${i.qty}</div></div><button class="btn-remove" onclick="removeFromCart(${i.id})">حذف</button></div>`;
+        html += `<div class="cart-item"><div><div class="cart-item-name">${i.name}</div><div class="cart-item-qty">الكمية: ${i.qty}</div></div><button class="btn-remove" onclick="removeFromCart(${i.id})">🗑️ حذف</button></div>`;
     });
     container.innerHTML = html;
     document.getElementById("cartTotal").innerHTML = `🏕️ إجمالي القطع: ${total}`;
 }
 
 function removeFromCart(id) {
+    const item = cart.find(i => i.id === id);
     cart = cart.filter(i => i.id !== id);
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartDisplay();
+    showToast(`🗑️ تم حذف ${item.name} من السلة`, "success");
 }
 
 function sendOrder() {
@@ -159,6 +172,7 @@ function showDetails(id) {
     gallery += `</div>`;
     details.innerHTML = `${gallery}<h2 style="color:#3e2723">${p.name}</h2><div class="details-description"><strong>📝 الوصف:</strong><br>${p.description}</div><div class="quantity-selector"><button class="quantity-btn" onclick="changeModalQty(-1)">−</button><span class="quantity-value" id="modalQty">1</span><button class="quantity-btn" onclick="changeModalQty(1)">+</button><button class="btn-add" onclick="addFromModal(${p.id})">➕ أضف للسلة</button></div>`;
     modal.style.display = "block";
+    document.body.style.overflow = "hidden";
 }
 
 function changeModalQty(delta) {
@@ -178,6 +192,7 @@ function addFromModal(id) {
     updateCartDisplay();
     closeModal();
     showToast(`✅ تمت إضافة ${p.name} × ${qty}`, "success");
+    gentleShake(document.querySelector('.nav-cart'));
 }
 
 function changeModalImage(src) {
@@ -195,7 +210,10 @@ function toggleCart() {
 
 function closeModal() {
     const modal = document.getElementById("detailsModal");
-    if (modal) modal.style.display = "none";
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
 }
 
 window.onclick = function(e) {
@@ -213,11 +231,13 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.feature, .stat-card, .product-card, .package-card, .contact-card').forEach(el => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "all 0.6s ease";
-    observer.observe(el);
+document.querySelectorAll('.feature, .stat-card, .product-card, .package-card, .contact-card, .section').forEach(el => {
+    if (el) {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(el);
+    }
 });
 
 updateCartDisplay();
