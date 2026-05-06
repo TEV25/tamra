@@ -7,19 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Preload للصور المهمة -->
-    <link rel="preload" href="images/logo.png" as="image">
-    <link rel="preload" href="images/background.jpg" as="image">
-    <link rel="preload" href="images/coffee.jpg" as="image">
 </head>
 <body>
 
-<!-- سحابات عائمة -->
 <div class="cloud cloud-1"></div>
 <div class="cloud cloud-2"></div>
 <div class="cloud cloud-3"></div>
 
-<!-- أيقونة واتساب طافية -->
 <a href="https://wa.me/966539836477" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
@@ -27,7 +21,7 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo" onclick="location.href='index.html'">
-            <img src="images/logo.png" alt="شعار خيمة وتمرة" class="logo-img" loading="eager" width="45" height="45">
+            <img src="images/logo.png" alt="شعار خيمة وتمرة" class="logo-img">
             <span class="logo-text">خيمة وتمرة</span>
         </div>
         <div class="dropdown">
@@ -45,90 +39,76 @@
     </div>
 </nav>
 
-<section class="hero">
-    <div class="hero-pattern"></div>
+<!-- قسم الترحيبي مع خلفية شفافة -->
+<div class="hero-section" style="background-image: url('images/slide (1).jpg');">
+    <div class="hero-overlay-soft"></div>
     <div class="hero-content">
-        <img src="images/logo.png" alt="خيمة وتمرة" class="hero-logo" loading="eager" width="110" height="110">
+        <img src="images/logo.png" alt="خيمة وتمرة" class="hero-logo">
         <h1 class="hero-title">خيمة وتمرة</h1>
         <p class="hero-subtitle">أكلات شعبية بطابع تراثي أصيل</p>
-        <div class="stats-hero">
-            <div class="stat-hero" onclick="location.href='sakhanat.html'">
-                <span class="stat-number">9</span>
-                <span class="stat-text">سخانات</span>
-            </div>
-            <div class="stat-hero" onclick="location.href='sweets.html'">
-                <span class="stat-number">6</span>
-                <span class="stat-text">حلويات</span>
-            </div>
-            <div class="stat-hero" onclick="location.href='packages.html'">
-                <span class="stat-number">2</span>
-                <span class="stat-text">باقات</span>
-            </div>
-        </div>
         <div class="hero-buttons">
             <a href="sakhanat.html" class="hero-btn primary">🔥 السخانات</a>
             <a href="sweets.html" class="hero-btn primary">🍰 الحلويات</a>
             <a href="packages.html" class="hero-btn primary">✨ الباقات</a>
         </div>
         <div class="contact-info">
-            <a href="https://wa.me/966539836477" class="contact-link" target="_blank">
-                <i class="fab fa-whatsapp"></i> 0539836477
-            </a>
-            <a href="https://www.tiktok.com/@khaymah_w_tamrah" class="contact-link" target="_blank">
-                <i class="fab fa-tiktok"></i> @khaymah_w_tamrah
-            </a>
+            <a href="https://wa.me/966539836477" class="contact-link" target="_blank"><i class="fab fa-whatsapp"></i> 0539836477</a>
+            <a href="https://www.tiktok.com/@khaymah_w_tamrah" class="contact-link" target="_blank"><i class="fab fa-tiktok"></i> @khaymah_w_tamrah</a>
         </div>
     </div>
-</section>
+</div>
 
-<div class="sections" id="sections">
+<!-- سلايدر الصور السفلي -->
+<div class="slider-container">
+    <div class="slider-images">
+        <div class="slider-frame">
+            <img src="images/slide (1).jpg" alt="خيمة وتمرة">
+            <img src="images/slide (2).jpg" alt="خيمة وتمرة">
+            <img src="images/slide (3).jpg" alt="خيمة وتمرة">
+            <img src="images/slide (4).jpg" alt="خيمة وتمرة">
+            <img src="images/slide (5).jpg" alt="خيمة وتمرة">
+            <img src="images/slide (6).jpg" alt="خيمة وتمرة">
+            <img src="images/slide (7).jpg" alt="خيمة وتمرة">
+            <img src="images/slide (8).jpg" alt="خيمة وتمرة">
+            <img src="images/slide (9).jpg" alt="خيمة وتمرة">
+        </div>
+    </div>
+    <button class="slider-btn prev" onclick="prevImage()">❮</button>
+    <button class="slider-btn next" onclick="nextImage()">❯</button>
+    <div class="slider-dots" id="sliderDots"></div>
+</div>
+
+<div class="sections">
     <div class="section" onclick="location.href='sakhanat.html'">
         <div class="section-icon">🔥</div>
         <h3>السخانات</h3>
-        <p>جريش أبيض - جريش أحمر - عاصيدة - عريكة - عصيدة - مشغوثة - حنيني - مراصيع</p>
-        <span class="section-link">استكشف ←</span>
+        <p>أشهى المأكولات الشعبية الساخنة</p>
+        <span class="section-link">استكشف →</span>
     </div>
     <div class="section" onclick="location.href='sweets.html'">
         <div class="section-icon">🍰</div>
         <h3>الحلويات</h3>
-        <p>معمول - لقيمات - قطايف - خلية نحل - خبز ملة - مراصيع</p>
-        <span class="section-link">استكشف ←</span>
+        <p>ألذ الحلويات الشرقية الأصيلة</p>
+        <span class="section-link">استكشف →</span>
     </div>
     <div class="section" onclick="location.href='packages.html'">
         <div class="section-icon">✨</div>
         <h3>الباقات</h3>
-        <p>باقة فضية - باقة ذهبية</p>
-        <span class="section-link">استكشف ←</span>
+        <p>باقات مميزة للمناسبات والولائم</p>
+        <span class="section-link">استكشف →</span>
     </div>
 </div>
 
 <div class="features">
     <h2>نتميز بـ</h2>
     <div class="features-grid">
-        <div class="feature">
-            <i class="fas fa-fire"></i>
-            <h4>9 سخانات</h4>
-            <p>تشكيلة واسعة من أشهى المأكولات</p>
-        </div>
-        <div class="feature">
-            <i class="fas fa-cake-candles"></i>
-            <h4>6 حلويات</h4>
-            <p>ألذ الحلويات الشرقية</p>
-        </div>
-        <div class="feature">
-            <i class="fas fa-gem"></i>
-            <h4>باقات مميزة</h4>
-            <p>مناسبات وحفلات لا تُنسى</p>
-        </div>
-        <div class="feature">
-            <i class="fab fa-whatsapp"></i>
-            <h4>طلب سريع</h4>
-            <p>تواصل مباشر عبر واتساب</p>
-        </div>
+        <div class="feature"><i class="fas fa-fire"></i><h4>سخانات</h4><p>أشهى المأكولات</p></div>
+        <div class="feature"><i class="fas fa-cake-candles"></i><h4>حلويات</h4><p>ألذ الحلويات</p></div>
+        <div class="feature"><i class="fas fa-gem"></i><h4>باقات</h4><p>مناسبات مميزة</p></div>
+        <div class="feature"><i class="fab fa-whatsapp"></i><h4>طلب سريع</h4><p>تواصل مباشر</p></div>
     </div>
 </div>
 
-<!-- قسم التواصل أسفل الصفحة -->
 <div class="contact-section">
     <div class="contact-card">
         <i class="fab fa-whatsapp"></i>
@@ -146,7 +126,7 @@
 
 <footer class="footer">
     <div class="footer-content">
-        <img src="images/logo.png" alt="خيمة وتمرة" class="footer-logo" loading="lazy" width="70" height="70">
+        <img src="images/logo.png" alt="خيمة وتمرة" class="footer-logo">
         <h3>خيمة وتمرة</h3>
         <p>أكلات شعبية بطابع تراثي أصيل</p>
         <div class="footer-social">
@@ -165,11 +145,54 @@
     <div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div>
     <div id="cartItemsList" class="cart-items"></div>
     <div id="cartTotal" class="cart-total"></div>
-    <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب عبر واتساب</button>
+    <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button>
 </div>
 <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
 
 <script src="script.js"></script>
-<script>if(typeof updateCartDisplay === 'function') updateCartDisplay();</script>
+<script>
+    if(typeof updateCartDisplay === 'function') updateCartDisplay();
+    
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.slider-frame img');
+    const totalImages = images.length;
+    const dotsContainer = document.getElementById('sliderDots');
+    
+    function showImage(index) {
+        for(let i = 0; i < totalImages; i++) {
+            images[i].style.display = 'none';
+        }
+        images[index].style.display = 'block';
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+    
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        showImage(currentIndex);
+    }
+    
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        showImage(currentIndex);
+    }
+    
+    function goToImage(index) {
+        currentIndex = index;
+        showImage(currentIndex);
+    }
+    
+    for(let i = 0; i < totalImages; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if(i === 0) dot.classList.add('active');
+        dot.onclick = () => goToImage(i);
+        dotsContainer.appendChild(dot);
+    }
+    
+    showImage(0);
+    setInterval(nextImage, 5000);
+</script>
 </body>
 </html>
