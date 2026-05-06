@@ -39,9 +39,20 @@
     </div>
 </nav>
 
-<!-- قسم الترحيبي مع خلفية شفافة -->
-<div class="hero-section" style="background-image: url('images/slide (1).jpg');">
-    <div class="hero-overlay-soft"></div>
+<!-- قسم الترحيبي مع سلايدر متحرك -->
+<div class="hero-section">
+    <div class="hero-bg-slider">
+        <div class="hero-bg-slide" style="background-image: url('images/slide (1).jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/slide (2).jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/slide (3).jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/slide (4).jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/slide (5).jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/slide (6).jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/slide (7).jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/slide (8).jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/slide (9).jpg');"></div>
+    </div>
+    <div class="hero-overlay-light"></div>
     <div class="hero-content">
         <img src="images/logo.png" alt="خيمة وتمرة" class="hero-logo">
         <h1 class="hero-title">خيمة وتمرة</h1>
@@ -58,7 +69,7 @@
     </div>
 </div>
 
-<!-- سلايدر الصور السفلي -->
+<!-- سلايدر سفلي -->
 <div class="slider-container">
     <div class="slider-images">
         <div class="slider-frame">
@@ -153,35 +164,35 @@
 <script>
     if(typeof updateCartDisplay === 'function') updateCartDisplay();
     
+    let bgIndex = 0;
+    const bgSlides = document.querySelectorAll('.hero-bg-slide');
+    const totalBgSlides = bgSlides.length;
+    
+    function showBgSlide(index) {
+        bgSlides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    }
+    
+    function nextBgSlide() {
+        bgIndex = (bgIndex + 1) % totalBgSlides;
+        showBgSlide(bgIndex);
+    }
+    
+    showBgSlide(0);
+    setInterval(nextBgSlide, 5000);
+    
     let currentIndex = 0;
     const images = document.querySelectorAll('.slider-frame img');
     const totalImages = images.length;
     const dotsContainer = document.getElementById('sliderDots');
     
     function showImage(index) {
-        for(let i = 0; i < totalImages; i++) {
-            images[i].style.display = 'none';
-        }
-        images[index].style.display = 'block';
-        document.querySelectorAll('.dot').forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
+        images.forEach((img, i) => img.style.display = i === index ? 'block' : 'none');
+        document.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('active', i === index));
     }
     
-    function nextImage() {
-        currentIndex = (currentIndex + 1) % totalImages;
-        showImage(currentIndex);
-    }
-    
-    function prevImage() {
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-        showImage(currentIndex);
-    }
-    
-    function goToImage(index) {
-        currentIndex = index;
-        showImage(currentIndex);
-    }
+    function nextImage() { currentIndex = (currentIndex + 1) % totalImages; showImage(currentIndex); }
+    function prevImage() { currentIndex = (currentIndex - 1 + totalImages) % totalImages; showImage(currentIndex); }
+    function goToImage(index) { currentIndex = index; showImage(currentIndex); }
     
     for(let i = 0; i < totalImages; i++) {
         const dot = document.createElement('div');
