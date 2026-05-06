@@ -20,6 +20,7 @@ body {
     --beige: #faf0e6;
 }
 
+/* ========== أيقونة واتساب ========== */
 .whatsapp-float {
     position: fixed;
     bottom: 20px;
@@ -40,6 +41,7 @@ body {
 .whatsapp-float:hover { transform: scale(1.1); background: #075e54; }
 @keyframes floatWa { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
+/* ========== سحابات ========== */
 .cloud {
     position: fixed;
     background: rgba(255,255,255,0.12);
@@ -53,6 +55,7 @@ body {
 .cloud-3 { width: 130px; height: 60px; top: 40%; left: -80px; animation: floatCloud 18s linear infinite; }
 @keyframes floatCloud { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 200px)); } }
 
+/* ========== شريط التنقل ========== */
 .navbar {
     background: linear-gradient(135deg, #3e2723, #4e342e);
     position: sticky;
@@ -124,6 +127,7 @@ body {
 .nav-cart:hover { transform: scale(1.02); background: #ffd700; }
 #cartCountNav { background: #3e2723; color: var(--gold); padding: 2px 6px; border-radius: 50%; margin-right: 5px; }
 
+/* ========== القسم الترحيبي ========== */
 .hero-section {
     min-height: 480px;
     display: flex;
@@ -200,6 +204,7 @@ body {
 }
 .contact-link:hover { color: #ffd700; background: rgba(0,0,0,0.5); }
 
+/* ========== سلايدر سفلي ========== */
 .slider-container {
     position: relative;
     max-width: 1000px;
@@ -209,7 +214,12 @@ body {
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 .slider-images { position: relative; height: 300px; }
-.slider-frame img { width: 100%; height: 300px; object-fit: cover; }
+.slider-frame img { 
+    width: 100%; 
+    height: 300px; 
+    object-fit: contain; 
+    background: #f4ecd8;
+}
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -244,6 +254,7 @@ body {
 }
 .dot.active { background: var(--gold); width: 20px; border-radius: 10px; }
 
+/* ========== الأقسام ========== */
 .sections {
     display: flex;
     flex-wrap: wrap;
@@ -269,6 +280,7 @@ body {
 .section p { color: #5d4037; font-size: 0.8em; margin-bottom: 12px; }
 .section-link { color: #b8860b; font-weight: 700; font-size: 0.85em; }
 
+/* ========== المميزات ========== */
 .features { background: #e8d5b7; padding: 35px 15px; text-align: center; }
 .features h2 { color: #3e2723; font-size: 1.6em; margin-bottom: 25px; }
 .features-grid {
@@ -288,6 +300,7 @@ body {
 .feature h4 { font-size: 1em; margin-bottom: 5px; }
 .feature p { font-size: 0.7em; color: #5d4037; }
 
+/* ========== قسم التواصل ========== */
 .contact-section {
     display: flex;
     flex-wrap: wrap;
@@ -323,6 +336,7 @@ body {
 .btn-whatsapp:hover { background: #128C7E; }
 .btn-tiktok:hover { background: #1a1a1a; }
 
+/* ========== البانر ========== */
 .page-banner {
     text-align: center;
     padding: 60px 20px;
@@ -338,28 +352,43 @@ body {
 .page-banner h1 { font-size: 2em; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
 .page-banner p { font-size: 1em; text-shadow: 1px 1px 1px rgba(0,0,0,0.5); }
 
+/* ========== المنتجات ========== */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 40px 15px;
-    max-width: 1100px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 40px 20px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 .product-card {
     background: linear-gradient(145deg, #faf0e6, #f5e6d3);
     border-radius: 22px;
-    padding: 15px;
+    padding: 18px;
     text-align: center;
     border: 1px solid var(--gold);
 }
 .product-card:hover { transform: translateY(-3px); }
-.product-image { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; border: 2px solid var(--gold); cursor: pointer; }
-.product-name { font-size: 1.1em; margin: 10px 0 5px; }
-.btn-details, .btn-add { padding: 7px; font-size: 0.8em; margin: 4px 0; border-radius: 30px; }
+.product-image { 
+    width: 100%; 
+    height: 200px; 
+    object-fit: contain; 
+    background: #f0e6d2;
+    border-radius: 15px; 
+    border: 2px solid var(--gold); 
+    cursor: pointer; 
+}
+.product-name { font-size: 1.1em; margin: 12px 0 6px; }
+.btn-details, .btn-add { 
+    padding: 8px; 
+    font-size: 0.85em; 
+    margin: 5px 0; 
+    border-radius: 30px; 
+}
 .btn-details { background: #8d6e63; color: white; }
 .btn-add { background: linear-gradient(135deg, #c9a84c, #b8860b); color: #3e2723; }
 
+/* ========== أزرار الكمية ========== */
 .quantity-selector {
     display: flex;
     justify-content: center;
@@ -383,11 +412,12 @@ body {
 .quantity-btn:hover { background: #ffd700; transform: scale(1.05); }
 .quantity-value { font-size: 1.1em; font-weight: 700; min-width: 35px; text-align: center; color: #3e2723; }
 
+/* ========== الباقات ========== */
 .packages-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
-    padding: 40px 15px;
+    padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -409,20 +439,21 @@ body {
 .package-items { display: flex; flex-wrap: wrap; gap: 8px; }
 .package-items span {
     background: #e8d5b7;
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 20px;
-    font-size: 0.7em;
+    font-size: 0.75em;
     color: #3e2723;
 }
-.package-card .btn-add { width: 70%; padding: 8px; margin-top: 10px; }
+.package-card .btn-add { width: 70%; padding: 10px; margin-top: 10px; }
 
+/* ========== الفوتر ========== */
 .footer {
     background: #3e2723;
     padding: 30px 15px;
     text-align: center;
     border-top: 2px solid var(--gold);
 }
-.footer-logo { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 12px; border: 2px solid var(--gold); }
+.footer-logo { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 12px; border: 2px solid var(--gold); object-fit: cover; }
 .footer-content h3 { font-size: 1.2em; margin-bottom: 6px; color: var(--gold); }
 .footer-content p { font-size: 0.8em; margin-bottom: 15px; color: #faf0e6; }
 .footer-social { margin: 12px 0; }
@@ -443,6 +474,7 @@ body {
 .footer-links a { color: var(--gold); text-decoration: none; margin: 0 8px; font-size: 0.75em; }
 .copyright { font-size: 0.65em; margin-top: 15px; color: #b8860b; }
 
+/* ========== مودال ========== */
 .modal {
     display: none;
     position: fixed;
@@ -456,7 +488,7 @@ body {
 .modal-content {
     background: #faf0e6;
     margin: 30px auto;
-    padding: 18px;
+    padding: 20px;
     width: 90%;
     max-width: 500px;
     border-radius: 25px;
@@ -470,11 +502,28 @@ body {
     font-size: 1.5em;
     cursor: pointer;
 }
-.main-image { width: 100%; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 12px; border: 2px solid var(--gold); }
+.main-image { 
+    width: 100%; 
+    height: 180px; 
+    object-fit: contain; 
+    background: #f0e6d2;
+    border-radius: 15px; 
+    margin-bottom: 12px; 
+    border: 2px solid var(--gold); 
+}
 .image-gallery { display: flex; gap: 8px; overflow-x: auto; padding: 8px 0; margin-bottom: 12px; }
-.gallery-img { width: 65px; height: 55px; object-fit: cover; border-radius: 10px; cursor: pointer; border: 2px solid var(--gold); }
+.gallery-img { 
+    width: 65px; 
+    height: 55px; 
+    object-fit: contain; 
+    background: #f0e6d2;
+    border-radius: 10px; 
+    cursor: pointer; 
+    border: 2px solid var(--gold); 
+}
 .details-description { background: #f5e6d3; padding: 12px; border-radius: 15px; margin: 12px 0; line-height: 1.6; font-size: 0.9em; }
 
+/* ========== السلة الجانبية ========== */
 .cart-sidebar {
     position: fixed;
     left: -100%;
@@ -508,6 +557,7 @@ body {
 .btn-checkout { width: 100%; margin-top: 12px; padding: 8px; background: #25D366; color: white; border: none; border-radius: 30px; cursor: pointer; }
 .empty-cart { text-align: center; padding: 20px; color: #8d6e63; }
 
+/* ========== إشعار ========== */
 .toast-notification {
     position: fixed;
     bottom: 20px;
@@ -523,6 +573,7 @@ body {
 }
 .toast-notification.show { transform: translateX(0); }
 
+/* ========== هاتف ========== */
 @media (max-width: 768px) {
     .hero-title { font-size: 1.5em; }
     .hero-logo { width: 60px; height: 60px; }
@@ -530,27 +581,46 @@ body {
     .hero-section { min-height: 420px; }
     .section { width: 100%; max-width: 260px; }
     .features-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .product-image { height: 120px; }
+    
+    .products-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px; 
+        padding: 30px 12px;
+    }
+    .product-image { height: 130px; }
+    .product-name { font-size: 0.95em; }
+    
     .packages-container { gap: 20px; }
     .package-card { padding: 18px; }
     .package-details { max-height: 250px; }
+    .package-items span { font-size: 0.65em; padding: 3px 8px; }
+    
     .slider-images { height: 200px; }
     .slider-frame img { height: 200px; }
+    
     .whatsapp-float { width: 45px; height: 45px; bottom: 15px; left: 15px; }
     .whatsapp-float i { font-size: 1.5em; }
     .dropdown-content { position: fixed; top: 55px; right: 10px; left: 10px; width: auto; }
     .quantity-btn { width: 28px; height: 28px; font-size: 1.1em; }
     .page-banner { padding: 40px 15px; }
     .page-banner h1 { font-size: 1.5em; }
+    
+    .main-image { height: 140px; }
 }
 
 @media (max-width: 480px) {
     .products-grid { gap: 8px; }
-    .product-image { height: 150px; }
+    .product-image { height: 110px; }
     .product-name { font-size: 0.85em; }
-    .btn-details, .btn-add { font-size: 0.65em; }
+    .btn-details, .btn-add { font-size: 0.7em; padding: 6px; }
     .quantity-btn { width: 24px; height: 24px; font-size: 1em; }
     .hero-title { font-size: 1.2em; }
     .hero-subtitle { font-size: 0.8em; }
+    .main-image { height: 120px; }
+    .slider-frame img { height: 160px; }
+}
+
+/* تأكيد أن الصور تظهر كاملة في المربع */
+.product-image, .main-image, .gallery-img, .slider-frame img, .hero-logo, .footer-logo, .logo-img {
+    background-color: #f4ecd8;
 }
