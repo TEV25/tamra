@@ -267,61 +267,115 @@ body {
 }
 .contact-link:hover { color: #ffd700; background: rgba(0,0,0,0.5); transform: scale(1.05); }
 
-/* ========== سلايدر سفلي مع تأثيرات ========== */
+/* ========== سلايدر سفلي مميز ========== */
 .slider-container {
     position: relative;
     width: 100%;
-    margin: 20px 0;
+    max-width: 1200px;
+    margin: 40px auto;
+    border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.25);
+    border: 3px solid var(--gold);
+    background: #faf0e6;
 }
-.slider-images { 
-    position: relative; 
+
+.slider-images {
+    position: relative;
     width: 100%;
 }
-.slider-frame img { 
-    width: 100%; 
-    height: 450px; 
-    object-fit: cover; 
-    display: block;
-    transition: transform 0.3s;
+
+.slider-frame {
+    position: relative;
+    width: 100%;
 }
+
+.slider-frame img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* تدرج لوني على الصورة */
+.slider-frame img {
+    position: relative;
+}
+
+.slider-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 30px;
+}
+
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     color: white;
-    border: none;
+    border: 2px solid var(--gold);
     padding: 15px 20px;
     cursor: pointer;
     border-radius: 50%;
     font-size: 1.3em;
-    z-index: 10;
+    z-index: 20;
     transition: all 0.3s;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
 }
 .prev { left: 20px; }
 .next { right: 20px; }
-.slider-btn:hover { background: var(--gold); color: #3e2723; transform: translateY(-50%) scale(1.1); }
+.slider-btn:hover { 
+    background: var(--gold); 
+    color: #3e2723; 
+    transform: translateY(-50%) scale(1.1);
+    border-color: #3e2723;
+}
+
 .slider-dots {
     position: absolute;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
-    z-index: 10;
+    gap: 12px;
+    z-index: 20;
+    background: rgba(0,0,0,0.4);
+    padding: 8px 15px;
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
 }
 .dot {
-    width: 12px;
-    height: 12px;
-    background: rgba(255,255,255,0.5);
+    width: 10px;
+    height: 10px;
+    background: rgba(255,255,255,0.6);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s;
 }
-.dot.active { background: var(--gold); width: 30px; border-radius: 15px; }
+.dot.active { 
+    background: var(--gold); 
+    width: 28px; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(201,168,76,0.5);
+}
+
+/* تأثير الزوم عند تغيير الصورة */
+@keyframes zoomIn {
+    from { transform: scale(1.1); opacity: 0.8; }
+    to { transform: scale(1); opacity: 1; }
+}
+.slider-frame img {
+    animation: zoomIn 0.8s ease-out;
+}
 
 /* ========== الأقسام ========== */
 .sections {
@@ -721,6 +775,7 @@ body {
     .product-name { font-size: 0.9em; }
     .packages-container { gap: 20px; padding: 30px 15px; }
     .package-card { padding: 20px; }
+    .slider-container { max-width: 95%; border-width: 2px; }
     .slider-frame img { height: 300px; }
     .whatsapp-float { width: 50px; height: 50px; bottom: 15px; left: 15px; }
     .whatsapp-float i { font-size: 1.6em; }
@@ -730,6 +785,7 @@ body {
     .page-banner h1 { font-size: 1.5em; }
     .main-image { height: 160px; }
     .slider-btn { padding: 10px 14px; font-size: 1.1em; }
+    .slider-dots { padding: 5px 12px; gap: 8px; }
 }
 
 @media (max-width: 480px) {
@@ -741,8 +797,11 @@ body {
     .hero-title { font-size: 1.3em; }
     .hero-subtitle { font-size: 0.85em; }
     .main-image { height: 140px; }
-    .slider-frame img { height: 250px; }
+    .slider-frame img { height: 220px; }
     .slider-btn { padding: 6px 10px; font-size: 0.9em; }
     .prev { left: 10px; }
     .next { right: 10px; }
+    .slider-dots { bottom: 10px; gap: 6px; }
+    .dot { width: 6px; height: 6px; }
+    .dot.active { width: 20px; }
 }
