@@ -10,9 +10,6 @@
 </head>
 <body>
 
-<!-- زر تبديل الوضع المظلم / الفاتح -->
-<div class="theme-toggle" onclick="toggleTheme()">🌙</div>
-
 <div class="cloud cloud-1"></div>
 <div class="cloud cloud-2"></div>
 <div class="cloud cloud-3"></div>
@@ -36,8 +33,13 @@
                 <a href="packages.html">✨ الباقات</a>
             </div>
         </div>
-        <div class="nav-cart" onclick="toggleCart()">
-            🛒 <span id="cartCountNav">0</span>
+        <div class="nav-actions">
+            <div class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </div>
+            <div class="nav-cart" onclick="toggleCart()">
+                🛒 <span id="cartCountNav">0</span>
+            </div>
         </div>
     </div>
 </nav>
