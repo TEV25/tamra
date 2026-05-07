@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* ========== الوضع الفاتح (Light Mode) ========== */
 :root {
     --bg-primary: #f4ecd8;
@@ -18,6 +24,8 @@
     --dropdown-bg: #faf0e6;
     --dropdown-border: #e8d5b7;
     --cart-bg: #faf0e6;
+    --navbar-bg: linear-gradient(135deg, #3e2723, #4e342e);
+    --dropbtn-bg: #5d4037;
 }
 
 [data-theme="dark"] {
@@ -39,12 +47,8 @@
     --dropdown-bg: #1e1e1e;
     --dropdown-border: #3a3a3a;
     --cart-bg: #2a2a2a;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    --navbar-bg: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+    --dropbtn-bg: #2a2a2a;
 }
 
 body {
@@ -57,31 +61,108 @@ body {
     color: var(--text-dark);
 }
 
-/* ========== زر تبديل الوضع ========== */
-.theme-toggle {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
+/* ========== شريط التنقل ========== */
+.navbar {
+    background: var(--navbar-bg);
+    position: sticky;
+    top: 0;
     z-index: 1000;
-    background: var(--card-bg);
+    border-bottom: 2px solid var(--gold);
+    padding: 5px 0;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.1);
+    padding: 5px 12px;
+    border-radius: 40px;
+    border: 1px solid var(--gold);
+}
+.logo-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+.logo-text { font-size: 1.1em; font-weight: 800; color: var(--gold); }
+.dropbtn {
+    background: var(--dropbtn-bg);
     color: var(--gold);
-    width: 45px;
-    height: 45px;
+    padding: 6px 16px;
+    border: 1px solid var(--gold);
+    border-radius: 35px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85em;
+    transition: background 0.3s;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: var(--dropdown-bg);
+    min-width: 180px;
+    border-radius: 15px;
+    z-index: 1001;
+    top: 100%;
+    right: 0;
+    border: 1px solid var(--gold);
+    box-shadow: var(--shadow);
+}
+.dropdown-content a {
+    color: var(--text-dark);
+    padding: 10px 18px;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+    font-size: 0.85em;
+    border-bottom: 1px solid var(--border-light);
+}
+.dropdown-content a:hover { background: linear-gradient(135deg, #c9a84c, #b8860b); color: #121212; padding-right: 25px; }
+.dropdown:hover .dropdown-content { display: block; }
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.theme-toggle {
+    background: rgba(255,255,255,0.1);
+    color: var(--gold);
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     border: 1px solid var(--gold);
-    box-shadow: var(--shadow);
     transition: all 0.3s;
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
 .theme-toggle:hover {
-    transform: scale(1.1);
     background: var(--gold);
     color: #121212;
+    transform: scale(1.05);
 }
+.nav-cart {
+    background: linear-gradient(135deg, #c9a84c, #b8860b);
+    color: #3e2723;
+    padding: 6px 16px;
+    border-radius: 35px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85em;
+    border: 1px solid #3e2723;
+}
+.nav-cart:hover { transform: scale(1.02); background: #ffd700; }
+#cartCountNav { background: #3e2723; color: var(--gold); padding: 2px 6px; border-radius: 50%; margin-right: 5px; }
+[data-theme="dark"] #cartCountNav { background: #121212; }
 
 /* ========== أيقونة واتساب طافية ========== */
 .whatsapp-float {
@@ -118,89 +199,6 @@ body {
 .cloud-2 { width: 250px; height: 120px; bottom: 20%; right: -150px; animation: floatCloud 25s linear infinite reverse; }
 .cloud-3 { width: 130px; height: 60px; top: 40%; left: -80px; animation: floatCloud 18s linear infinite; }
 @keyframes floatCloud { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 200px)); } }
-
-/* ========== شريط التنقل ========== */
-.navbar {
-    background: linear-gradient(135deg, #3e2723, #4e342e);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 2px solid var(--gold);
-    padding: 5px 0;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-}
-[data-theme="dark"] .navbar {
-    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-}
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 15px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    background: rgba(255,255,255,0.1);
-    padding: 5px 12px;
-    border-radius: 40px;
-    border: 1px solid var(--gold);
-}
-.logo-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
-.logo-text { font-size: 1.1em; font-weight: 800; color: var(--gold); }
-.dropbtn {
-    background: #5d4037;
-    color: var(--gold);
-    padding: 6px 16px;
-    border: 1px solid var(--gold);
-    border-radius: 35px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.85em;
-}
-[data-theme="dark"] .dropbtn {
-    background: #2a2a2a;
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: var(--dropdown-bg);
-    min-width: 180px;
-    border-radius: 15px;
-    z-index: 1001;
-    top: 100%;
-    right: 0;
-    border: 1px solid var(--gold);
-    box-shadow: var(--shadow);
-}
-.dropdown-content a {
-    color: var(--text-dark);
-    padding: 10px 18px;
-    text-decoration: none;
-    display: block;
-    font-weight: 600;
-    font-size: 0.85em;
-    border-bottom: 1px solid var(--border-light);
-}
-.dropdown-content a:hover { background: linear-gradient(135deg, #c9a84c, #b8860b); color: #121212; padding-right: 25px; }
-.dropdown:hover .dropdown-content { display: block; }
-.nav-cart {
-    background: linear-gradient(135deg, #c9a84c, #b8860b);
-    color: #3e2723;
-    padding: 6px 16px;
-    border-radius: 35px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.85em;
-    border: 1px solid #3e2723;
-}
-.nav-cart:hover { transform: scale(1.02); background: #ffd700; }
-#cartCountNav { background: #3e2723; color: var(--gold); padding: 2px 6px; border-radius: 50%; margin-right: 5px; }
-[data-theme="dark"] #cartCountNav { background: #121212; }
 
 /* ========== القسم الترحيبي ========== */
 .hero-section {
@@ -484,7 +482,7 @@ body {
 }
 .btn-tiktok { background: linear-gradient(135deg, #000, #1a1a1a); border: 1px solid var(--gold); }
 
-/* ========== البانر (للسخانات وغيرها) ========== */
+/* ========== البانر ========== */
 .page-banner {
     position: relative;
     text-align: center;
@@ -525,7 +523,7 @@ body {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 
-/* ========== منتجات (سخانات/حلويات) ========== */
+/* ========== منتجات ========== */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -880,7 +878,7 @@ body {
     .whatsapp-float { width: 48px; height: 48px; bottom: 15px; left: 15px; }
     .whatsapp-float i { font-size: 1.5em; }
     .dropdown-content { position: fixed; top: 55px; right: 10px; left: 10px; width: auto; }
-    .theme-toggle { bottom: 75px; right: 15px; width: 40px; height: 40px; font-size: 1.1em; }
+    .theme-toggle { width: 34px; height: 34px; font-size: 1em; }
 }
 
 @media (max-width: 480px) {
