@@ -6,6 +6,22 @@ document.addEventListener("DOMContentLoaded", function() {
     const overlay = document.getElementById("cartOverlay");
     if (sidebar) sidebar.classList.remove("open");
     if (overlay) overlay.classList.remove("show");
+    
+    // تطبيق الوضع المخزن
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        const toggleIcon = document.querySelector('.theme-toggle i');
+        if (toggleIcon) {
+            if (savedTheme === 'dark') {
+                toggleIcon.className = 'fas fa-sun';
+            } else {
+                toggleIcon.className = 'fas fa-moon';
+            }
+        }
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
 });
 
 function showToast(message, type = "success") {
@@ -21,6 +37,25 @@ function showToast(message, type = "success") {
         toast.classList.remove("show");
         setTimeout(() => toast.remove(), 300);
     }, 2500);
+}
+
+// ========== تبديل الوضع المظلم ==========
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // تغيير أيقونة الزر
+    const toggleIcon = document.querySelector('.theme-toggle i');
+    if (toggleIcon) {
+        if (newTheme === 'dark') {
+            toggleIcon.className = 'fas fa-sun';
+        } else {
+            toggleIcon.className = 'fas fa-moon';
+        }
+    }
 }
 
 // ========== السخانات ==========
@@ -247,31 +282,3 @@ window.onclick = function(e) {
 };
 
 updateCartDisplay();
-
-// ========== تبديل الوضع المظلم ==========
-function toggleTheme() {
-    const html = document.documentElement;
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // تغيير أيقونة الزر
-    const toggleBtn = document.querySelector('.theme-toggle');
-    if (toggleBtn) {
-        toggleBtn.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
-    }
-}
-
-// تحميل الوضع المخزن
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    const toggleBtn = document.querySelector('.theme-toggle');
-    if (toggleBtn) {
-        toggleBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
-    }
-} else {
-    // افتراضي: الوضع الفاتح
-    document.documentElement.setAttribute('data-theme', 'light');
-}
