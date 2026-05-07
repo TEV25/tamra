@@ -859,4 +859,54 @@ body {
     font-weight: 800;
     cursor: pointer;
 }
-.empty-cart { text-align: center
+.empty-cart { text-align: center; padding: 20px; color: var(--text-medium); }
+
+/* إشعار */
+.toast-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    z-index: 9999;
+    font-size: 0.75em;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+}
+.toast-notification.show { transform: translateX(0); }
+
+/* تحسينات الهواتف */
+@media (max-width: 768px) {
+    .hero-section { min-height: 380px; }
+    .hero-content { padding: 15px; max-width: 95%; }
+    .hero-logo { width: 55px; height: 55px; }
+    .hero-title { font-size: 1.3em; }
+    .hero-subtitle { font-size: 0.7em; margin-bottom: 10px; }
+    .hero-btn { padding: 4px 12px; font-size: 0.7rem; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 30px 12px; }
+    .product-image { height: 110px; }
+    .product-name { font-size: 0.85em; }
+    .slider-frame img { height: 220px; }
+    .slider-btn { padding: 6px 10px; font-size: 0.9rem; }
+    .sections { gap: 15px; padding: 30px 15px; }
+    .section { width: 100%; max-width: 250px; padding: 20px 12px; }
+    .section-icon { font-size: 2.2em; }
+    .features-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .package-card-modern { width: 95%; }
+    .package-header { padding: 15px; }
+    .package-icon { font-size: 2.5em; }
+    .package-header h2 { font-size: 1.1em; }
+    .page-banner { padding: 40px 15px; min-height: 180px; }
+    .banner-content h1 { font-size: 1.3rem; }
+    .banner-content p { font-size: 0.75rem; }
+    .whatsapp-float { width: 44px; height: 44px; bottom: 15px; left: 15px; }
+    .whatsapp-float i { font-size: 1.4em; }
+    .dropdown-content { position: fixed; top: 55px; right: 10px; left: 10px; width: auto; }
+    .theme-toggle { width: 32px; height: 32px; font-size: 0.9rem; }
+    .nav-cart { width: 32px; height: 32px; font-size: 0.85rem; }
+    .logo-img { width: 28px; height: 28px; }
+    .logo-text { font-size: 0.85rem; }
+    .dropbtn { padding: 5px 12px; font-size: 0.75rem; }
+}
