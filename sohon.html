@@ -10,11 +10,16 @@
 </head>
 <body>
 
-<a href="https://wa.me/966539836477" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/966539836477" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 <nav class="navbar">
     <div class="nav-container">
-        <div class="logo" onclick="location.href='index.html'"><img src="images/logo.png" alt="شعار خيمة وتمرة" class="logo-img"><span class="logo-text">خيمة وتمرة</span></div>
+        <div class="logo" onclick="location.href='index.html'">
+            <img src="images/logo.png" alt="شعار خيمة وتمرة" class="logo-img">
+            <span class="logo-text">خيمة وتمرة</span>
+        </div>
         <div class="dropdown">
             <button class="dropbtn">☰ القائمة</button>
             <div class="dropdown-content">
@@ -25,12 +30,19 @@
                 <a href="events.html"><img src="images/events-icon.png" class="dropdown-icon" onerror="this.style.display='none'"> تجهيزات المناسبات</a>
             </div>
         </div>
-        <div class="nav-actions"><div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-circle-half-stroke"></i></div><div class="nav-cart" onclick="toggleCart()">🛒 <span id="cartCountNav">0</span></div></div>
+        <div class="nav-actions">
+            <div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-circle-half-stroke"></i></div>
+            <div class="nav-cart" onclick="toggleCart()">🛒 <span id="cartCountNav">0</span></div>
+        </div>
     </div>
 </nav>
 
 <div class="page-banner sohon-banner" style="background: #5d4037;">
-    <div class="banner-content"><img src="images/sohon-icon.png" alt="صحون" class="banner-icon" onerror="this.style.display='none'"><h1>الصحون التراثية</h1><p>أطباق رئيسية وحلويات أصيلة</p></div>
+    <div class="banner-content">
+        <img src="images/sohon-icon.png" alt="صحون" class="banner-icon" onerror="this.style.display='none'">
+        <h1>🍽️ الصحون التراثية</h1>
+        <p>أطباق رئيسية وحلويات أصيلة</p>
+    </div>
 </div>
 
 <div class="products-grid" id="productsGrid"></div>
@@ -40,13 +52,42 @@
     <div class="contact-card"><i class="fab fa-tiktok"></i><h3>تابعنا</h3><p>شاهد أحدث الوصفات والأطباق</p><a href="https://www.tiktok.com/@khaymah_w_tamrah" class="btn-tiktok" target="_blank"><i class="fab fa-tiktok"></i> @khaymah_w_tamrah</a></div>
 </div>
 
-<footer class="footer">...</footer>
+<footer class="footer">
+    <div class="footer-content">
+        <img src="images/logo.png" alt="خيمة وتمرة" class="footer-logo">
+        <h3>خيمة وتمرة</h3>
+        <p>أكلات شعبية بطابع تراثي أصيل</p>
+        <div class="footer-social"><a href="https://wa.me/966539836477" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@khaymah_w_tamrah" target="_blank"><i class="fab fa-tiktok"></i></a></div>
+        <div class="footer-links"><a href="https://wa.me/966539836477" target="_blank">📞 0539836477</a><a href="https://www.tiktok.com/@khaymah_w_tamrah" target="_blank">📱 @khaymah_w_tamrah</a></div>
+        <p class="copyright">2025 © خيمة وتمرة</p>
+    </div>
+</footer>
 
-<div id="detailsModal" class="modal">...</div>
-<div id="cartSidebar" class="cart-sidebar">...</div>
-<div id="cartOverlay" class="cart-overlay"></div>
+<!-- نافذة التفاصيل المنبثقة (مهمة جداً) -->
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div id="modalDetails"></div>
+    </div>
+</div>
+
+<div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div>
+    <div id="cartItemsList" class="cart-items"></div>
+    <div id="cartTotal" class="cart-total"></div>
+    <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button>
+</div>
+<div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
 
 <script src="script.js"></script>
-<script>displayProductsByType('sohon');</script>
+<script>
+    // تأكيد عرض منتجات الصحون
+    displayProductsByType('sohon');
+    
+    // إضافة تأكيد إضافي: إذا تعذر العثور على دالة showDetails، استخدم تنبيه
+    if (typeof showDetails !== 'function') {
+        console.error("خطأ: showDetails غير معرفة. تأكد من وجود script.js صحيح.");
+    }
+</script>
 </body>
 </html>
