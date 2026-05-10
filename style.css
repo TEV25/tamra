@@ -21,6 +21,7 @@
     --dropdown-bg: #faf0e6;
     --navbar-bg: linear-gradient(135deg, #3e2723, #4e342e);
     --cart-bg: #faf0e6;
+    --input-bg: #fff;
 }
 
 [data-theme="dark"] {
@@ -36,6 +37,7 @@
     --dropdown-bg: #1e1e1e;
     --navbar-bg: linear-gradient(135deg, #0d0d0d, #1a1a1a);
     --cart-bg: #2a2a2a;
+    --input-bg: #3a3a3a;
 }
 
 body {
@@ -203,7 +205,7 @@ body {
 }
 .hero-btn.primary { background: linear-gradient(135deg, #c9a84c, #b8860b); color: #3e2723; display: inline-flex; align-items: center; gap: 6px; }
 .hero-btn.primary:hover { background: #ffd700; }
-.contact-info { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.contact-info { display: flex; justice-content: center; gap: 10px; flex-wrap: wrap; }
 .contact-link {
     color: var(--gold);
     text-decoration: none;
@@ -302,7 +304,7 @@ body {
     font-weight: 700;
 }
 
-/* نتميز بـ (شبكة 3 ثم 2) */
+/* نتميز بـ (أيقونات فقط - تنسيق 2+2+1) */
 .features {
     background: var(--bg-secondary);
     padding: 50px 20px;
@@ -326,9 +328,9 @@ body {
 }
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 25px;
-    max-width: 900px;
+    max-width: 700px;
     margin: 0 auto;
 }
 .feature {
@@ -341,15 +343,24 @@ body {
     text-align: center;
 }
 .feature:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-.feature-img { width: 60px; height: 60px; object-fit: contain; display: inline-block; margin-bottom: 10px; }
 .feature i { font-size: 2.2em; display: block; margin-bottom: 10px; color: var(--gold-dark); }
 .feature h4 { font-size: 1.1em; margin-bottom: 6px; }
 .feature p { font-size: 0.75em; color: var(--text-medium); }
-@media (max-width: 700px) {
-    .features-grid { grid-template-columns: repeat(2, 1fr); }
+/* العنصر الخامس (طلب سريع) يأخذ عرض الصف كاملاً ويتم توسيطه */
+.features-grid .feature:last-child {
+    grid-column: span 2;
+    max-width: 300px;
+    margin: 0 auto;
+    width: 100%;
 }
-@media (max-width: 480px) {
-    .features-grid { grid-template-columns: 1fr; }
+@media (max-width: 700px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+    }
+    .features-grid .feature:last-child {
+        grid-column: span 1;
+    }
 }
 
 /* باقي الأقسام */
@@ -497,6 +508,12 @@ body {
     border: none;
     cursor: pointer;
     font-weight: bold;
+    color: #3e2723;
+}
+.quantity-value {
+    min-width: 28px;
+    text-align: center;
+    font-weight: bold;
 }
 
 /* الباقات */
@@ -536,6 +553,7 @@ body {
     display: block;
     border: none;
     cursor: pointer;
+    font-weight: bold;
 }
 .package-section h4 {
     font-size: 0.85em;
@@ -702,7 +720,6 @@ body {
     .products-grid { grid-template-columns: repeat(2, 1fr); }
     .hero-title { font-size: 1.3em; }
     .menu-icon img { width: 60px; height: 60px; }
-    .feature-img { width: 50px; height: 50px; }
     .banner-icon { width: 70px; height: 70px; }
     .modal .close-modal { width: 35px; height: 35px; font-size: 1.5rem; left: 10px; top: 10px; }
 }
