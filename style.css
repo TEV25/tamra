@@ -202,7 +202,6 @@ body {
 [data-theme="dark"] .hero-content {
     background: var(--hero-bg-dark);
     backdrop-filter: blur(14px);
-    border-color: var(--gold);
 }
 .hero-logo { width: 70px; height: 70px; border-radius: 50%; margin-bottom: 10px; border: 3px solid var(--gold); object-fit: cover; }
 .hero-title { font-size: 1.8em; color: var(--gold); font-weight: 800; }
@@ -316,55 +315,54 @@ body {
     font-weight: 700;
 }
 
-/* قسم نتميز بـ (مصغر جداً ومنظم) */
+/* نتميز بـ (مصغّر جداً بدون مسافات) */
 .features {
     background: var(--bg-secondary);
-    padding: 40px 20px;
+    padding: 30px 20px;
     text-align: center;
 }
 .features h2 {
     font-size: 1.6rem;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .features-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 6px;
     max-width: 500px;
     margin: 0 auto;
 }
 .feature {
     background: var(--card-bg);
-    padding: 10px 12px;
-    border-radius: 18px;
+    padding: 6px 8px;
+    border-radius: 16px;
     border: 1px solid var(--gold);
     cursor: pointer;
     transition: 0.2s;
     text-align: center;
-    flex: 0 0 calc(33% - 12px);
-    min-width: 100px;
+    flex: 0 0 calc(33% - 6px);
+    min-width: 90px;
 }
 .feature:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-.feature i { font-size: 1.3rem; display: block; margin-bottom: 5px; color: var(--gold-dark); }
-.feature h4 { font-size: 0.8rem; margin-bottom: 2px; }
-.feature p { font-size: 0.6rem; color: var(--text-medium); margin-bottom: 0; }
-/* العنصر الخامس (طلب سريع) يأخذ مساحة أكبر قليلاً ويتوسط */
+.feature i { font-size: 1.2rem; display: block; margin-bottom: 3px; color: var(--gold-dark); }
+.feature h4 { font-size: 0.75rem; margin-bottom: 2px; }
+.feature p { font-size: 0.55rem; color: var(--text-medium); margin-bottom: 0; }
 .features-grid .feature:last-child {
-    flex: 0 0 calc(50% - 12px);
-    max-width: 160px;
+    flex: 0 0 calc(50% - 6px);
+    max-width: 140px;
 }
 @media (max-width: 550px) {
-    .features-grid { max-width: 280px; gap: 8px; }
-    .feature { flex: 0 0 calc(50% - 8px); }
-    .features-grid .feature:last-child { flex: 0 0 calc(70% - 8px); }
+    .features-grid { max-width: 260px; gap: 5px; }
+    .feature { flex: 0 0 calc(50% - 5px); min-width: 80px; }
+    .features-grid .feature:last-child { flex: 0 0 calc(70% - 5px); }
 }
 @media (max-width: 400px) {
     .feature { flex: 0 0 100%; }
     .features-grid .feature:last-child { flex: 0 0 100%; }
 }
 
-/* باقي الأقسام (كما هي دون تغيير كبير) */
+/* باقي الأقسام */
 .contact-section {
     display: flex;
     flex-wrap: wrap;
