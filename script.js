@@ -114,7 +114,6 @@ function displayProductsByType(type) {
     const filtered = allProducts.filter(p => p.type === type);
     grid.innerHTML = "";
     filtered.forEach(product => {
-        // لا نضيف محدد الكمية لمنتجات تجهيزات المناسبات
         const isEvents = type === 'events';
         grid.innerHTML += `
             <div class="product-card">
