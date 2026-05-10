@@ -48,11 +48,22 @@
     <div class="footer-content"><img src="images/logo.png" class="footer-logo"><h3>خيمة وتمرة</h3><p>أكلات شعبية بطابع تراثي أصيل</p><div class="footer-social"><a href="https://wa.me/966539836477" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@khaymah_w_tamrah" target="_blank"><i class="fab fa-tiktok"></i></a></div><div class="footer-links"><a href="https://wa.me/966539836477" target="_blank">📞 0539836477</a><a href="https://www.tiktok.com/@khaymah_w_tamrah" target="_blank">📱 @khaymah_w_tamrah</a></div><p class="copyright">2025 © خيمة وتمرة</p></div>
 </footer>
 
-<div id="detailsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal()">&times;</span><div id="modalDetails"></div></div></div>
-<div id="cartSidebar" class="cart-sidebar"><div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div><div id="cartItemsList" class="cart-items"></div><div id="cartTotal" class="cart-total"></div><button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button></div>
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div id="modalDetails"></div>
+    </div>
+</div>
+
+<div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div>
+    <div id="cartItemsList" class="cart-items"></div>
+    <div id="cartTotal" class="cart-total"></div>
+    <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button>
+</div>
 <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
 
-<script src="script.js"></script>
+<script src="script.js?v=5"></script>
 <script>displayProductsByType('sakhanat');</script>
 </body>
-</html>
+</html> 
