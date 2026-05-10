@@ -114,17 +114,21 @@ function displayProductsByType(type) {
     const filtered = allProducts.filter(p => p.type === type);
     grid.innerHTML = "";
     filtered.forEach(product => {
+        // لا نضيف محدد الكمية لمنتجات تجهيزات المناسبات
+        const isEvents = type === 'events';
         grid.innerHTML += `
             <div class="product-card">
                 <img class="product-image" src="${product.mainImage}" onerror="this.src='https://via.placeholder.com/300x300?text=${encodeURIComponent(product.name)}'" onclick="showDetails(${product.id})">
                 <h3 class="product-name">${product.name}</h3>
                 <div class="product-category">${product.category}</div>
                 <button class="btn-details" onclick="showDetails(${product.id})">📖 تفاصيل</button>
-                <div class="quantity-selector">
-                    <button class="quantity-btn" onclick="changeQuantity(${product.id},-1)">−</button>
-                    <span class="quantity-value" id="qty_${product.id}">1</span>
-                    <button class="quantity-btn" onclick="changeQuantity(${product.id},1)">+</button>
-                </div>
+                ${!isEvents ? `
+                    <div class="quantity-selector">
+                        <button class="quantity-btn" onclick="changeQuantity(${product.id},-1)">−</button>
+                        <span class="quantity-value" id="qty_${product.id}">1</span>
+                        <button class="quantity-btn" onclick="changeQuantity(${product.id},1)">+</button>
+                    </div>
+                ` : ''}
                 <button class="btn-add" onclick="addToCart(${product.id})">➕ أضف للسلة</button>
             </div>
         `;
@@ -144,8 +148,9 @@ function changeQuantity(id, delta) {
 function addToCart(id) {
     const product = allProducts.find(p => p.id === id);
     if (!product) return;
+    let qty = 1;
     const qtySpan = document.getElementById(`qty_${id}`);
-    const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
+    if (qtySpan) qty = parseInt(qtySpan.innerText);
     const existing = cart.find(i => i.id === id);
     if (existing) existing.qty += qty;
     else cart.push({ id: product.id, name: product.name + " (" + product.category + ")", qty: qty });
