@@ -6,15 +6,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const overlay = document.getElementById("cartOverlay");
     if (sidebar) sidebar.classList.remove("open");
     if (overlay) overlay.classList.remove("show");
-    
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        const toggleIcon = document.querySelector('.theme-toggle i');
-        if (toggleIcon) toggleIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
+
+    const savedTheme = localStorage.getItem('theme');  
+    if (savedTheme) {  
+        document.documentElement.setAttribute('data-theme', savedTheme);  
+        const toggleIcon = document.querySelector('.theme-toggle i');  
+        if (toggleIcon) toggleIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';  
+    } else {  
+        document.documentElement.setAttribute('data-theme', 'light');  
     }
+    
+    // تحديث السلة عند تحميل الصفحة
+    updateCartDisplay();
 });
 
 function showToast(message, type = "success") {
@@ -112,10 +115,10 @@ function displayProductsByType(type) {
     const grid = document.getElementById("productsGrid");
     if (!grid) return;
     const filtered = allProducts.filter(p => p.type === type);
-    grid.innerHTML = "";
+    let html = "";
     filtered.forEach(product => {
         const isEvents = type === 'events';
-        grid.innerHTML += `
+        html += `
             <div class="product-card">
                 <img class="product-image" src="${product.mainImage}" onerror="this.src='https://via.placeholder.com/300x300?text=${encodeURIComponent(product.name)}'" onclick="showDetails(${product.id})">
                 <h3 class="product-name">${product.name}</h3>
@@ -134,6 +137,7 @@ function displayProductsByType(type) {
             </div>
         `;
     });
+    grid.innerHTML = html;
     updateCartDisplay();
 }
 
