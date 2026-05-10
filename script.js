@@ -40,7 +40,7 @@ function toggleTheme() {
     if (toggleIcon) toggleIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 }
 
-// ========== منتجات السخانات (29 صنفاً) ==========
+// ========== منتجات السخانات ==========
 const sakhanatProducts = [
     { id: 1, name: "حنيني", type: "sakhanat", category: "سخانات", mainImage: "images/حنيني.png", images: ["images/حنيني.png"], description: "حنيني تقليدي لذيذ" },
     { id: 2, name: "مشغوثة (عيش جنوبي)", type: "sakhanat", category: "سخانات", mainImage: "images/مشغوثه.png", images: ["images/مشغوثه.png"], description: "" },
@@ -73,7 +73,7 @@ const sakhanatProducts = [
     { id: 29, name: "رز بالحليب", type: "sakhanat", category: "سخانات", mainImage: "images/رز بالحليب.png", images: ["images/رز بالحليب.png"], description: "" }
 ];
 
-// ========== منتجات الصحون (19 صنفاً) ==========
+// ========== منتجات الصحون ==========
 const sohonProducts = [
     { id: 201, name: "صحن مشكل مراصيع مع ميني ملة", type: "sohon", category: "صحون", mainImage: "images/صحن مشكل مله محشيه مع المراصيع.png", images: ["images/صحن مشكل مله محشيه مع المراصيع.png"], description: "صحن تراثي يجمع بين المراصيع والمله المحشية" },
     { id: 202, name: "صحن مشكل مله محشيه مع المراصيع (كبير)", type: "sohon", category: "صحون", mainImage: "images/صحن مشكل مله محشيه مع المراصيع (كبير).png", images: ["images/صحن مشكل مله محشيه مع المراصيع (كبير).png"], description: "حجم كبير مناسب للعزائم" },
@@ -96,14 +96,14 @@ const sohonProducts = [
     { id: 219, name: "شعثه", type: "sohon", category: "صحون", mainImage: "images/شعثه.png", images: ["images/شعثه.png"], description: "" }
 ];
 
-// ========== منتجات تجهيزات المناسبات (6 أصناف) ==========
+// ========== منتجات تجهيزات المناسبات ==========
 const eventsProducts = [
-    { id: 301, name: "كراسي فاخرة - 24 كرسي", type: "events", category: "تأجير", mainImage: "images/chairs1.jpg", images: ["images/chairs1.jpg", "images/chairs2.jpg"], description: "كراسي ذهبية فاخرة عدد 24 كرسي، مناسبة للأفراح والعزاء. لون ذهبي مع وسادة حمراء." },
-    { id: 302, name: "طاولات كبيرة - 12 طاولة", type: "events", category: "تأجير", mainImage: "images/tables1.jpg", images: ["images/tables1.jpg", "images/tables2.jpg"], description: "طاولات خشبية كبيرة قطر 120 سم، عدد 12 طاولة، مثالية للولائم الكبيرة." },
-    { id: 303, name: "مظلات وخيام صغيرة - 8 قطع", type: "events", category: "تأجير", mainImage: "images/umbrellas1.jpg", images: ["images/umbrellas1.jpg"], description: "مظلات وخيام للتظليل مقاس 3×3 متر، عدد 8 خيام." },
-    { id: 304, name: "أدوات مائدة كاملة (50 شخص)", type: "events", category: "تأجير", mainImage: "images/cutlery.jpg", images: ["images/cutlery.jpg", "images/plates.jpg"], description: "صحون، أكواب، ملاعق وشوك لـ 50 شخص، خدمة كاملة." },
-    { id: 305, name: "بطانيات وسجاد للعزاء - 50 قطعة", type: "events", category: "تأجير", mainImage: "images/blankets.jpg", images: ["images/blankets.jpg"], description: "بطانيات وسجاد أرضي مريح، عدد 50 قطعة مناسبة للمجالس التراثية." },
-    { id: 306, name: "إضاءة وديكور (12 لمبة LED)", type: "events", category: "تأجير", mainImage: "images/lights.jpg", images: ["images/lights.jpg", "lights2.jpg"], description: "أضواء ليد ملونة وزينة للمناسبات السعيدة، طقم كامل 12 لمبة." }
+    { id: 301, name: "كراسي فاخرة - 24 كرسي", type: "events", category: "تأجير", mainImage: "images/chairs1.jpg", images: ["images/chairs1.jpg", "images/chairs2.jpg"], description: "كراسي ذهبية فاخرة عدد 24 كرسي، مناسبة للأفراح والعزاء." },
+    { id: 302, name: "طاولات كبيرة - 12 طاولة", type: "events", category: "تأجير", mainImage: "images/tables1.jpg", images: ["images/tables1.jpg"], description: "طاولات خشبية كبيرة قطر 120 سم، عدد 12 طاولة." },
+    { id: 303, name: "مظلات وخيام صغيرة - 8 قطع", type: "events", category: "تأجير", mainImage: "images/umbrellas1.jpg", images: ["images/umbrellas1.jpg"], description: "مظلات وخيام للتظليل مقاس 3×3 متر." },
+    { id: 304, name: "أدوات مائدة كاملة (50 شخص)", type: "events", category: "تأجير", mainImage: "images/cutlery.jpg", images: ["images/cutlery.jpg"], description: "صحون، أكواب، ملاعق وشوك لـ 50 شخص." },
+    { id: 305, name: "بطانيات وسجاد للعزاء - 50 قطعة", type: "events", category: "تأجير", mainImage: "images/blankets.jpg", images: ["images/blankets.jpg"], description: "بطانيات وسجاد أرضي مريح." },
+    { id: 306, name: "إضاءة وديكور (12 لمبة LED)", type: "events", category: "تأجير", mainImage: "images/lights.jpg", images: ["images/lights.jpg"], description: "أضواء ليد ملونة وزينة للمناسبات السعيدة." }
 ];
 
 const allProducts = [...sakhanatProducts, ...sohonProducts, ...eventsProducts];
