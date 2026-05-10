@@ -512,6 +512,11 @@ body {
     line-height: 1.4;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    min-height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .product-category {
@@ -839,6 +844,7 @@ body {
     .product-name {
         font-size: 0.9rem;
         line-height: 1.5;
+        min-height: 85px;
     }
     .products-grid {
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
