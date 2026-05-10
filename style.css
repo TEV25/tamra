@@ -466,7 +466,7 @@ body {
 .banner-content p { font-size: 0.9rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
 .banner-icon { width: 90px; height: 90px; object-fit: contain; margin-bottom: 20px; }
 
-/* ===== بطاقات المنتجات المحسنة (باستخدام product-actions) ===== */
+/* ===== بطاقات المنتجات المحسنة ===== */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -525,12 +525,19 @@ body {
     margin-bottom: 10px;
 }
 
-/* حاوية الأزرار: تثبيت الكل أسفل الكرت */
+/* حاوية الأزرار: تثبيت الكل أسفل الكرت مع عرض كامل */
 .product-actions {
     margin-top: auto;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
+}
+
+/* جعل جميع الأزرار ومحدد الكمية بنفس العرض */
+.product-actions button,
+.quantity-selector {
+    width: 100%;
 }
 
 /* تنسيق الأزرار ومحدد الكمية */
@@ -565,6 +572,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 8px;
+    min-height: 38px;
 }
 
 .quantity-btn {
