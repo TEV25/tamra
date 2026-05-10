@@ -784,17 +784,97 @@ body {
 
 /* ===== تحسينات الشاشات الصغيرة ===== */
 @media (max-width: 768px) {
-    .slider-frame img { height: 220px; }
-    .products-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-title { font-size: 1.3em; }
-    .menu-icon img { width: 60px; height: 60px; }
-    .banner-icon { width: 70px; height: 70px; }
-    .modal .close-modal { width: 35px; height: 35px; font-size: 1.5rem; left: 10px; top: 10px; }
+    /* تحسين البطاقة الترحيبية */
+    .hero-section {
+        min-height: 380px;
+    }
+    .hero-content {
+        padding: 12px 15px;
+        width: 92%;
+        max-width: 90%;
+        background: rgba(62, 39, 35, 0.25);
+        backdrop-filter: blur(5px);
+        border-radius: 45px;
+    }
+    [data-theme="dark"] .hero-content {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(6px);
+    }
+    .hero-logo {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 5px;
+    }
+    .hero-title {
+        font-size: 1.2rem;
+        margin-bottom: 2px;
+    }
+    .hero-subtitle {
+        font-size: 0.7rem;
+        margin-bottom: 8px;
+    }
+    .hero-buttons {
+        gap: 6px;
+        margin-bottom: 8px;
+    }
+    .hero-btn {
+        padding: 4px 12px;
+        font-size: 0.7rem;
+    }
+    .hero-btn.primary {
+        gap: 4px;
+    }
+    .btn-icon {
+        width: 18px;
+        height: 18px;
+        margin-left: 4px;
+    }
+    .contact-info {
+        gap: 6px;
+    }
+    .contact-link {
+        padding: 3px 8px;
+        font-size: 0.6rem;
+    }
+    /* باقي تحسينات الجوال */
+    .slider-frame img {
+        height: 220px;
+    }
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .menu-icon img {
+        width: 60px;
+        height: 60px;
+    }
+    .banner-icon {
+        width: 70px;
+        height: 70px;
+    }
+    .modal .close-modal {
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+        left: 10px;
+        top: 10px;
+    }
 }
+
 @media (max-width: 600px) {
-    .home-menu-grid { grid-template-columns: 1fr; }
-    .features-grid { max-width: 280px; }
-    .feature i { font-size: 1.4rem; }
-    .feature h4 { font-size: 0.8rem; }
-    .contact-card { width: 90%; max-width: 280px; }
+    .home-menu-grid {
+        grid-template-columns: 1fr;
+    }
+    .features-grid {
+        max-width: 280px;
+    }
+    .feature i {
+        font-size: 1.4rem;
+    }
+    .feature h4 {
+        font-size: 0.8rem;
+    }
+    .contact-card {
+        width: 90%;
+        max-width: 280px;
+    }
 }
