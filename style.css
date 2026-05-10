@@ -469,7 +469,7 @@ body {
 /* ===== بطاقات المنتجات المحسنة (باستخدام product-actions) ===== */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 25px;
     padding: 50px 20px;
     max-width: 1300px;
@@ -486,6 +486,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow: hidden;
 }
 
 .product-card:hover {
@@ -830,12 +831,23 @@ body {
         padding: 3px 8px;
         font-size: 0.6rem;
     }
+    /* تحسين الكروت على الجوال */
+    .product-card {
+        border-radius: 16px;
+        padding: 12px;
+    }
+    .product-name {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 15px;
+        padding: 30px 12px;
+    }
     /* باقي تحسينات الجوال */
     .slider-frame img {
         height: 220px;
-    }
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
     .menu-icon img {
         width: 60px;
