@@ -120,15 +120,17 @@ function displayProductsByType(type) {
                 <img class="product-image" src="${product.mainImage}" onerror="this.src='https://via.placeholder.com/300x300?text=${encodeURIComponent(product.name)}'" onclick="showDetails(${product.id})">
                 <h3 class="product-name">${product.name}</h3>
                 <div class="product-category">${product.category}</div>
-                <button class="btn-details" onclick="showDetails(${product.id})">📖 تفاصيل</button>
-                ${!isEvents ? `
-                    <div class="quantity-selector">
-                        <button class="quantity-btn" onclick="changeQuantity(${product.id},-1)">−</button>
-                        <span class="quantity-value" id="qty_${product.id}">1</span>
-                        <button class="quantity-btn" onclick="changeQuantity(${product.id},1)">+</button>
-                    </div>
-                ` : ''}
-                <button class="btn-add" onclick="addToCart(${product.id})">➕ أضف للسلة</button>
+                <div class="product-actions">
+                    <button class="btn-details" onclick="showDetails(${product.id})">📖 تفاصيل</button>
+                    ${!isEvents ? `
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(${product.id},-1)">−</button>
+                            <span class="quantity-value" id="qty_${product.id}">1</span>
+                            <button class="quantity-btn" onclick="changeQuantity(${product.id},1)">+</button>
+                        </div>
+                    ` : ''}
+                    <button class="btn-add" onclick="addToCart(${product.id})">➕ أضف للسلة</button>
+                </div>
             </div>
         `;
     });
