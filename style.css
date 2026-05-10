@@ -315,65 +315,78 @@ body {
     font-weight: 700;
 }
 
-/* نتميز بـ (مصغّر جداً بدون مسافات) */
+/* ===== قسم نتميز بـ (شبكة 2+2+1) ===== */
 .features {
     background: var(--bg-secondary);
-    padding: 30px 20px;
+    padding: 40px 20px;
     text-align: center;
 }
 .features h2 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+.features h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
 }
 .features-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     max-width: 500px;
     margin: 0 auto;
 }
 .feature {
     background: var(--card-bg);
-    padding: 6px 8px;
-    border-radius: 16px;
+    padding: 20px 15px;
+    border-radius: 25px;
     border: 1px solid var(--gold);
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
     text-align: center;
-    flex: 0 0 calc(33% - 6px);
-    min-width: 90px;
 }
-.feature:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-.feature i { font-size: 1.2rem; display: block; margin-bottom: 3px; color: var(--gold-dark); }
-.feature h4 { font-size: 0.75rem; margin-bottom: 2px; }
-.feature p { font-size: 0.55rem; color: var(--text-medium); margin-bottom: 0; }
+.feature:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.feature i { font-size: 2rem; display: block; margin-bottom: 10px; color: var(--gold-dark); }
+.feature h4 { font-size: 1rem; margin-bottom: 5px; }
+.feature p { font-size: 0.7rem; color: var(--text-medium); margin-bottom: 0; }
+/* العنصر الخامس (طلب سريع) يأخذ عرض الصفين ويتوسط */
 .features-grid .feature:last-child {
-    flex: 0 0 calc(50% - 6px);
-    max-width: 140px;
+    grid-column: span 2;
+    max-width: 280px;
+    margin: 0 auto;
+    width: 100%;
 }
 @media (max-width: 550px) {
-    .features-grid { max-width: 260px; gap: 5px; }
-    .feature { flex: 0 0 calc(50% - 5px); min-width: 80px; }
-    .features-grid .feature:last-child { flex: 0 0 calc(70% - 5px); }
+    .features-grid { gap: 15px; max-width: 320px; }
+    .feature i { font-size: 1.6rem; }
+    .feature h4 { font-size: 0.9rem; }
 }
 @media (max-width: 400px) {
-    .feature { flex: 0 0 100%; }
-    .features-grid .feature:last-child { flex: 0 0 100%; }
+    .features-grid { gap: 12px; }
+    .feature { padding: 15px 10px; }
 }
 
-/* باقي الأقسام */
+/* ===== قسم التواصل (واتساب وتيك توك) ===== */
 .contact-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
     padding: 50px 20px;
     background: var(--bg-secondary);
+    margin-top: 0;
 }
 .contact-card {
     background: var(--card-bg);
-    padding: 25px 20px;
+    padding: 30px 20px;
     border-radius: 30px;
     text-align: center;
     width: 260px;
@@ -381,22 +394,24 @@ body {
     transition: 0.3s;
 }
 .contact-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-.contact-card i { font-size: 2.8em; color: var(--gold); margin-bottom: 10px; }
-.contact-card h3 { font-size: 1.1em; margin-bottom: 5px; }
-.contact-card p { font-size: 0.75em; margin-bottom: 12px; }
+.contact-card i { font-size: 3rem; color: var(--gold); margin-bottom: 15px; }
+.contact-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
+.contact-card p { font-size: 0.85rem; margin-bottom: 15px; color: var(--text-medium); }
 .btn-whatsapp, .btn-tiktok {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     background: linear-gradient(135deg, #25D366, #128C7E);
     color: white;
-    padding: 6px 14px;
+    padding: 8px 18px;
     border-radius: 40px;
     text-decoration: none;
     font-weight: 700;
+    font-size: 0.9rem;
 }
 .btn-tiktok { background: linear-gradient(135deg, #000, #1a1a1a); border: 1px solid var(--gold); }
 
+/* باقي الأقسام (footer، المنتجات، الباقات، المودال، السلة) */
 .footer {
     background: var(--footer-bg);
     text-align: center;
