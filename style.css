@@ -466,7 +466,7 @@ body {
 .banner-content p { font-size: 0.9rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
 .banner-icon { width: 90px; height: 90px; object-fit: contain; margin-bottom: 20px; }
 
-/* ===== بطاقات المنتجات المحسنة ===== */
+/* ===== بطاقات المنتجات المحسنة (باستخدام product-actions) ===== */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -511,20 +511,26 @@ body {
     line-height: 1.4;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    flex: 0 0 auto;
 }
 
 .product-category {
     font-size: 0.7rem;
     color: var(--text-medium);
     margin-bottom: 10px;
-    flex: 0 0 auto;
 }
 
+/* حاوية الأزرار: تثبيت الكل أسفل الكرت */
+.product-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* تنسيق الأزرار ومحدد الكمية */
 .btn-details, .btn-add {
     padding: 6px 8px;
     font-size: 0.75rem;
-    margin: 4px 0;
     border-radius: 30px;
     font-weight: 700;
     border: none;
@@ -553,7 +559,6 @@ body {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    margin: 8px 0;
 }
 
 .quantity-btn {
@@ -572,17 +577,6 @@ body {
     text-align: center;
     font-weight: bold;
 }
-
-/* تثبيت الأزرار في أسفل الكارت */
-.product-card .btn-details,
-.product-card .quantity-selector,
-.product-card .btn-add {
-    margin-top: auto;
-}
-
-.product-card .btn-details { order: 1; }
-.product-card .quantity-selector { order: 2; }
-.product-card .btn-add { order: 3; }
 
 /* ===== الباقات ===== */
 .packages-grid {
