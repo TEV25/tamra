@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
         document.documentElement.setAttribute('data-theme', 'light');  
     }
     
-    // تحديث السلة عند تحميل الصفحة
     updateCartDisplay();
 });
 
@@ -96,7 +95,8 @@ const sohonProducts = [
     { id: 216, name: "تمريه جنوبيه", type: "sohon", category: "صحون", mainImage: "images/تمريه جنوبيه.png", images: ["images/تمريه جنوبيه.png"], description: "" },
     { id: 217, name: "بسبوسة (سادة - بالقشطة)", type: "sohon", category: "صحون", mainImage: "images/بسبوسة.png", images: ["images/بسبوسة.png"], description: "" },
     { id: 218, name: "الغريبية", type: "sohon", category: "صحون", mainImage: "images/غريبية.png", images: ["images/غريبية.png"], description: "" },
-    { id: 219, name: "شعثه", type: "sohon", category: "صحون", mainImage: "images/شعثه.png", images: ["images/شعثه.png"], description: "" }
+    { id: 219, name: "شعثه", type: "sohon", category: "صحون", mainImage: "images/شعثه.png", images: ["images/شعثه.png"], description: "" },
+    { id: 220, name: "مراصيع عادي", type: "sohon", category: "صحون", mainImage: "images/مراصيع.png", images: ["images/مراصيع.png"], description: "مراصيع عادي بالسمن والعسل" }
 ];
 
 // ========== منتجات تجهيزات المناسبات ==========
@@ -109,7 +109,26 @@ const eventsProducts = [
     { id: 306, name: "إضاءة وديكور (12 لمبة LED)", type: "events", category: "تأجير", mainImage: "images/lights.jpg", images: ["images/lights.jpg"], description: "أضواء ليد ملونة وزينة للمناسبات السعيدة." }
 ];
 
-const allProducts = [...sakhanatProducts, ...sohonProducts, ...eventsProducts];
+// ========== منتجات القهوة والضيافة ==========
+const beveragesProducts = [
+    { id: 401, name: "قهوة عربية فاخرة", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 402, name: "شاهي أحمر", type: "beverages", category: "القهوة والضيافة", description: "بالنعناع والحبق" },
+    { id: 403, name: "زنجبيل بالأناناس", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 404, name: "شاي أخضر", type: "beverages", category: "القهوة والضيافة", description: "عادي أو بالنعناع" },
+    { id: 405, name: "شاهي بالزعتر", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 406, name: "شاهي طائفي", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 407, name: "شاهي كرك", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 408, name: "يانسون", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 409, name: "زنجبيل بالعسل", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 410, name: "زنجبيل بالليمون", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 411, name: "كركديه", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 412, name: "شاهي الورد الأزرق", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 413, name: "رمان ساخن", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 414, name: "فواكه مشكلة ساخنة", type: "beverages", category: "القهوة والضيافة", description: "" },
+    { id: 415, name: "مانجا ساخنة", type: "beverages", category: "القهوة والضيافة", description: "" }
+];
+
+const allProducts = [...sakhanatProducts, ...sohonProducts, ...eventsProducts, ...beveragesProducts];
 
 function displayProductsByType(type) {
     const grid = document.getElementById("productsGrid");
@@ -117,22 +136,43 @@ function displayProductsByType(type) {
     const filtered = allProducts.filter(p => p.type === type);
     let html = "";
     filtered.forEach(product => {
-        const isEvents = type === 'events';
+        const hideQty = (type === 'events');
+        let imageHtml = '';
+        
+        if (type === "beverages") {
+            // إظهار الوصف فقط للشاهي الأحمر والشاي الأخضر
+            const showDescription = (product.name === "شاهي أحمر" || product.name === "شاي أخضر");
+            imageHtml = `
+                <div class="product-image beverage-name-only">
+                    <div class="beverage-title">${product.name}</div>
+                    ${showDescription ? `<div class="beverage-subtitle">${product.description}</div>` : ''}
+                </div>
+            `;
+        }
+        else if (product.icon) {
+            imageHtml = `<div class="product-image" style="background: var(--bg-secondary); display: flex; align-items: center; justify-content: center;"><i class="${product.icon}" style="font-size: 4rem; color: var(--gold);"></i></div>`;
+        }
+        else {
+            imageHtml = `<img class="product-image" src="${product.mainImage}" onerror="this.src='https://via.placeholder.com/300x300?text=${encodeURIComponent(product.name)}'" onclick="showDetails(${product.id})">`;
+        }
+        
         html += `
             <div class="product-card">
-                <img class="product-image" src="${product.mainImage}" onerror="this.src='https://via.placeholder.com/300x300?text=${encodeURIComponent(product.name)}'" onclick="showDetails(${product.id})">
+                ${imageHtml}
                 <h3 class="product-name">${product.name}</h3>
                 <div class="product-category">${product.category}</div>
                 <div class="product-actions">
-                    <button class="btn-details" onclick="showDetails(${product.id})">📖 تفاصيل</button>
-                    ${!isEvents ? `
+                    ${type !== "beverages" ? `
+                        <button class="btn-details" onclick="showDetails(${product.id})"><i class="fas fa-info-circle"></i> تفاصيل</button>
+                    ` : ''}
+                    ${!hideQty ? `
                         <div class="quantity-selector">
                             <button class="quantity-btn" onclick="changeQuantity(${product.id},-1)">−</button>
                             <span class="quantity-value" id="qty_${product.id}">1</span>
                             <button class="quantity-btn" onclick="changeQuantity(${product.id},1)">+</button>
                         </div>
                     ` : ''}
-                    <button class="btn-add" onclick="addToCart(${product.id})">➕ أضف للسلة</button>
+                    <button class="btn-add" onclick="addToCart(${product.id})"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
                 </div>
             </div>
         `;
@@ -187,7 +227,7 @@ function updateCartDisplay() {
     }
     let html = "";
     cart.forEach(i => {
-        html += `<div class="cart-item"><div><div class="cart-item-name">${i.name}</div><div class="cart-item-qty">الكمية: ${i.qty}</div></div><button class="btn-remove" onclick="removeFromCart(${i.id})">🗑️ حذف</button></div>`;
+        html += `<div class="cart-item"><div><div class="cart-item-name">${i.name}</div><div class="cart-item-qty">الكمية: ${i.qty}</div></div><button class="btn-remove" onclick="removeFromCart(${i.id})"><i class="fas fa-trash-alt"></i> حذف</button></div>`;
     });
     container.innerHTML = html;
     document.getElementById("cartTotal").innerHTML = `🏕️ إجمالي القطع: ${total}`;
@@ -217,13 +257,20 @@ function showDetails(id) {
     if (!p) return;
     const modal = document.getElementById("detailsModal");
     const detailsDiv = document.getElementById("modalDetails");
-    let gallery = `<img class="main-image" id="mainModalImage" src="${p.mainImage}" onerror="this.src='https://via.placeholder.com/400?text=${encodeURIComponent(p.name)}'"><div class="image-gallery">`;
-    (p.images || [p.mainImage]).forEach(img => {
-        gallery += `<img class="gallery-img" src="${img}" onclick="changeModalImage('${img}')" onerror="this.style.display='none'">`;
-    });
-    gallery += `</div>`;
+    let gallery = '';
+    if (p.type === "beverages") {
+        gallery = `<div class="main-image beverage-name-only" style="min-height: 200px; display: flex; align-items: center; justify-content: center;"><div class="beverage-title" style="font-size: 1.5rem;">${p.name}</div></div>`;
+    } else if (p.icon) {
+        gallery = `<div class="main-image" style="background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; min-height: 200px;"><i class="${p.icon}" style="font-size: 6rem; color: var(--gold);"></i></div>`;
+    } else {
+        gallery = `<img class="main-image" id="mainModalImage" src="${p.mainImage}" onerror="this.src='https://via.placeholder.com/400?text=${encodeURIComponent(p.name)}'"><div class="image-gallery">`;
+        (p.images || [p.mainImage]).forEach(img => {
+            gallery += `<img class="gallery-img" src="${img}" onclick="changeModalImage('${img}')" onerror="this.style.display='none'">`;
+        });
+        gallery += `</div>`;
+    }
     const desc = p.description && p.description.trim() !== "" ? p.description : "لا يوجد وصف تفصيلي لهذا المنتج حاليًا. يرجى التواصل معنا للمزيد من المعلومات.";
-    detailsDiv.innerHTML = `${gallery}<h2>${p.name}</h2><div class="details-description"><strong>📝 الوصف:</strong><br>${desc}</div><div class="quantity-selector"><button class="quantity-btn" onclick="changeModalQty(-1)">−</button><span class="quantity-value" id="modalQty">1</span><button class="quantity-btn" onclick="changeModalQty(1)">+</button><button class="btn-add" onclick="addFromModal(${p.id})">➕ أضف للسلة</button></div>`;
+    detailsDiv.innerHTML = `${gallery}<h2>${p.name}</h2><div class="details-description"><strong>📝 الوصف:</strong><br>${desc}</div><div class="quantity-selector"><button class="quantity-btn" onclick="changeModalQty(-1)">−</button><span class="quantity-value" id="modalQty">1</span><button class="quantity-btn" onclick="changeModalQty(1)">+</button><button class="btn-add" onclick="addFromModal(${p.id})"><i class="fas fa-cart-plus"></i> أضف للسلة</button></div>`;
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
 }
