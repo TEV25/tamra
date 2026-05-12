@@ -23,6 +23,7 @@
                 <a href="sohon.html"><img src="images/sohon-icon.png" class="dropdown-icon" onerror="this.style.display='none'"> الصحون</a>
                 <a href="packages.html"><img src="images/packages-icon.png" class="dropdown-icon" onerror="this.style.display='none'"> الباقات</a>
                 <a href="events.html" class="active"><img src="images/events-icon.png" class="dropdown-icon" onerror="this.style.display='none'"> تجهيزات المناسبات</a>
+                <a href="beverages.html"><img src="images/beverages-icon.png" class="dropdown-icon" onerror="this.style.display='none'"> القهوة والضيافة</a>
             </div>
         </div>
         <div class="nav-actions"><div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-circle-half-stroke"></i></div><div class="nav-cart" onclick="toggleCart()">🛒 <span id="cartCountNav">0</span></div></div>
@@ -33,11 +34,66 @@
     <div class="banner-content">
         <img src="images/events-icon.png" class="banner-icon" onerror="this.style.display='none'">
         <h1>تجهيزات المناسبات</h1>
-        <p>تأجير كراسي - طاولات - مظلات - أدوات مائدة - إضاءة</p>
+        <p>أفضل الخدمات لتأجير كراسي وطاولات ومستلزمات المناسبات والعزاء</p>
     </div>
 </div>
 
-<div class="products-grid" id="productsGrid"></div>
+<div class="products-grid" style="max-width: 1000px;">
+    <div class="product-card">
+        <div class="product-image" style="background: #c9a84c20; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-chair" style="font-size: 4rem; color: var(--gold);"></i>
+        </div>
+        <h3 class="product-name">كراسي فاخرة</h3>
+        <div class="product-category">تأجير</div>
+        <p style="color: var(--text-medium); font-size: 0.8rem;">كراسي أنيقة تناسب العزاء والأفراح والمناسبات</p>
+        <button class="btn-add" onclick="addServiceToCart('كراسي فاخرة')">➕ أضف للسلة</button>
+    </div>
+    <div class="product-card">
+        <div class="product-image" style="background: #c9a84c20; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-table" style="font-size: 4rem; color: var(--gold);"></i>
+        </div>
+        <h3 class="product-name">طاولات كبيرة</h3>
+        <div class="product-category">تأجير</div>
+        <p style="color: var(--text-medium); font-size: 0.8rem;">طاولات خشبية كبيرة للولائم والعزائم</p>
+        <button class="btn-add" onclick="addServiceToCart('طاولات كبيرة')">➕ أضف للسلة</button>
+    </div>
+    <div class="product-card">
+        <div class="product-image" style="background: #c9a84c20; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-umbrella" style="font-size: 4rem; color: var(--gold);"></i>
+        </div>
+        <h3 class="product-name">مظلات وخيام صغيرة</h3>
+        <div class="product-category">تأجير</div>
+        <p style="color: var(--text-medium); font-size: 0.8rem;">مظلات وخيام للتظليل في المناسبات الخارجية</p>
+        <button class="btn-add" onclick="addServiceToCart('مظلات وخيام صغيرة')">➕ أضف للسلة</button>
+    </div>
+    <div class="product-card">
+        <div class="product-image" style="background: #c9a84c20; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-utensil-spoon" style="font-size: 4rem; color: var(--gold);"></i>
+        </div>
+        <h3 class="product-name">أدوات مائدة (صحون - أكواب - ملاعق)</h3>
+        <div class="product-category">تأجير / توفير</div>
+        <p style="color: var(--text-medium); font-size: 0.8rem;">أدوات طعام كاملة حسب العدد المطلوب</p>
+        <button class="btn-add" onclick="addServiceToCart('أدوات مائدة (صحون - أكواب - ملاعق)')">➕ أضف للسلة</button>
+    </div>
+    <div class="product-card">
+        <div class="product-image" style="background: #c9a84c20; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-tshirt" style="font-size: 4rem; color: var(--gold);"></i>
+        </div>
+        <h3 class="product-name">بطانيات وسجاد للعزاء</h3>
+        <div class="product-category">تأجير</div>
+        <p style="color: var(--text-medium); font-size: 0.8rem;">بطانيات أرضية وسجاد للعزاء والمجالس التراثية</p>
+        <button class="btn-add" onclick="addServiceToCart('بطانيات وسجاد للعزاء')">➕ أضف للسلة</button>
+    </div>
+    <div class="product-card">
+        <div class="product-image" style="background: #c9a84c20; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-lightbulb" style="font-size: 4rem; color: var(--gold);"></i>
+        </div>
+        <h3 class="product-name">إضاءة وديكور</h3>
+        <div class="product-category">تأجير</div>
+        <p style="color: var(--text-medium); font-size: 0.8rem;">أضواء ليد وزينة للمناسبات السعيدة والعزائم</p>
+        <button class="btn-add" onclick="addServiceToCart('إضاءة وديكور')">➕ أضف للسلة</button>
+    </div>
+</div>
 
 <div class="contact-section">
     <div class="contact-card"><i class="fab fa-whatsapp"></i><h3>احجز الآن</h3><p>للحجز والاستفسار عن التجهيزات</p><a href="https://wa.me/966539836477" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> 0539836477</a></div>
@@ -48,22 +104,23 @@
     <div class="footer-content"><img src="images/logo.png" class="footer-logo"><h3>خيمة وتمرة</h3><p>أكلات شعبية بطابع تراثي أصيل</p><div class="footer-social"><a href="https://wa.me/966539836477" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@khaymah_w_tamrah" target="_blank"><i class="fab fa-tiktok"></i></a></div><div class="footer-links"><a href="https://wa.me/966539836477" target="_blank">📞 0539836477</a><a href="https://www.tiktok.com/@khaymah_w_tamrah" target="_blank">📱 @khaymah_w_tamrah</a></div><p class="copyright">2025 © خيمة وتمرة</p></div>
 </footer>
 
-<div id="detailsModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <div id="modalDetails"></div>
-    </div>
-</div>
-
-<div id="cartSidebar" class="cart-sidebar">
-    <div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div>
-    <div id="cartItemsList" class="cart-items"></div>
-    <div id="cartTotal" class="cart-total"></div>
-    <button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button>
-</div>
+<div id="detailsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal()">&times;</span><div id="modalDetails"></div></div></div>
+<div id="cartSidebar" class="cart-sidebar"><div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div><div id="cartItemsList" class="cart-items"></div><div id="cartTotal" class="cart-total"></div><button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button></div>
 <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
 
-<script src="script.js?v=5"></script>
-<script>displayProductsByType('events');</script>
+<script src="script.js?v=6"></script>
+<script>
+    function addServiceToCart(serviceName) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existing = cart.find(i => i.name === serviceName);
+        if (existing) existing.qty += 1;
+        else cart.push({ id: Date.now(), name: serviceName, qty: 1 });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        if (typeof updateCartDisplay === 'function') updateCartDisplay();
+        if (typeof showToast === 'function') showToast(`✅ تمت إضافة ${serviceName}`, "success");
+        else alert(`تمت إضافة ${serviceName}`);
+    }
+    if (typeof updateCartDisplay === 'function') updateCartDisplay();
+</script>
 </body>
 </html>
