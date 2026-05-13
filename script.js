@@ -170,11 +170,11 @@ const beveragesProducts = [
     { id: 420, name: "سحلب", type: "beverages", category: "القهوة والضيافة", description: "" },
     { id: 421, name: "هوت شوكليت", type: "beverages", category: "القهوة والضيافة", description: "" },
     { id: 422, name: "موهيتو", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 423, name: "جوافه", type: "beverages", category: "المشروبات الباردة", description: "مشروب بارد ومنعش" },
-    { id: 424, name: "كوكتيل", type: "beverages", category: "المشروبات الباردة", description: "كوكتيل فواكه طازج" },
-    { id: 425, name: "أفوكادو", type: "beverages", category: "المشروبات الباردة", description: "أفوكادو كريمي فاخر" },
-    { id: 426, name: "فراوله", type: "beverages", category: "المشروبات الباردة", description: "فراولة طبيعية منعشة" },
-    { id: 427, name: "رمان", type: "beverages", category: "المشروبات الباردة", description: "رمان بارد ولذيذ" }
+    { id: 423, name: "جوافه", type: "beverages", category: "العصيرات البارده", description: "" },
+    { id: 424, name: "كوكتيل", type: "beverages", category: "العصيرات البارده", description: "" },
+    { id: 425, name: "أفوكادو", type: "beverages", category: "العصيرات البارده", description: "" },
+    { id: 426, name: "فراوله", type: "beverages", category: "العصيرات البارده", description: "" },
+    { id: 427, name: "رمان", type: "beverages", category: "العصيرات البارده", description: "" }
 ];
 
 const allProducts = [...sakhanatProducts, ...sohonProducts, ...eventsProducts, ...beveragesProducts];
@@ -186,10 +186,10 @@ function displayProductsByType(type) {
 
     if (type === "beverages") {
         const hotDrinks = filtered.filter(p => p.category === "القهوة والضيافة");
-        const coldDrinks = filtered.filter(p => p.category === "المشروبات الباردة");
+        const coldDrinks = filtered.filter(p => p.category === "العصيرات البارده");
 
         let hotHTML = `<h2 class="beverages-section-title">القهوة والضيافة</h2>`;
-        let coldHTML = `<h2 class="beverages-section-title cold">المشروبات الباردة</h2>`;
+        let coldHTML = `<h2 class="beverages-section-title cold">العصيرات البارده</h2>`;
 
         function createDrinkCard(product) {
             const showDescription = (product.name === "شاهي أحمر" || product.name === "شاي أخضر");
