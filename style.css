@@ -2,6 +2,7 @@
 margin: 0;
 padding: 0;
 box-sizing: border-box;
+max-width: 100%;
 }
 
 :root {
@@ -55,22 +56,12 @@ background: var(--bg-primary);
 direction: rtl;
 color: var(--text-dark);
 transition: background 0.3s, color 0.3s;
-animation: pageFade 0.5s ease;
-overflow-x: hidden;
+overflow-x: clip;
 width: 100%;
 position: relative;
 }
 
-@keyframes pageFade {
-from {
-opacity: 0;
-transform: translateY(8px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
+/* تم حذف pageFade animation لأنها تسبب اهتزاز على الجوال */
 
 /* ===== شريط التنقل المحسن (بدون اهتزاز) ===== */
 .navbar {
