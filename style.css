@@ -781,15 +781,22 @@ width: 85%;
 max-width: 350px;
 height: 100%;
 background: var(--cart-bg);
-transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+transform: translateX(-100%);
+visibility: hidden;
+opacity: 0;
+transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1), opacity 0.2s ease;
 z-index: 1001;
 padding: 15px;
 overflow-y: auto;
 border-left: 3px solid var(--gold);
 box-shadow: -5px 0 25px rgba(0,0,0,0.15);
-transform: translateX(-100%);
 }
-.cart-sidebar.open { transform: translateX(0); }
+
+.cart-sidebar.open {
+transform: translateX(0);
+visibility: visible;
+opacity: 1;
+}
 .cart-overlay {
 position: fixed;
 top: 0;
