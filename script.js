@@ -179,11 +179,11 @@ const sohonProducts = [
     { id: 211, name: "قطايف محشية", type: "sohon", category: "صحون", mainImage: "images/قطايف محشيه بالقشطه.webp", images: ["images/قطايف محشيه بالقشطه.webp"], description: "" },
     { id: 212, name: "لبنيه", type: "sohon", category: "صحون", mainImage: "images/لبنيه.webp", images: ["images/لبنيه.webp"], description: "" },
     { id: 213, name: "أصابع زينب", type: "sohon", category: "صحون", mainImage: "images/اصابع زينب.webp", images: ["images/اصابع زينب.webp"], description: "" },
-    { id: 214, name: "كيكة الدخن بالتمر", type: "sohon", category: "صحون", mainImage: "images/كيكة الدخن.webp", images: ["images/كيكة الدخن.webp"], description: "" },
-    { id: 215, name: "كور التمر المحشيه بالطحينه", type: "sohon", category: "صحون", mainImage: "images/كور التمر.webp", images: ["images/كور التمر.webp"], description: "" },
+    { id: 214, name: "كيكة الدخن بالتمر", type: "sohon", category: "صحون", mainImage: "images/كيكة الدخن بالتمر.webp", images: ["images/كيكة الدخن بالتمر.webp"], description: "" },
+    { id: 215, name: "كور التمر المحشيه بالطحينه", type: "sohon", category: "صحون", mainImage: "images/كور التمر المحشيه بالطحينه.webp", images: ["images/كور التمر المحشيه بالطحينه.webp"], description: "" },
     { id: 216, name: "تمريه جنوبيه", type: "sohon", category: "صحون", mainImage: "images/تمريه جنوبيه.webp", images: ["images/تمريه جنوبيه.webp"], description: "" },
     { id: 217, name: "بسبوسة (سادة - بالقشطة)", type: "sohon", category: "صحون", mainImage: "images/بسبوسة.webp", images: ["images/بسبوسة.webp"], description: "" },
-    { id: 218, name: "الغريبية", type: "sohon", category: "صحون", mainImage: "images/غريبية.webp", images: ["images/غريبية.webp"], description: "" },
+    { id: 218, name: "الغريبية", type: "sohon", category: "صحون", mainImage: "images/الغريبية.webp", images: ["images/الغريبية.webp"], description: "" },
     { id: 219, name: "شعثه", type: "sohon", category: "صحون", mainImage: "images/شعثه.webp", images: ["images/شعثه.webp"], description: "" },
     { id: 220, name: "مراصيع عادي", type: "sohon", category: "صحون", mainImage: "images/مراصيع.webp", images: ["images/مراصيع.webp"], description: "مراصيع عادي بالسمن والعسل" },
     { id: 205, name: "ارز (كبسه - مضغوط - لحم دجاج - برياني - كشري - سليق - مندي - معدوس)", type: "sohon", category: "صحون", mainImage: "images/ارز كبسة.webp", images: ["images/ارز كبسة.webp"], description: "يشمل: كبسة، مضغوط، لحم دجاج، برياني، كشري، سليق، مندي، معدوس" }
@@ -201,11 +201,11 @@ const eventsProducts = [
     { id: 306, name: "كراسي VIP", type: "events", category: "تجهيزات المناسبات", mainImage: "images/كراسي vip (1).webp", images: ["images/كراسي vip (1).webp", "images/كراسي vip (2).webp", "images/كراسي vip (3).webp"], description: "" },
     { id: 307, name: "فرشات", type: "events", category: "تجهيزات المناسبات", mainImage: "images/فرشات.webp", images: ["images/فرشات.webp"], description: "" },
     { id: 308, name: "ممر بنفسجي", type: "events", category: "تجهيزات المناسبات", mainImage: "images/ممر بنفسجي.webp", images: ["images/ممر بنفسجي.webp"], description: "" },
-    { id: 309, name: "عقود إضاءه", type: "events", category: "تجهيزات المناسبات", mainImage: "images/عقود اضاءه.webp", images: ["images/عقود اضاءه.webp"], description: "" },
+    { id: 309, name: "عقود إضاءه", type: "events", category: "تجهيزات المناسبات", mainImage: "images/عقود إضاءه.webp", images: ["images/عقود إضاءه.webp"], description: "" },
     { id: 310, name: "ستيج", type: "events", category: "تجهيزات المناسبات", mainImage: "images/ستيج.webp", images: ["images/ستيج.webp"], description: "" },
     { id: 311, name: "سماعات", type: "events", category: "تجهيزات المناسبات", mainImage: "images/سماعات.webp", images: ["images/سماعات.webp"], description: "" },
     { id: 312, name: "مراوح", type: "events", category: "تجهيزات المناسبات", mainImage: "images/مراوح.webp", images: ["images/مراوح.webp"], description: "" },
-    { id: 313, name: "مكيفات صحراويه", type: "events", category: "تجهيزات المناسبات", mainImage: "images/مكيفات صحراويه.webp", images: ["images/مكيفات صحراويه.webp"], description: "" },
+    { id: 313, name: "مكيف صحراوي", type: "events", category: "تجهيزات المناسبات", mainImage: "images/مكيف صحراوي.webp", images: ["images/مكيف صحراوي.webp"], description: "" },
     { id: 314, name: "دي جي", type: "events", category: "تجهيزات المناسبات", mainImage: "images/ديجي DJ.webp", images: ["images/ديجي DJ.webp"], description: "" },
     { id: 315, name: "كوش", type: "events", category: "تجهيزات المناسبات", mainImage: "images/كوش.webp", images: ["images/كوش.webp"], description: "" }
 ];
