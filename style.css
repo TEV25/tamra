@@ -44,6 +44,11 @@ box-sizing: border-box;
 --hero-bg-light: rgba(0, 0, 0, 0.65);
 }
 
+html {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+}
+
 body {
 font-family: 'Cairo', sans-serif;
 background: var(--bg-primary);
@@ -51,6 +56,9 @@ direction: rtl;
 color: var(--text-dark);
 transition: background 0.3s, color 0.3s;
 animation: pageFade 0.5s ease;
+overflow-x: hidden;
+width: 100%;
+position: relative;
 }
 
 @keyframes pageFade {
@@ -64,7 +72,7 @@ transform: translateY(0);
 }
 }
 
-/* ===== شريط التنقل المحسن ===== */
+/* ===== شريط التنقل المحسن (بدون اهتزاز) ===== */
 .navbar {
 background: var(--navbar-bg);
 position: sticky;
@@ -80,8 +88,18 @@ justify-content: space-between;
 padding: 0 15px;
 max-width: 1400px;
 margin: 0 auto;
+width: 100%;
 }
-.logo { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.logo {
+display: flex;
+align-items: center;
+gap: 8px;
+cursor: pointer;
+position: static;
+transform: none;
+margin: 0 auto;
+order: 2;
+}
 .logo-img { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--gold); }
 .logo-text { font-size: 1rem; font-weight: 700; color: var(--gold); }
 .dropbtn {
@@ -94,7 +112,12 @@ cursor: pointer;
 transition: var(--tr);
 }
 .dropbtn:hover { background: var(--gold); color: #121212; }
-.nav-actions { display: flex; gap: 10px; }
+.nav-actions {
+display: flex;
+gap: 10px;
+order: 3;
+margin-right: auto;
+}
 .theme-toggle, .nav-cart {
 width: 34px; height: 34px;
 border-radius: 50%;
@@ -106,6 +129,10 @@ cursor: pointer;
 .theme-toggle { background: rgba(255,255,255,0.1); border: 1px solid var(--gold); color: var(--gold); }
 .nav-cart { background: linear-gradient(135deg, #c9a84c, #b8860b); color: #3e2723; position: relative; }
 #cartCountNav { position: absolute; top: -5px; right: -5px; background: #3e2723; color: var(--gold); font-size: 0.65rem; padding: 2px 5px; border-radius: 50%; }
+.dropdown {
+order: 1;
+margin-left: auto;
+}
 .dropdown-content {
 display: none;
 position: absolute;
@@ -127,11 +154,6 @@ font-weight: 600;
 }
 .dropdown-content a:hover { background: linear-gradient(135deg, #c9a84c, #b8860b); color: #121212; }
 .dropdown:hover .dropdown-content { display: block; }
-
-/* ترتيب الهيدر */
-.dropdown { order: 1; }
-.logo { order: 2; position: absolute; left: 50%; transform: translateX(-50%); }
-.nav-actions { order: 3; }
 
 /* واتساب طافية */
 .whatsapp-float {
@@ -1178,8 +1200,13 @@ max-width: 230px;
 * { backdrop-filter: none !important; }
 .cloud, .whatsapp-float { animation: none !important; }
 
-/* ترتيب الهيدر للجوال */
-.logo { position: static; transform: none; margin: 0 auto; }
+/* ترتيب الهيدر للجوال - الحفاظ على الاستقرار */
+.nav-container {
+padding: 0 10px;
+}
+.logo-text {
+font-size: 0.85rem;
+}
 
 /* تبسيط الظلال */
 .product-card { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
