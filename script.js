@@ -532,3 +532,8 @@ window.onclick = function(e) {
 };
 
 updateCartDisplay();
+// إخفاء السلة والنافذة الشفافة في البداية
+const sidebar = document.getElementById("cartSidebar");
+const overlay = document.getElementById("cartOverlay");
+if (sidebar) sidebar.classList.remove("open");
+if (overlay) overlay.classList.remove("show");
