@@ -1024,7 +1024,7 @@ border-radius: 20px;
 }
 .beverages-section-title.cold {
 margin-top: 70px;
-color: #c57b38;
+color: #4da6ff;
 }
 .beverages-section-title.cold::after { background: linear-gradient(to right, transparent, #c57b38, transparent); }
 
