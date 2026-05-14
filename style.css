@@ -1774,3 +1774,120 @@ font-size: 0.75rem;
         gap: 18px;
     }
 }
+
+
+/* ================================================= */
+/* ===== تحسين عرض المنتجات للجوال ===== */
+/* ================================================= */
+
+@media (max-width: 768px) {
+
+    /* شبكة المنتجات - صفين في الجوال */
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 25px 12px;
+    }
+
+    /* تصغير الحشوات الداخلية للكروت */
+    .product-card {
+        padding: 10px;
+    }
+
+    /* تصغير حجم الصور قليلاً */
+    .product-image {
+        border-radius: 12px;
+    }
+
+    /* تصغير حجم النص */
+    .product-name {
+        font-size: 0.85rem;
+        min-height: 55px;
+    }
+
+    /* تصغير حجم الفئة */
+    .product-category {
+        font-size: 0.65rem;
+    }
+
+    /* تصغير الأزرار */
+    .btn-details, .btn-add {
+        padding: 5px 6px;
+        font-size: 0.7rem;
+    }
+
+    /* تصغير أزرار الكمية */
+    .quantity-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 0.85rem;
+    }
+
+    .quantity-value {
+        min-width: 24px;
+        font-size: 0.85rem;
+    }
+
+    /* باقي تحسينات الجوال الحفاظ على التصميم */
+    .hero-section { min-height: 380px; }
+    .hero-content { padding: 12px 15px; width: 92%; max-width: 90%; background: rgba(62, 39, 35, 0.25); border-radius: 45px; }
+    [data-theme="dark"] .hero-content { background: rgba(0, 0, 0, 0.5); }
+    .hero-logo { width: 75px; height: 75px; margin-bottom: 5px; }
+    .hero-title { font-size: 1.2rem; margin-bottom: 2px; }
+    .hero-subtitle { font-size: 0.7rem; margin-bottom: 8px; }
+    .hero-buttons { gap: 6px; margin-bottom: 8px; }
+    .hero-btn { padding: 4px 12px; font-size: 0.7rem; }
+    .hero-btn.primary { gap: 4px; }
+    .btn-icon { width: 18px; height: 18px; margin-left: 4px; }
+    .contact-info { gap: 6px; }
+    .contact-link { padding: 3px 8px; font-size: 0.6rem; }
+    .slider-frame img { height: 220px; }
+    .menu-icon img { width: 60px; height: 60px; }
+    .banner-icon { width: 70px; height: 70px; }
+    .modal .close-modal { width: 35px; height: 35px; font-size: 1.5rem; left: 10px; top: 10px; }
+    .features-grid { gap: 15px; }
+    .feature { padding: 15px 12px; }
+    .feature i, .feature .feature-img { font-size: 1.6rem; width: 45px; height: 45px; }
+    .packages-grid { grid-template-columns: 1fr; gap: 25px; padding: 35px 15px; }
+    .package-image { width: 110px; height: 110px; }
+    .package-header h2 { font-size: 1.3rem; }
+    .package-tags span { font-size: 0.65rem; padding: 5px 10px; }
+    .royal::before { font-size: 0.6rem; top: 12px; right: -30px; padding: 4px 40px; }
+
+    /* بانرات الجوال */
+    .beverages-banner, .sakhanat-banner, .events-banner { min-height: 260px; }
+    .beverages-banner .banner-content, .sakhanat-banner .banner-content, .events-banner .banner-content { padding: 22px; border-radius: 25px; width: 90%; }
+    .beverages-banner .banner-icon, .sakhanat-banner .banner-icon, .events-banner .banner-icon { width: 70px; height: 70px; margin-bottom: 14px; }
+    .beverages-banner h1, .sakhanat-banner h1, .events-banner h1 { font-size: 1.7rem; }
+    .beverages-banner p, .sakhanat-banner p, .events-banner p { font-size: 0.8rem; line-height: 1.8; }
+
+    /* كروت المشروبات والسخانات والمناسبات */
+    .beverage-name-only, .sakhanat-name-only, .events-name-only { min-height: 160px; padding: 15px; border-radius: 20px; }
+    .beverage-title, .sakhanat-title, .events-title { font-size: 1rem; }
+    .beverage-subtitle, .sakhanat-subtitle, .events-subtitle { font-size: 0.7rem; }
+
+    /* عناوين الأقسام */
+    .beverages-section-title, .sakhanat-section-title, .events-section-title { font-size: 1.6rem; margin-bottom: 28px; }
+}
+
+@media (max-width: 480px) {
+
+    /* للأجهزة الصغيرة جداً - تأكد من بقاء منتجين */
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 20px 10px;
+    }
+
+    .product-card {
+        padding: 8px;
+    }
+
+    .product-name {
+        font-size: 0.8rem;
+        min-height: 50px;
+    }
+
+    .home-menu-grid { grid-template-columns: 1fr; }
+    .contact-card { width: 90%; max-width: 280px; }
+}
