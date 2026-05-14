@@ -107,7 +107,7 @@ function toggleTheme() {
     id: 428,
     name: "عصير مانجو",
     type: "beverages",
-    category: "العصيرات البارده",   // "القهوة والضيافة" للمشروبات الساخنة
+    category: "العصيرات البارده",   // "القهوة والمشروبات الساخنة" للمشروبات الساخنة
     mainImage: "images/مانجو.webp",
     images: ["images/مانجو.webp"],
     description: "طازج 100%"
@@ -214,29 +214,29 @@ const eventsProducts = [
 // =============== منتجات القهوة والمشروبات ==========================
 // ===================================================================
 const beveragesProducts = [
-    // المشروبات الساخنة (category: "القهوة والضيافة")
-    { id: 401, name: "قهوة عربية فاخرة", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 402, name: "شاهي أحمر", type: "beverages", category: "القهوة والضيافة", description: "بالنعناع والحبق" },
-    { id: 403, name: "زنجبيل بالأناناس", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 404, name: "شاي أخضر", type: "beverages", category: "القهوة والضيافة", description: "عادي أو بالنعناع" },
-    { id: 405, name: "شاهي بالزعتر", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 406, name: "شاهي طائفي", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 407, name: "شاهي كرك", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 408, name: "يانسون", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 409, name: "زنجبيل بالعسل", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 410, name: "زنجبيل بالليمون", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 411, name: "كركديه", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 412, name: "شاهي الورد الأزرق", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 413, name: "رمان ساخن", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 414, name: "فواكه مشكلة ساخنة", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 415, name: "مانجا ساخنة", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 416, name: "قهوة تركي", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 417, name: "كابتشينو", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 418, name: "آيس كوفي", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 419, name: "سبانيش لاتيه", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 420, name: "سحلب", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 421, name: "هوت شوكليت", type: "beverages", category: "القهوة والضيافة", description: "" },
-    { id: 422, name: "موهيتو", type: "beverages", category: "القهوة والضيافة", description: "" },
+    // المشروبات الساخنة (category: "القهوة والمشروبات الساخنة")
+    { id: 401, name: "قهوة عربية فاخرة", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 402, name: "شاهي أحمر", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "بالنعناع والحبق" },
+    { id: 403, name: "زنجبيل بالأناناس", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 404, name: "شاي أخضر", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "عادي أو بالنعناع" },
+    { id: 405, name: "شاهي بالزعتر", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 406, name: "شاهي طائفي", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 407, name: "شاهي كرك", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 408, name: "يانسون", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 409, name: "زنجبيل بالعسل", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 410, name: "زنجبيل بالليمون", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 411, name: "كركديه", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 412, name: "شاهي الورد الأزرق", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 413, name: "رمان ساخن", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 414, name: "فواكه مشكلة ساخنة", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 415, name: "مانجا ساخنة", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 416, name: "قهوة تركي", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 417, name: "كابتشينو", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 418, name: "آيس كوفي", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 419, name: "سبانيش لاتيه", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 420, name: "سحلب", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 421, name: "هوت شوكليت", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
+    { id: 422, name: "موهيتو", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
     // المشروبات الباردة (category: "العصيرات البارده")
     { id: 423, name: "جوافه", type: "beverages", category: "العصيرات البارده", description: "" },
     { id: 424, name: "كوكتيل", type: "beverages", category: "العصيرات البارده", description: "" },
@@ -260,10 +260,10 @@ function displayProductsByType(type) {
 
     // إذا كان القسم هو المشروبات نقوم بتقسيمه إلى ساخن وبارد وعناوين منفصلة
     if (type === "beverages") {  
-        const hotDrinks = filtered.filter(p => p.category === "القهوة والضيافة");  
+        const hotDrinks = filtered.filter(p => p.category === "القهوة والمشروبات الساخنة");  
         const coldDrinks = filtered.filter(p => p.category === "العصيرات البارده");  
 
-        let hotHTML = `<h2 class="beverages-section-title">القهوة والضيافة</h2>`;  
+        let hotHTML = `<h2 class="beverages-section-title">القهوة والمشروبات الساخنة</h2>`;  
         let coldHTML = `<h2 class="beverages-section-title cold">العصيرات البارده</h2>`;  
 
         function createDrinkCard(product) {  
