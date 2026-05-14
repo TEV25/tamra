@@ -46,13 +46,22 @@ document.addEventListener("DOMContentLoaded", function() {
             }  
         }, { passive: true });  
     }
+
+    // تحسين ظهور الصور عند التحميل (للصور الثابتة في الصفحة)
+    const lazyImages = document.querySelectorAll('.products-grid img[loading="lazy"]');
+    lazyImages.forEach(img => {
+        img.addEventListener('load', function() {
+            img.classList.add('loaded');
+        });
+        if (img.complete) {
+            img.classList.add('loaded');
+        }
+    });
 });
 
 // ===================================================================
 // =============== دالة عرض الإشعارات المنبثقة (Toast) ================
 // ===================================================================
-// الوظيفة: تظهر رسالة صغيرة تختفي بعد ثانيتين ونصف
-// الاستخدام: showToast("نص الرسالة", "success/error")
 function showToast(message, type = "success") {
     const oldToast = document.querySelector('.toast-notification');
     if (oldToast) oldToast.remove();
@@ -107,7 +116,7 @@ function toggleTheme() {
     id: 428,
     name: "عصير مانجو",
     type: "beverages",
-    category: "العصيرات البارده",   // "القهوة والمشروبات الساخنة" للمشروبات الساخنة
+    category: "العصيرات البارده",
     mainImage: "images/مانجو.webp",
     images: ["images/مانجو.webp"],
     description: "طازج 100%"
@@ -160,7 +169,6 @@ const sakhanatProducts = [
     { id: 27, name: "لقيمات", type: "sakhanat", category: "سخانات", mainImage: "images/لقيمات.webp", images: ["images/لقيمات.webp"], description: "" },
     { id: 28, name: "ام علي", type: "sakhanat", category: "سخانات", mainImage: "images/ام علي.webp", images: ["images/ام علي.webp"], description: "" },
     { id: 29, name: "رز بالحليب", type: "sakhanat", category: "سخانات", mainImage: "images/ارز بالحليب.webp", images: ["images/ارز بالحليب.webp"], description: "" }
-    // لإضافة منتج جديد في قسم السخانات: قم بإضافة كائن جديد هنا مع مراعاة الفاصلة وعدم تكرار id
 ];
 
 // ===================================================================
@@ -214,7 +222,6 @@ const eventsProducts = [
 // =============== منتجات القهوة والمشروبات ==========================
 // ===================================================================
 const beveragesProducts = [
-    // المشروبات الساخنة (category: "القهوة والمشروبات الساخنة")
     { id: 401, name: "قهوة عربية فاخرة", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
     { id: 402, name: "شاهي أحمر", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "بالنعناع والحبق" },
     { id: 403, name: "زنجبيل بالأناناس", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
@@ -237,7 +244,6 @@ const beveragesProducts = [
     { id: 420, name: "سحلب", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
     { id: 421, name: "هوت شوكليت", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
     { id: 422, name: "موهيتو", type: "beverages", category: "القهوة والمشروبات الساخنة", description: "" },
-    // المشروبات الباردة (category: "العصيرات البارده")
     { id: 423, name: "جوافه", type: "beverages", category: "العصيرات البارده", description: "" },
     { id: 424, name: "كوكتيل", type: "beverages", category: "العصيرات البارده", description: "" },
     { id: 425, name: "أفوكادو", type: "beverages", category: "العصيرات البارده", description: "" },
@@ -245,20 +251,16 @@ const beveragesProducts = [
     { id: 427, name: "رمان", type: "beverages", category: "العصيرات البارده", description: "" }
 ];
 
-// دمج جميع المنتجات في مصفوفة واحدة لتسهيل البحث والعرض
 const allProducts = [...sakhanatProducts, ...sohonProducts, ...eventsProducts, ...beveragesProducts];
 
 // ===================================================================
 // =============== عرض المنتجات حسب النوع ============================
 // ===================================================================
-// الوظيفة: تستقبل نوع المنتج (sakhanat, sohon, events, beverages)
-// وتقوم بعرض البطاقات المناسبة داخل العنصر الذي يحمل id="productsGrid"
 function displayProductsByType(type) {
     const grid = document.getElementById("productsGrid");
     if (!grid) return;
     const filtered = allProducts.filter(p => p.type === type);
 
-    // إذا كان القسم هو المشروبات نقوم بتقسيمه إلى ساخن وبارد وعناوين منفصلة
     if (type === "beverages") {  
         const hotDrinks = filtered.filter(p => p.category === "القهوة والمشروبات الساخنة");  
         const coldDrinks = filtered.filter(p => p.category === "العصيرات البارده");  
@@ -295,13 +297,23 @@ function displayProductsByType(type) {
 
         grid.innerHTML = hotHTML + coldHTML;  
         updateCartDisplay();  
+        
+        // إعادة تفعيل lazy loading للصور الجديدة
+        const newLazyImages = grid.querySelectorAll('img[loading="lazy"]');
+        newLazyImages.forEach(img => {
+            img.addEventListener('load', function() {
+                img.classList.add('loaded');
+            });
+            if (img.complete) {
+                img.classList.add('loaded');
+            }
+        });
         return;  
     }  
 
-    // باقي الأقسام (سخانات، صحون، مناسبات) تعرض بشكل عادي
     let html = "";  
     filtered.forEach(product => {  
-        const hideQty = (type === 'events'); // في المناسبات لا نعرض منتقي الكمية
+        const hideQty = (type === 'events');  
         let imageHtml = '';  
 
         if (product.icon) {  
@@ -333,12 +345,23 @@ function displayProductsByType(type) {
     });  
     grid.innerHTML = html;  
     updateCartDisplay();
+    
+    // إعادة تفعيل lazy loading للصور الجديدة
+    const newLazyImages = grid.querySelectorAll('img[loading="lazy"]');
+    newLazyImages.forEach(img => {
+        img.addEventListener('load', function() {
+            img.classList.add('loaded');
+        });
+        if (img.complete) {
+            img.classList.add('loaded');
+        }
+    });
 }
 
 // ===================================================================
-// =============== التحكم في كمية المنتج =============================
+// =============== باقي الدوال (بدون تغيير) ==========================
 // ===================================================================
-// الوظيفة: تزيد أو تنقص الكمية في بطاقة المنتج
+
 function changeQuantity(id, delta) {
     const span = document.getElementById(`qty_${id}`);
     if (!span) return;
@@ -348,9 +371,6 @@ function changeQuantity(id, delta) {
     span.innerText = val;
 }
 
-// ===================================================================
-// =============== إضافة منتج إلى سلة المشتريات =======================
-// ===================================================================
 function addToCart(id) {
     const product = allProducts.find(p => p.id === id);
     if (!product) return;
@@ -366,9 +386,6 @@ function addToCart(id) {
     if (qtySpan) qtySpan.innerText = "1";
 }
 
-// ===================================================================
-// =============== إضافة باقة كاملة إلى السلة ========================
-// ===================================================================
 function addPackageToCart(packageName) {
     const existing = cart.find(i => i.name === packageName);
     if (existing) existing.qty += 1;
@@ -378,9 +395,6 @@ function addPackageToCart(packageName) {
     showToast(`✅ تمت إضافة ${packageName}`, "success");
 }
 
-// ===================================================================
-// =============== تحديث واجهة السلة وعرض المنتجات المضافة ============
-// ===================================================================
 function updateCartDisplay() {
     const total = cart.reduce((sum, item) => sum + item.qty, 0);
     const cartCount = document.getElementById("cartCountNav");
@@ -412,7 +426,6 @@ function updateCartDisplay() {
     const cartTotalElement = document.getElementById("cartTotal");  
     if (cartTotalElement) cartTotalElement.innerHTML = `🏕️ إجمالي القطع: ${total}`;  
 
-    // إضافة زر تفريغ السلة إذا لم يكن موجودًا
     if (!document.querySelector('.btn-clear-cart')) {  
         const clearBtn = document.createElement('button');  
         clearBtn.className = 'btn-clear-cart';  
@@ -423,9 +436,6 @@ function updateCartDisplay() {
     }
 }
 
-// ===================================================================
-// =============== تفريغ السلة بالكامل ===============================
-// ===================================================================
 function clearCart() {
     if (cart.length === 0) return;
     cart = [];
@@ -434,9 +444,6 @@ function clearCart() {
     showToast("🗑️ تم تفريغ السلة بنجاح", "success");
 }
 
-// ===================================================================
-// =============== حذف منتج واحد من السلة ============================
-// ===================================================================
 function removeFromCart(id) {
     const item = cart.find(i => i.id === id);
     cart = cart.filter(i => i.id !== id);
@@ -445,9 +452,6 @@ function removeFromCart(id) {
     showToast(`🗑️ تم حذف ${item.name}`, "success");
 }
 
-// ===================================================================
-// =============== إرسال الطلب عبر واتساب =============================
-// ===================================================================
 function sendOrder() {
     if (cart.length === 0) {
         showToast("⚠️ السلة فارغة!", "error");
@@ -459,9 +463,6 @@ function sendOrder() {
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
 }
 
-// ===================================================================
-// =============== نافذة التفاصيل المنبثقة (مودال) ===================
-// ===================================================================
 function showDetails(id) {
     const p = allProducts.find(p => p.id === id);
     if (!p) return;
@@ -517,9 +518,6 @@ function closeModal() {
     }
 }
 
-// ===================================================================
-// =============== فتح وإغلاق السلة الجانبية ==========================
-// ===================================================================
 function toggleCart() {
     const sidebar = document.getElementById("cartSidebar");
     const overlay = document.getElementById("cartOverlay");
@@ -528,13 +526,9 @@ function toggleCart() {
     updateCartDisplay();
 }
 
-// ===================================================================
-// =============== إغلاق المودال أو السلة عند الضغط خارجها ============
-// ===================================================================
 window.onclick = function(e) {
     if (e.target === document.getElementById("detailsModal")) closeModal();
     if (e.target === document.getElementById("cartOverlay")) toggleCart();
 };
 
-// تحديث واجهة السلة عند تحميل الصفحة
 updateCartDisplay();
