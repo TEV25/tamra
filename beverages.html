@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>خيمة وتمرة - القهوة العربية والضيافة</title>
+    <link rel="preload" as="image" href="images/logo.webp">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="fog-layer"></div>
+    <a href="https://wa.me/966539836477" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="location.href='index.html'">
+                <img src="images/logo.webp" class="logo-img" loading="lazy" decoding="async">
+                <span class="logo-text">خيمة وتمرة</span>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">☰ القائمة</button>
+                <div class="dropdown-content">
+                    <a href="index.html">🏠 الرئيسية</a>
+                    <a href="sakhanat.html"><img src="images/sakhanat-icon.webp" class="dropdown-icon" loading="lazy" decoding="async" onerror="this.style.display='none'"> السخانات</a>
+                    <a href="sohon.html"><img src="images/sohon-icon.webp" class="dropdown-icon" loading="lazy" decoding="async" onerror="this.style.display='none'"> الصحون</a>
+                    <a href="packages.html"><img src="images/packages-icon.webp" class="dropdown-icon" loading="lazy" decoding="async" onerror="this.style.display='none'"> الباقات</a>
+                    <a href="events.html"><img src="images/events-icon.webp" class="dropdown-icon" loading="lazy" decoding="async" onerror="this.style.display='none'"> تجهيزات المناسبات</a>
+                    <a href="beverages.html" class="active"><img src="images/beverages-icon.webp" class="dropdown-icon" loading="lazy" decoding="async" onerror="this.style.display='none'"> القهوة والضيافة</a>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-circle-half-stroke"></i></div>
+                <div class="nav-cart" onclick="toggleCart()">🛒 <span id="cartCountNav">0</span></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-banner beverages-banner">
+        <div class="banner-bg-slider">
+            <div class="banner-bg-slide active" style="background-image: url('images/slide (4).webp');"></div>
+            <div class="banner-bg-slide" style="background-image: url('images/slide (10).webp');"></div>
+            <div class="banner-bg-slide" style="background-image: url('images/slide (12).webp');"></div>
+            <div class="banner-bg-slide" style="background-image: url('images/slide (13).webp');"></div>
+        </div>
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <div class="light-orb one"></div>
+            <div class="light-orb two"></div>
+            <div class="particles">
+                <span style="left:10%; animation-duration:12s;"></span>
+                <span style="left:30%; animation-duration:18s;"></span>
+                <span style="left:50%; animation-duration:15s;"></span>
+                <span style="left:70%; animation-duration:20s;"></span>
+                <span style="left:90%; animation-duration:14s;"></span>
+            </div>
+            <img src="images/beverages-icon.webp" class="banner-icon" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <h1>القهوة والضيافة</h1>
+            <p>تشكيلة فاخرة من القهوة العربية والمشروبات الساخنة والباردة</p>
+        </div>
+    </div>
+
+    <div id="productsGrid" class="products-grid"></div>
+
+    <div class="missing-request-section reveal">
+        <div class="missing-request-content">
+            <div class="missing-icon">✨</div>
+            <h3>ما حصلت طلبك؟</h3>
+            <p>
+            عندنا خدمات وأصناف أكثر غير المعروضة بالموقع،
+            راسلنا على الواتساب واستفسر عن طلبك ✨
+            </p>
+            <button class="btn-inquiry gold-shine" onclick="sendInquiry()">
+                <i class="fab fa-whatsapp"></i>
+                استفسر عبر الواتساب
+            </button>
+            <span class="missing-note">
+            نوفر خدمات وتجهيزات متنوعة للمناسبات والضيافة
+            </span>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <div class="contact-card reveal"><i class="fab fa-whatsapp"></i><h3>اطلب الآن</h3><p>تواصل معنا مباشرة عبر واتساب</p><a href="https://wa.me/966539836477" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> 0539836477</a></div>
+        <div class="contact-card reveal"><i class="fab fa-tiktok"></i><h3>تابعنا</h3><p>شاهد أحدث الوصفات والأطباق</p><a href="https://www.tiktok.com/@rayan1xc" class="btn-tiktok" target="_blank"><i class="fab fa-tiktok"></i> @rayan1xc</a></div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="images/logo.webp" alt="خيمة وتمرة" class="footer-logo" loading="lazy" decoding="async">
+            <h3>خيمة وتمرة</h3>
+            <p>نقدم خدمات الضيافة للأفراح والمناسبات والعزاء،
+            مع توفير الأكلات الشعبية، القهوة العربية،
+            القهوجيين والصبابين، والخيام والجلسات التراثية
+            بلمسة أصيلة تليق بضيوفكم ✨</p>
+            <div class="footer-social"><a href="https://wa.me/966539836477" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@rayan1xc" target="_blank"><i class="fab fa-tiktok"></i></a></div>
+            <div class="footer-links"><a href="https://wa.me/966539836477" target="_blank">📞 0539836477</a><a href="https://www.tiktok.com/@rayan1xc" target="_blank">📱 @rayan1xc</a></div>
+            <p class="copyright">2025 © خيمة وتمرة</p>
+        </div>
+    </footer>
+
+    <div id="detailsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal()">&times;</span><div id="modalDetails"></div></div></div>
+    <div id="cartSidebar" class="cart-sidebar"><div class="cart-header"><h3>🛒 سلة مشترياتي</h3><span class="close-cart" onclick="toggleCart()">✖</span></div><div id="cartItemsList" class="cart-items"></div><div id="cartTotal" class="cart-total"></div><button onclick="sendOrder()" class="btn-checkout">📲 تأكيد الطلب</button></div>
+    <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <script src="script.js"></script>
+    <script>
+        displayProductsByType('beverages');
+        let bannerIndex = 0;
+        const bannerSlides = document.querySelectorAll('.banner-bg-slide');
+        const totalBannerSlides = bannerSlides.length;
+        function showBannerSlide(i) { bannerSlides.forEach((s, idx) => s.classList.toggle('active', idx === i)); }
+        function nextBannerSlide() { bannerIndex = (bannerIndex + 1) % totalBannerSlides; showBannerSlide(bannerIndex); }
+        showBannerSlide(0);
+        setInterval(nextBannerSlide, 4000);
+    </script>
+</body>
+</html>
