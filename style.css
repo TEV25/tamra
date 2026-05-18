@@ -50,6 +50,15 @@ html {
     text-size-adjust: 100%;
 }
 
+/* ========== Lazy rendering boost ========== */
+img {
+    content-visibility: auto;
+}
+.products-grid,
+.packages-grid {
+    content-visibility: auto;
+}
+
 /* ========== الطبقات السينمائية الأساسية ========== */
 body {
     font-family: 'Cairo', sans-serif;
@@ -60,6 +69,9 @@ body {
     overflow-x: clip;
     width: 100%;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* إضاءة خلفية متدرجة (cinematic light) – محسّنة */
@@ -75,7 +87,20 @@ body::before {
     z-index: -2;
 }
 
-/* كرات ضوئية خفيفة (light orbs) – تحسين أداء */
+/* طبقة علوية خفيفة للإضاءة */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 20%, transparent 80%, rgba(0,0,0,0.03));
+}
+[data-theme="dark"] body::after {
+    background: linear-gradient(to bottom, rgba(255,255,255,.015), transparent 25%, transparent 75%, rgba(0,0,0,.10));
+}
+
+/* كرات ضوئية خفيفة (light orbs) */
 .light-orb {
     position: absolute;
     width: 220px;
@@ -130,7 +155,7 @@ body::before {
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-    opacity: 0.35;
+    opacity: 0.2;
     transition: opacity .22s ease;
 }
 .hero-content:hover::before,
@@ -139,7 +164,7 @@ body::before {
 .feature:hover::before,
 .package-card-modern:hover::before,
 .missing-request-content:hover::before {
-    opacity: 0.7;
+    opacity: 0.45;
 }
 
 /* ===== Glass reflection (انعكاس زجاجي) ===== */
@@ -166,7 +191,7 @@ body::before {
 .feature:hover,
 .package-card-modern:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 26px rgba(0,0,0,0.10);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
     border-color: rgba(201,168,76,0.45);
     transition: .22s ease;
 }
@@ -194,8 +219,8 @@ body::before {
 /* ===== تحسين شريط التنقل ===== */
 .navbar {
     background: rgba(28,18,14,0.82);
-    backdrop-filter: blur(14px) saturate(160%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -207,129 +232,6 @@ body::before {
 [data-theme="dark"] .navbar {
     background: rgba(10,10,10,0.85);
     border-bottom-color: rgba(212,175,55,0.15);
-}
-
-/* ===== تحسين الهيرو ===== */
-.hero-content {
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(201,168,76,.35);
-    box-shadow: 0 18px 45px rgba(0,0,0,.35), 0 0 20px rgba(201,168,76,.06);
-    transition: .22s ease;
-    border-radius: 60px;
-    background: var(--hero-bg-light);
-}
-.hero-content:hover {
-    box-shadow: 0 22px 55px rgba(0,0,0,.40), 0 0 28px rgba(201,168,76,.10);
-}
-
-/* ===== تحسين خلفيات الكروت (تدرجات بدلاً من المسطح) ===== */
-.menu-card,
-.product-card,
-.feature,
-.contact-card,
-.package-card-modern,
-.missing-request-content {
-    background: linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,255,255,0.65));
-    border: 1px solid rgba(201,168,76,.20);
-    box-shadow: 0 6px 18px rgba(0,0,0,.06);
-}
-[data-theme="dark"] .menu-card,
-[data-theme="dark"] .product-card,
-[data-theme="dark"] .feature,
-[data-theme="dark"] .contact-card,
-[data-theme="dark"] .package-card-modern,
-[data-theme="dark"] .missing-request-content {
-    background: linear-gradient(145deg, rgba(35,35,35,0.92), rgba(25,25,25,0.85));
-}
-
-/* ===== تأثير الظهور عند التمرير (reveal) ===== */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.2,0.9,0.4,1.1), transform 0.8s cubic-bezier(0.2,0.9,0.4,1.1);
-}
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-@media (max-width: 768px) {
-    .reveal {
-        transition-duration: 0.5s;
-        transform: translateY(25px);
-    }
-}
-
-/* ===== زر الرجوع للأعلى ===== */
-.back-to-top {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--gold);
-    color: #2C2420;
-    border: none;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 99;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-.back-to-top:hover {
-    background: var(--gold-dark);
-    transform: translateY(-3px);
-    color: white;
-}
-.back-to-top i {
-    font-size: 1.2rem;
-}
-
-/* ========== PERFORMANCE BOOST ========== */
-.product-card,
-.menu-card,
-.feature,
-.package-card-modern,
-.hero-content {
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-@media(max-width:768px){
-    body::before {
-        opacity: .4;
-    }
-    .navbar,
-    .hero-content,
-    .product-card,
-    .menu-card,
-    .package-card-modern {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
-    .product-card:hover,
-    .menu-card:hover,
-    .feature:hover,
-    .package-card-modern:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 6px 14px rgba(0,0,0,.08) !important;
-    }
-    .hero-content {
-        border-radius: 32px;
-    }
-    .slider-frame img {
-        height: 200px;
-    }
-}
-
-/* ========== باقي الكود الأصلي (بدون تعديل) – بداية من شريط التنقل ========== */
-
-/* ===== شريط التنقل المحسن ===== */
-.navbar {
-    /* تم تعريفه أعلاه */
 }
 .nav-container {
     display: flex;
@@ -345,8 +247,6 @@ body::before {
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    position: static;
-    transform: none;
     margin: 0 auto;
     order: 2;
 }
@@ -476,18 +376,20 @@ body::before {
     z-index: 1;
 }
 [data-theme="dark"] .hero-overlay-light { background: rgba(0,0,0,0.6); }
+
 .hero-content {
     position: relative;
     z-index: 2;
     padding: 25px;
     max-width: 650px;
     width: 90%;
+    background: var(--hero-bg-light);
     border-radius: 60px;
     border: 1px solid rgba(201,168,76,.35);
-    box-shadow: 0 18px 45px rgba(0,0,0,.35), 0 0 20px rgba(201,168,76,.06);
+    box-shadow: 0 10px 24px rgba(0,0,0,.18), 0 0 20px rgba(201,168,76,.06);
     transition: background 0.3s, .22s ease;
     overflow: hidden;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(4px);
 }
 [data-theme="dark"] .hero-content { background: var(--hero-bg-dark, rgba(0,0,0,0.65)); }
 .hero-logo { width: 70px; height: 70px; border-radius: 50%; margin-bottom: 10px; border: 3px solid var(--gold); object-fit: cover; }
@@ -502,7 +404,14 @@ body::before {
     font-size: 0.8rem;
     transition: .22s ease;
 }
-.hero-btn.primary { background: linear-gradient(135deg, #c9a84c, #b8860b); color: #3e2723; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(201,168,76,.20); }
+.hero-btn.primary {
+    background: linear-gradient(135deg, #c9a84c, #b8860b);
+    color: #3e2723;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(201,168,76,.20);
+}
 .hero-btn.primary:hover { background: #ffd700; }
 .contact-info { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
 .contact-link {
@@ -587,11 +496,14 @@ body::before {
     padding: 20px;
 }
 .menu-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,255,255,0.65));
+    border: 1px solid rgba(201,168,76,.20);
     border-radius: 30px;
     padding: 25px 18px;
     text-align: center;
     cursor: pointer;
     transition: .22s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
     transform-style: preserve-3d;
     perspective: 1000px;
     position: relative;
@@ -599,7 +511,7 @@ body::before {
 }
 .menu-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
     border-color: rgba(201,168,76,0.45);
 }
 .menu-icon img { width: 80px; height: 80px; object-fit: contain; }
@@ -648,6 +560,8 @@ body::before {
     margin: 0 auto;
 }
 .feature {
+    background: linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,255,255,0.65));
+    border: 1px solid rgba(201,168,76,.20);
     padding: 25px 15px;
     border-radius: 25px;
     cursor: pointer;
@@ -655,10 +569,11 @@ body::before {
     text-align: center;
     position: relative;
     isolation: isolate;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
 }
 .feature:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
     border-color: rgba(201,168,76,0.45);
 }
 .feature i, .feature .feature-img {
@@ -690,13 +605,16 @@ body::before {
     margin-top: 0;
 }
 .contact-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,255,255,0.65));
+    border: 1px solid rgba(201,168,76,.20);
     padding: 30px 20px;
     border-radius: 30px;
     text-align: center;
     width: 260px;
     transition: .22s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
 }
-.contact-card:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(0,0,0,.10); border-color: rgba(201,168,76,0.45); }
+.contact-card:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0,0,0,.08); border-color: rgba(201,168,76,0.45); }
 .contact-card i { font-size: 3rem; color: var(--gold); margin-bottom: 15px; }
 .contact-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
 .contact-card p { font-size: 0.85rem; margin-bottom: 15px; color: var(--text-medium); }
@@ -716,16 +634,29 @@ body::before {
 .btn-whatsapp:hover, .btn-tiktok:hover { transform: translateY(-2px); opacity: 0.95; }
 .btn-tiktok { background: linear-gradient(135deg, #000, #1a1a1a); border: 1px solid var(--gold); }
 
-/* الفوتر */
+/* ===== الفوتر ===== */
 .footer {
     background: var(--footer-bg);
     text-align: center;
     padding: 35px 20px;
     border-top: 2px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+}
+.footer::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(201,168,76,.08), transparent 70%);
+    pointer-events: none;
 }
 .footer-logo { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 12px; border: 2px solid var(--gold); object-fit: cover; }
 .footer-content h3 { color: var(--gold); }
-.footer-content p { color: var(--text-light); font-size: 0.75em; margin-bottom: 12px; }
+.footer-content p { color: var(--text-light); font-size: 0.75em; margin-bottom: 12px; white-space: pre-line; }
 .footer-social a {
     display: inline-flex;
     width: 34px;
@@ -752,7 +683,6 @@ body::before {
     max-width: 1300px;
     margin: 0 auto;
 }
-
 .product-card {
     background: linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,255,255,0.65));
     border-radius: 26px;
@@ -779,16 +709,16 @@ body::before {
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-    opacity: 0.35;
+    opacity: 0.2;
     transition: opacity .22s ease;
 }
 .product-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
     border-color: rgba(201,168,76,0.45);
 }
 .product-card:hover::before {
-    opacity: 0.7;
+    opacity: 0.45;
 }
 .product-card::after {
     content: '';
@@ -815,6 +745,7 @@ body::before {
     align-items: center;
     justify-content: center;
     transition: transform var(--tr-slow);
+    backface-visibility: hidden;
 }
 .product-image i {
     font-size: 4rem;
@@ -879,15 +810,6 @@ body::before {
     transition: transform 0.1s ease;
 }
 
-/* تحسين ظهور الصور عند التحميل */
-.products-grid img[loading="lazy"] {
-    opacity: 0;
-    transition: opacity var(--tr);
-}
-.products-grid img[loading="lazy"].loaded {
-    opacity: 1;
-}
-
 .quantity-selector {
     display: flex;
     justify-content: center;
@@ -940,16 +862,16 @@ body::before {
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-    opacity: 0.35;
+    opacity: 0.2;
     transition: opacity .22s ease;
 }
 .package-card-modern:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
     border-color: rgba(201,168,76,0.45);
 }
 .package-card-modern:hover::before {
-    opacity: 0.7;
+    opacity: 0.45;
 }
 .package-card-modern::after {
     content: '';
@@ -976,6 +898,7 @@ body::before {
     margin-bottom: 15px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.2);
     display: inline-block;
+    backface-visibility: hidden;
 }
 .package-header h2 {
     color: white;
@@ -1264,9 +1187,7 @@ body::before {
     z-index: 1;
 }
 
-/* ================================================= */
 /* ===== بانر متحرك للأقسام (بدون kenBurns) ===== */
-/* ================================================= */
 .events-banner,
 .sakhanat-banner,
 .beverages-banner {
@@ -1279,6 +1200,7 @@ body::before {
     text-align: center;
     background: #1a120d;
     border-bottom: 1px solid rgba(201,168,76,0.25);
+    isolation: isolate;
 }
 .events-banner::after,
 .sakhanat-banner::after,
@@ -1340,10 +1262,17 @@ body::before {
     margin: 0 auto;
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
+.events-banner::before,
+.sakhanat-banner::before,
+.beverages-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.28), rgba(0,0,0,.10));
+    z-index: 1;
+}
 
-/* ================================================= */
 /* ===== بانر الباقات (ثابت - بدون صور متحركة) ===== */
-/* ================================================= */
 .packages-banner {
     position: relative;
     min-height: 300px;
@@ -1376,9 +1305,7 @@ body::before {
     color: white;
 }
 
-/* ================================================= */
 /* ===== عناوين الأقسام ===== */
-/* ================================================= */
 .beverages-section-title,
 .events-section-title {
     width: 100%;
@@ -1414,9 +1341,7 @@ body::before {
 }
 .beverages-section-title.cold::after { background: linear-gradient(to right, transparent, #4da6ff, transparent); }
 
-/* ================================================= */
 /* ===== كروت المنتجات الموحدة ===== */
-/* ================================================= */
 .beverage-name-only,
 .events-name-only {
     position: relative;
@@ -1488,9 +1413,7 @@ body::before {
     max-width: 230px;
 }
 
-/* ================================================= */
 /* ===== الوضع الليلي ===== */
-/* ================================================= */
 [data-theme="dark"] .product-card,
 [data-theme="dark"] .menu-card,
 [data-theme="dark"] .feature,
@@ -1505,14 +1428,18 @@ body::before {
 [data-theme="dark"] .slider-container { background: rgba(35,35,35,0.92); }
 [data-theme="dark"] .packages-banner { background: #3e2723; }
 
-/* ================================================= */
 /* ===== تحسينات الجوال الموحدة ===== */
-/* ================================================= */
 @media (max-width: 768px) {
     /* إزالة الثقيل على الجوال */
     * { backdrop-filter: none !important; }
-    .cloud, .whatsapp-float { animation: none !important; }
-
+    
+    /* بدلاً من إيقاف الأنيميشن، نبطلها أبطأ */
+    .hero-bg-slide,
+    .light-orb,
+    .cloud {
+        animation-duration: 40s !important;
+    }
+    
     .nav-container {
         padding: 0 10px;
     }
@@ -1575,6 +1502,17 @@ body::before {
     .beverage-subtitle, .events-subtitle { font-size: 0.7rem; }
 
     .beverages-section-title, .events-section-title { font-size: 1.6rem; margin-bottom: 28px; }
+    
+    body::after,
+    .footer::before,
+    .events-banner::before,
+    .sakhanat-banner::before,
+    .beverages-banner::before {
+        opacity: .6;
+    }
+    .product-card:hover .product-image {
+        transform: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1617,11 +1555,11 @@ body::before {
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-    opacity: 0.35;
+    opacity: 0.2;
     transition: opacity .22s ease;
 }
 .missing-request-content:hover::before {
-    opacity: 0.7;
+    opacity: 0.45;
 }
 .missing-icon{
     font-size:2.5rem;
@@ -1681,11 +1619,6 @@ body::before {
     }
 }
 
-/* تعديل الفوتر لدعم الأسطر الجديدة */
-.footer-content p {
-    white-space: pre-line;
-}
-
 /* الوضع الليلي لقسم "ما حصلت طلبك؟" */
 [data-theme="dark"] .missing-request-content {
     background: linear-gradient(145deg, rgba(30,30,35,0.95), rgba(20,20,25,0.9));
@@ -1707,115 +1640,25 @@ body::before {
     background: linear-gradient(135deg, #075e54, #05423a);
 }
 
-/* ================================================= */
-/* ===== التحسينات الاحترافية النهائية ===== */
-/* ================================================= */
-
-/* تحسين جودة النصوص والوضوح */
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-}
-
-/* تحسين الإضاءة العامة – طبقة علوية خفيفة */
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 20%, transparent 80%, rgba(0,0,0,0.03));
-}
-
-/* تحسين الأزرار – إضافة لمعة متحركة عند المرور */
-.btn-add,
-.btn-add-package,
-.hero-btn.primary,
-.btn-whatsapp,
-.btn-tiktok,
-.btn-checkout {
-    position: relative;
-    overflow: hidden;
-}
-.btn-add::before,
-.btn-add-package::before,
-.hero-btn.primary::before,
-.btn-whatsapp::before,
-.btn-tiktok::before,
-.btn-checkout::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.12), transparent 80%);
+/* ===== إضافات تحسين الأداء النهائية ===== */
+.products-grid img[loading="lazy"] {
     opacity: 0;
-    transition: .35s ease;
+    transition: opacity var(--tr);
 }
-.btn-add:hover::before,
-.btn-add-package:hover::before,
-.hero-btn.primary:hover::before,
-.btn-whatsapp:hover::before,
-.btn-tiktok:hover::before,
-.btn-checkout:hover::before {
+.products-grid img[loading="lazy"].loaded {
     opacity: 1;
 }
 
-/* تحسين جودة عرض الصور */
-.product-image,
-.package-image,
-.slider-frame img,
-.hero-logo,
-.logo-img {
-    image-rendering: auto;
-    backface-visibility: hidden;
-}
-
-/* تحسين سلاسة الانتقالات للعناصر التفاعلية */
 .product-card,
 .menu-card,
 .feature,
 .package-card-modern,
-.contact-card,
-.hero-content,
-.slider-container {
-    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+.hero-content {
+    will-change: transform;
+    transform: translateZ(0);
 }
 
-/* تحسين طبقات البانرات (إضافة إضاءة علوية) */
-.events-banner,
-.sakhanat-banner,
-.beverages-banner,
-.packages-banner {
-    isolation: isolate;
-}
-.events-banner::before,
-.sakhanat-banner::before,
-.beverages-banner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.28), rgba(0,0,0,.10));
-    z-index: 1;
-}
-
-/* تحسين الفوتر – إضافة كرة ضوئية خلفية */
-.footer {
-    position: relative;
-    overflow: hidden;
-}
-.footer::before {
-    content: '';
-    position: absolute;
-    top: -120px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, rgba(201,168,76,.08), transparent 70%);
-    pointer-events: none;
-}
-
-/* تحسين شريط التمرير (scrollbar) */
+/* ===== تحسين شريط التمرير ===== */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -1830,21 +1673,47 @@ body::after {
     background: #d4af37;
 }
 
-/* تحسين الوضع الليلي للإضافة الجديدة */
-[data-theme="dark"] body::after {
-    background: linear-gradient(to bottom, rgba(255,255,255,.015), transparent 25%, transparent 75%, rgba(0,0,0,.10));
+/* ===== تصحيح أي تأثير مفقود ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #2C2420;
+    border: none;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.back-to-top:hover {
+    background: var(--gold-dark);
+    transform: translateY(-3px);
+    color: white;
+}
+.back-to-top i {
+    font-size: 1.2rem;
 }
 
-/* تقليل استهلاك الأداء على الجوال */
+/* إعادة تعريف reveal إذا لم يكن موجود */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.2,0.9,0.4,1.1), transform 0.8s cubic-bezier(0.2,0.9,0.4,1.1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
 @media (max-width: 768px) {
-    body::after,
-    .footer::before,
-    .events-banner::before,
-    .sakhanat-banner::before,
-    .beverages-banner::before {
-        opacity: .6;
-    }
-    .product-card:hover .product-image {
-        transform: none;
+    .reveal {
+        transition-duration: 0.5s;
+        transform: translateY(25px);
     }
 }
