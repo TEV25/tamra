@@ -75,26 +75,14 @@ body::before {
     z-index: -2;
 }
 
-/* نقش نقطي فاخر (texture) */
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
-    background-size: 3px 3px;
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* كرات ضوئية خفيفة (light orbs) */
+/* كرات ضوئية خفيفة (light orbs) – blur مخفف */
 .light-orb {
     position: absolute;
     width: 220px;
     height: 220px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(201,168,76,0.08), transparent 70%);
-    filter: blur(45px);
+    filter: blur(18px);
     animation: floatOrb 9s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
@@ -142,7 +130,7 @@ body::after {
     mask-composite: exclude;
     pointer-events: none;
     opacity: 0.5;
-    transition: opacity var(--tr);
+    transition: opacity .22s ease;
 }
 .hero-content:hover::before,
 .menu-card:hover::before,
@@ -171,33 +159,17 @@ body::after {
     opacity: 1;
 }
 
-/* ===== Hover أنعم (بدون إمالة على الجوال) ===== */
+/* ===== Hover أنعم (بدون إمالة، بدون glow ثقيل) ===== */
 .menu-card:hover,
 .product-card:hover,
 .feature:hover,
 .package-card-modern:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 20px rgba(201,168,76,0.1);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.10);
     border-color: rgba(201,168,76,0.45);
-    transition: var(--tr);
+    transition: .22s ease;
 }
-/* إمالة خفيفة فقط على سطح المكتب */
-@media (min-width: 769px) {
-    .menu-card:hover,
-    .product-card:hover,
-    .feature:hover,
-    .package-card-modern:hover {
-        transform: translateY(-12px) scale(1.02) rotateX(2deg) rotateY(-2deg);
-    }
-}
-@media (max-width: 768px) {
-    .menu-card:hover,
-    .product-card:hover,
-    .feature:hover,
-    .package-card-modern:hover {
-        transform: translateY(-6px) scale(1.01);
-    }
-}
+/* لا إمالة على أي جهاز */
 
 /* ===== تأثير Shine الذهبي على الأزرار ===== */
 .gold-shine {
@@ -230,6 +202,7 @@ body::after {
     border-bottom: 1px solid rgba(201,168,76,0.18);
     padding: 10px 0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    transition: .22s ease;
 }
 [data-theme="dark"] .navbar {
     background: rgba(10,10,10,0.85);
@@ -241,7 +214,7 @@ body::after {
     overflow: hidden;
     backdrop-filter: blur(10px);
     box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 35px rgba(201,168,76,0.08);
-    transition: box-shadow var(--tr);
+    transition: .22s ease;
 }
 .hero-content:hover {
     box-shadow: 0 25px 70px rgba(0,0,0,0.55), 0 0 45px rgba(201,168,76,0.15);
@@ -310,12 +283,41 @@ body::after {
     font-size: 1.2rem;
 }
 
-/* ========== الكود الأصلي من هنا (بدون تعديل) ========== */
+/* ========== PERFORMANCE BOOST (أضيف في آخر الملف) ========== */
+.product-card,
+.menu-card,
+.feature,
+.package-card-modern,
+.hero-content {
+    will-change: transform;
+    transform: translateZ(0);
+}
 
-/* تم حذف pageFade animation لأنها تسبب اهتزاز على الجوال */
+@media(max-width:768px){
+    body::before {
+        opacity: .4;
+    }
+    .navbar,
+    .hero-content,
+    .product-card,
+    .menu-card,
+    .package-card-modern {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    .product-card:hover,
+    .menu-card:hover,
+    .feature:hover,
+    .package-card-modern:hover {
+        transform: translateY(-4px) scale(1.01) !important;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.08) !important;
+    }
+}
+
+/* ========== الكود الأصلي من هنا (بدون تعديل) ========== */
+/* تم حذف pageFade animation */
 
 /* ===== شريط التنقل المحسن ===== */
-/* تم تحسينه أعلاه، نضيف الخصائص الأساسية */
 .navbar {
     background: rgba(35,20,15,0.72);
     backdrop-filter: blur(14px) saturate(160%);
@@ -355,7 +357,7 @@ body::after {
     border: 1px solid var(--gold);
     border-radius: 30px;
     cursor: pointer;
-    transition: var(--tr);
+    transition: .22s ease;
 }
 .dropbtn:hover { background: var(--gold); color: #121212; }
 .nav-actions {
@@ -498,6 +500,7 @@ body::after {
     text-decoration: none;
     font-weight: 700;
     font-size: 0.8rem;
+    transition: .22s ease;
 }
 .hero-btn.primary { background: linear-gradient(135deg, #c9a84c, #b8860b); color: #3e2723; display: inline-flex; align-items: center; gap: 6px; }
 .hero-btn.primary:hover { background: #ffd700; }
@@ -547,7 +550,7 @@ body::after {
     border-radius: 60px;
     z-index: 20;
     font-size: 1.2rem;
-    transition: var(--tr);
+    transition: .22s ease;
 }
 .slider-btn:hover { background: var(--gold); color: #121212; }
 .prev { left: 20px; }
@@ -570,7 +573,7 @@ body::after {
     background: rgba(255,255,255,0.7);
     border-radius: 50%;
     cursor: pointer;
-    transition: var(--tr);
+    transition: .22s ease;
 }
 .dot.active { background: var(--gold); width: 28px; border-radius: 10px; }
 
@@ -590,7 +593,7 @@ body::after {
     padding: 25px 18px;
     text-align: center;
     cursor: pointer;
-    transition: var(--tr);
+    transition: .22s ease;
     box-shadow: var(--shadow);
     transform-style: preserve-3d;
     perspective: 1000px;
@@ -598,14 +601,9 @@ body::after {
     isolation: isolate;
 }
 .menu-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 20px rgba(201,168,76,0.1);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.10);
     border-color: rgba(201,168,76,0.45);
-}
-@media (min-width: 769px) {
-    .menu-card:hover {
-        transform: translateY(-12px) scale(1.02) rotateX(2deg) rotateY(-2deg);
-    }
 }
 .menu-icon img { width: 80px; height: 80px; object-fit: contain; }
 .menu-icon i { font-size: 60px; color: var(--gold); }
@@ -619,7 +617,7 @@ body::after {
     color: var(--gold-dark);
     font-weight: 700;
     text-decoration: none;
-    transition: var(--tr);
+    transition: .22s ease;
 }
 .menu-card span:hover { background: var(--gold); color: white; }
 
@@ -658,20 +656,15 @@ body::after {
     border-radius: 25px;
     border: 1px solid var(--gold);
     cursor: pointer;
-    transition: var(--tr);
+    transition: .22s ease;
     text-align: center;
     position: relative;
     isolation: isolate;
 }
 .feature:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 20px rgba(201,168,76,0.1);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.10);
     border-color: rgba(201,168,76,0.45);
-}
-@media (min-width: 769px) {
-    .feature:hover {
-        transform: translateY(-12px) scale(1.02) rotateX(2deg) rotateY(-2deg);
-    }
 }
 .feature i, .feature .feature-img {
     font-size: 2.2rem;
@@ -708,9 +701,9 @@ body::after {
     text-align: center;
     width: 260px;
     border: 2px solid var(--gold);
-    transition: var(--tr);
+    transition: .22s ease;
 }
-.contact-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 20px rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.45); }
+.contact-card:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(0,0,0,0.10); border-color: rgba(201,168,76,0.45); }
 .contact-card i { font-size: 3rem; color: var(--gold); margin-bottom: 15px; }
 .contact-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
 .contact-card p { font-size: 0.85rem; margin-bottom: 15px; color: var(--text-medium); }
@@ -725,7 +718,7 @@ body::after {
     text-decoration: none;
     font-weight: 700;
     font-size: 0.9rem;
-    transition: var(--tr);
+    transition: .22s ease;
 }
 .btn-whatsapp:hover, .btn-tiktok:hover { transform: translateY(-2px); opacity: 0.95; }
 .btn-tiktok { background: linear-gradient(135deg, #000, #1a1a1a); border: 1px solid var(--gold); }
@@ -751,7 +744,7 @@ body::after {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    transition: var(--tr);
+    transition: .22s ease;
 }
 .footer-social a:hover { transform: translateY(-3px); background: var(--gold); color: #121212; }
 .footer-links a { color: var(--gold); text-decoration: none; margin: 0 6px; font-size: 0.7em; }
@@ -773,7 +766,7 @@ body::after {
     padding: 15px;
     text-align: center;
     border: 1px solid rgba(201,168,76,0.18);
-    transition: var(--tr);
+    transition: .22s ease;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -794,11 +787,11 @@ body::after {
     mask-composite: exclude;
     pointer-events: none;
     opacity: 0.5;
-    transition: opacity var(--tr);
+    transition: opacity .22s ease;
 }
 .product-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 20px rgba(201,168,76,0.1);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.10);
     border-color: rgba(201,168,76,0.45);
 }
 .product-card:hover::before {
@@ -815,16 +808,6 @@ body::after {
 }
 .product-card:hover::after {
     opacity: 1;
-}
-@media (min-width: 769px) {
-    .product-card:hover {
-        transform: translateY(-12px) scale(1.02) rotateX(2deg) rotateY(-2deg);
-    }
-}
-@media (max-width: 768px) {
-    .product-card:hover {
-        transform: translateY(-6px) scale(1.01);
-    }
 }
 .product-image {
     width: 100%;
@@ -881,7 +864,7 @@ body::after {
     font-weight: 700;
     border: none;
     cursor: pointer;
-    transition: var(--tr-fast);
+    transition: .22s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -945,7 +928,7 @@ body::after {
     border-radius: 28px;
     overflow: hidden;
     border: 2px solid rgba(201,168,76,0.3);
-    transition: var(--tr);
+    transition: .22s ease;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
@@ -965,11 +948,11 @@ body::after {
     mask-composite: exclude;
     pointer-events: none;
     opacity: 0.5;
-    transition: opacity var(--tr);
+    transition: opacity .22s ease;
 }
 .package-card-modern:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 20px rgba(201,168,76,0.1);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.10);
     border-color: rgba(201,168,76,0.45);
 }
 .package-card-modern:hover::before {
@@ -986,16 +969,6 @@ body::after {
 }
 .package-card-modern:hover::after {
     opacity: 1;
-}
-@media (min-width: 769px) {
-    .package-card-modern:hover {
-        transform: translateY(-12px) scale(1.02) rotateX(2deg) rotateY(-2deg);
-    }
-}
-@media (max-width: 768px) {
-    .package-card-modern:hover {
-        transform: translateY(-6px) scale(1.01);
-    }
 }
 .package-header { text-align: center; padding: 30px 20px 25px; }
 .silver .package-header { background: linear-gradient(135deg, #bdbdbd, #8d8d8d); }
@@ -1054,7 +1027,7 @@ body::after {
     cursor: pointer;
     background: linear-gradient(135deg, #d4af37, #b8860b);
     color: #2c1a12;
-    transition: var(--tr);
+    transition: .22s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1114,7 +1087,7 @@ body::after {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: var(--tr-fast);
+    transition: .22s ease;
     z-index: 10;
 }
 .modal .close-modal:hover { background-color: #e74c3c; transform: scale(1.05); }
@@ -1188,7 +1161,7 @@ body::after {
 .cart-overlay.show { display: block; }
 .cart-header { display: flex; justify-content: space-between; border-bottom: 2px solid var(--gold); padding-bottom: 12px; margin-bottom: 20px; align-items: center; }
 .cart-header h3 { font-size: 1.3rem; }
-.close-cart { cursor: pointer; font-size: 1.5rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--tr-fast); }
+.close-cart { cursor: pointer; font-size: 1.5rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: .22s ease; }
 .close-cart:hover { background: rgba(0,0,0,0.1); }
 .cart-items { margin-bottom: 20px; }
 .cart-item {
@@ -1215,7 +1188,7 @@ body::after {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    transition: var(--tr-fast);
+    transition: .22s ease;
 }
 .btn-remove:hover { background: #c0392b; }
 .cart-total { text-align: center; font-weight: bold; margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--gold); font-size: 1.1rem; }
@@ -1231,7 +1204,7 @@ body::after {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: var(--tr);
+    transition: .22s ease;
 }
 .btn-checkout { background: #25D366; color: white; }
 .btn-clear-cart { background: #8d6e63; color: white; }
@@ -1298,7 +1271,7 @@ body::after {
 }
 
 /* ================================================= */
-/* ===== بانر متحرك للأقسام (سخانات - قهوة - مناسبات - صحون) ===== */
+/* ===== بانر متحرك للأقسام (بدون kenBurns) ===== */
 /* ================================================= */
 .events-banner,
 .sakhanat-banner,
@@ -1322,13 +1295,6 @@ body::after {
     background: radial-gradient(circle at top right, rgba(201,168,76,0.10), transparent 35%),
                 radial-gradient(circle at bottom left, rgba(255,255,255,0.05), transparent 30%);
     z-index: 1;
-}
-.events-banner .banner-bg-slide,
-.sakhanat-banner .banner-bg-slide,
-.beverages-banner .banner-bg-slide {
-    animation: kenBurns 20s ease-in-out infinite;
-    filter: brightness(0.88) saturate(1.05);
-    transform: scale(1.02);
 }
 .events-banner .banner-overlay,
 .sakhanat-banner .banner-overlay,
@@ -1658,7 +1624,7 @@ body::after {
     mask-composite: exclude;
     pointer-events: none;
     opacity: 0.5;
-    transition: opacity var(--tr);
+    transition: opacity .22s ease;
 }
 .missing-request-content:hover::before {
     opacity: 0.9;
